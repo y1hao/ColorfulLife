@@ -1,18 +1,10 @@
 import React from 'react';
 import { makeStyles} from '@material-ui/core';
+import { ICellConfig } from '../Common/Interfaces';
 
-interface IProps {
-    isPlayMode: boolean,
-    size: number,
-    color: string,
-    borderRadius: number,
-    borderWidth: number,
-    borderColor: string,
-    isAlive: boolean,
-    setIsAlive: (value: boolean) => void
-}
+type IProps = ICellConfig;
 
-function Cell(props: IProps) {
+export default function Cell(props: IProps) {
     const classes = makeStyles({
         cell: {
             width: props.size,

@@ -24,3 +24,14 @@ export interface ICellStyle {
     borderWidth: number,
     borderColor: string
 }
+
+export interface ICellConfig {
+    isPlayMode: boolean,
+    size: number,
+    color: string,
+    borderRadius: number,
+    borderWidth: number,
+    borderColor: string,
+    isAlive: boolean,
+    setIsAlive: (value: boolean) => void
+}
