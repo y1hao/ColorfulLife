@@ -25,9 +25,7 @@ export default function Board(props: IProps) {
     return <div className={classes.root}>{
         props.map.map((row) => 
             <div className={classes.row}>{
-                row.map((cell) => 
-                    <Cell {...{...cell}}
-                />)    
+                row.map((cell) => <Cell {...{...cell}}/>)    
             }</div>
         )
     }</div>

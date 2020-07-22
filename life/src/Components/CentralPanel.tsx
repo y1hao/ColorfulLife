@@ -25,7 +25,7 @@ export default function CentralPanel(props: IProps) {
                 defaultSize: defaultCellSize,
                 size: '100%',
                 color: 'yellow',
-                borderRadius: '10%',
+                borderRadius: '20%',
                 borderWidth: '2px',
                 borderColor: 'green',
                 isAlive: cell,

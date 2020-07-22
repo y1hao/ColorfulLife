@@ -12,6 +12,7 @@ export default function Cell(props: IProps) {
             display: 'flex'
         },
         cell: {
+            boxSizing: "border-box",
             width: props.size,
             height: props.size,
             borderRadius: props.borderRadius,
