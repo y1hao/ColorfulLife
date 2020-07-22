@@ -1,21 +1,19 @@
 export interface IGame {
-    info: IInfo,
+    name: string,
+    author: string,
+    time: Date,
+    description?: string
     refreshFrequency: number,
     width: number,
     height: number,
     seeds: Array<Array<boolean>>,
     starveCriterion: number,
     reviveCriterion: number,
-    borderPolicy: 'alive' | 'dead' | 'roll',
+    borderPolicy: BorderPolicy,
     styles: Array<Array<ICellStyle>>
 }
 
-export interface IInfo {
-    name: string,
-    author: string,
-    time: Date,
-    description?: string
-}
+export enum BorderPolicy {alive, dead, roll}
 
 export interface ICellStyle {
     size: number,

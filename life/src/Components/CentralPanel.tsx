@@ -1,8 +1,18 @@
 import React from 'react';
 import Board from './Board';
-import { IGame } from '../Common/Interfaces';
+import { IGame, BorderPolicy, ICellStyle } from '../Common/Interfaces';
 
-type IProps = IGame;
+interface IProps {
+    refreshFrequency: number,
+    width: number,
+    height: number,
+    seeds: boolean[][],
+    setSeeds: (value: boolean[][]) => void,
+    starveCriterion: number,
+    reviveCriterion: number,
+    borderPolicy: BorderPolicy,
+    styles: ICellStyle[][]
+}
 
 export default function CentralPanel(props: IProps) {
     const map = props.seeds.map((row) => 
