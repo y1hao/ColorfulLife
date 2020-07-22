@@ -4,93 +4,89 @@ import CentralPanel from './Components/CentralPanel';
 import { IGame, BorderPolicy, ICellStyle } from './Common/Interfaces';
 import LeftPanel from './Components/LeftPanel';
 import RightPanel from './Components/RightPanel';
+import { Grid } from '@material-ui/core';
 
 function App() {
-  const map = [
-    [true, false, true],
-    [true, true, true],
-    [false, true, false]
-  ]
+  const defaultWidth = 20;
+  const defaultHeight = 20;
 
-  const style = {
-    size: 10,
+  const defaultSeeds: boolean[][] = new Array(defaultHeight);
+  for (let i = 0; i < defaultHeight; ++i) {
+    defaultSeeds[i] = new Array(defaultWidth).fill(false);
+  }
+
+  const defaultStyle = {
+    size: 5,
     color: 'red',
-    borderRadius: 20,
-    borderWidth: 2,
+    borderRadius: '20%',
+    borderWidth: '2',
     borderColor: 'blue'
   }
 
-  const stylez = [
-    [style, style, style, style, style, style, style, style, style],
-    [style, style, style, style, style, style, style, style, style]
+  const defaultStyles = [
+    new Array(9).fill(defaultStyle),
+    new Array(9).fill(defaultStyle)
   ]
 
-  const game: IGame = {
-    name: "",
-    author: "",
-    time: new Date(),
-    refreshFrequency: 2,
-    width: 10,
-    height: 10,
-    seeds: map,
-    starveCriterion: 2,
-    reviveCriterion: 3,
-    borderPolicy: BorderPolicy.dead,
-    styles: stylez
-  }
-
   const [name, setName] = useState<string>("")
-      , [author, setAuthor] = useState<string>("")
-      , [description, setDescription] = useState<string>("")
-      , [time, setTime] = useState<Date>(new Date())
-      , [refreshFrequency, setRefreshFrequency] = useState<number>(10)
-      , [width, setWidth] = useState<number>(10)
-      , [height, setHeight] = useState<number>(10)
-      , [seeds, setSeeds] = useState<boolean[][]>([])
-      , [starveCriterion, setStarveCriterion] = useState<number>(3)
-      , [reviveCriterion, setReviveCriterion] = useState<number>(5)
-      , [borderPolicy, setBorderPolicy] = useState<BorderPolicy>(BorderPolicy.dead)
-      , [styles, setStyles] = useState<ICellStyle[][]>(stylez);
-
-
+    , [author, setAuthor] = useState<string>("")
+    , [description, setDescription] = useState<string>("")
+    , [time, setTime] = useState<Date>(new Date())
+    , [refreshFrequency, setRefreshFrequency] = useState<number>(10)
+    , [width, setWidth] = useState<number>(defaultWidth)
+    , [height, setHeight] = useState<number>(defaultHeight)
+    , [seeds, setSeeds] = useState<boolean[][]>(defaultSeeds)
+    , [starveCriterion, setStarveCriterion] = useState<number>(3)
+    , [reviveCriterion, setReviveCriterion] = useState<number>(5)
+    , [borderPolicy, setBorderPolicy] = useState<BorderPolicy>(BorderPolicy.dead)
+    , [styles, setStyles] = useState<ICellStyle[][]>(defaultStyles);
 
   return (
     <div className="App">
-      <LeftPanel 
-        name={name}
-        setName={setName}
-        author={author}
-        setAuthor={setAuthor}
-        description={description}
-        setDescription={setDescription}
-      />
-      <CentralPanel
-        refreshFrequency={refreshFrequency}
-        width={width}
-        height={height}
-        seeds={seeds}
-        setSeeds={setSeeds}
-        starveCriterion={starveCriterion}
-        reviveCriterion={reviveCriterion}
-        borderPolicy={borderPolicy}
-        styles={styles}
-      />
-      <RightPanel 
-        refreshFrequency={refreshFrequency}
-        setRefreshFrequency={setRefreshFrequency}
-        width={width}
-        setWidth={setWidth}
-        height={height}
-        setHeight={setHeight}
-        starveCriterion={starveCriterion}
-        setStarveCriterion={setStarveCriterion}
-        reviveCriterion={reviveCriterion}
-        setReviveCriterion={setReviveCriterion}
-        borderPolicy={borderPolicy}
-        setBorderPolicy={setBorderPolicy}
-        styles={styles}
-        setStyles={setStyles}
-      />
+      <Grid container>
+        <Grid item xs={3}>
+          <LeftPanel
+            name={name}
+            setName={setName}
+            author={author}
+            setAuthor={setAuthor}
+            time={time}
+            description={description}
+            setDescription={setDescription}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <CentralPanel
+            refreshFrequency={refreshFrequency}
+            width={width}
+            height={height}
+            seeds={seeds}
+            setSeeds={setSeeds}
+            starveCriterion={starveCriterion}
+            reviveCriterion={reviveCriterion}
+            borderPolicy={borderPolicy}
+            styles={styles}
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <RightPanel
+            refreshFrequency={refreshFrequency}
+            setRefreshFrequency={setRefreshFrequency}
+            width={width}
+            setWidth={setWidth}
+            height={height}
+            setHeight={setHeight}
+            starveCriterion={starveCriterion}
+            setStarveCriterion={setStarveCriterion}
+            reviveCriterion={reviveCriterion}
+            setReviveCriterion={setReviveCriterion}
+            borderPolicy={borderPolicy}
+            setBorderPolicy={setBorderPolicy}
+            styles={styles}
+            setStyles={setStyles}
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 }

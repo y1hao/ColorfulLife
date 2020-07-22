@@ -3,6 +3,7 @@ import React from 'react';
 interface IProps {
     name: string,
     setName: (value: string) => void,
+    time: Date,
     author: string,
     setAuthor: (value: string) => void,
     description: string,

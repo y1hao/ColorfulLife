@@ -15,20 +15,24 @@ interface IProps {
 }
 
 export default function CentralPanel(props: IProps) {
+    const defaultBoardWidth = '80vh';
+    const defaultCellSize = `calc(${defaultBoardWidth}/${props.width})`;
+
     const map = props.seeds.map((row) => 
         row.map((cell) => {
             return {
                 isPlayMode: false,
-                size: 10,
+                defaultSize: defaultCellSize,
+                size: '100%',
                 color: 'yellow',
-                borderRadius: 0.5,
-                borderWidth: 2,
+                borderRadius: '10%',
+                borderWidth: '2px',
                 borderColor: 'green',
-                isAlive: true,
+                isAlive: cell,
                 setIsAlive: () => null
             }
         })
     )
     
-    return <Board map={map}/>
+    return <Board map={map} width={defaultBoardWidth}/>
 }
