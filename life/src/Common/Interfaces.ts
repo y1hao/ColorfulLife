@@ -24,7 +24,6 @@ export interface ICellStyle {
 }
 
 export interface ICellConfig {
-    isPlayMode: boolean,
     defaultSize: string,
     size: string,
     color: string,

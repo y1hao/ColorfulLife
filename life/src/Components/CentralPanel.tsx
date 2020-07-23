@@ -34,6 +34,8 @@ export default function CentralPanel(props: IProps) {
         getMap(props.seeds, getNeighbors(props.seeds, neighbors), null)
     );
 
+    
+
     const handlePlay = () => {
         props.setIsPanelOpen(props.isPlaying);
         props.setIsPlaying(!props.isPlaying);
@@ -99,7 +101,6 @@ export default function CentralPanel(props: IProps) {
             for (let j = 0; j < props.width; j++) {
                 const style = props.styles[+seeds[i][j]][neighbors[i][j]];
                 map[i][j] = {
-                    isPlayMode : props.isPlayMode,
                     isAlive : seeds[i][j],
                     defaultSize : defaultCellSize,
                     size : style.size,
@@ -114,14 +115,14 @@ export default function CentralPanel(props: IProps) {
         return map;
     }
 
-    useEffect(() => {
-        setNeighbors(()=>getNeighbors(props.seeds, neighbors));
-        setMap(()=>getMap(props.seeds, neighbors, map));
-        map.forEach(row => row.forEach(cell => console.log(`Panel: ${cell.isPlayMode}`)))
-    })
+    // useEffect(() => {
+    //     setNeighbors(()=>getNeighbors(props.seeds, neighbors));
+    //     setMap(()=>getMap(props.seeds, neighbors, map));
+    //     //map.forEach(row => row.forEach(cell => console.log(`Panel: ${cell.isPlayMode}`)))
+    // })
 
     return <div>
-        <Board map={map} width={defaultBoardWidth} />
+        <Board isPlayMode={props.isPlayMode} map={map} width={defaultBoardWidth} />
         {
             props.isPlaying
             ? <Button onClick={handleStop}>Stop</Button>

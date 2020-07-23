@@ -5,6 +5,7 @@ import { IGame, BorderPolicy, ICellStyle } from './Common/Interfaces';
 import LeftPanel from './Components/LeftPanel';
 import RightPanel from './Components/RightPanel';
 import { Grid } from '@material-ui/core';
+import { green } from '@material-ui/core/colors';
 
 function App() {
   const defaultWidth = 20;
@@ -12,20 +13,34 @@ function App() {
 
   const defaultSeeds: boolean[][] = new Array(defaultHeight);
   for (let i = 0; i < defaultHeight; ++i) {
-    defaultSeeds[i] = new Array(defaultWidth).fill(false);
+    defaultSeeds[i] = new Array(defaultWidth);
+    for (let j = 0; j < defaultWidth; j++) {
+      defaultSeeds[i][j] = !!(i & j);
+    }
   }
 
-  const defaultStyle = {
-    size: 10,
-    color: 'black',
-    borderRadius: '20%',
-    borderWidth: '2px',
-    borderColor: 'blue'
+  const defaultStyleDead: ICellStyle[] = new Array(9);
+  const defaultStyleAlive: ICellStyle[] = new Array(9);
+  for (let i = 0; i < 9; i++) {
+    defaultStyleDead[i] = {
+      size: '90%',
+      color: `rgb(${20 + (255-20)/9*i}, 20, 20)`,
+      borderRadius: '20%',
+      borderWidth: '2px',
+      borderColor: 'blue'
+    };
+    defaultStyleAlive[i] = {
+      size: '90%',
+      color: `rgb(20, 20, ${20 + (255-20)/9*i})`,
+      borderRadius: '20%',
+      borderWidth: '2px',
+      borderColor: 'blue'
+    };
   }
 
   const defaultStyles = [
-    new Array(9).fill(defaultStyle),
-    new Array(9).fill(defaultStyle)
+    defaultStyleDead,
+    defaultStyleAlive
   ]
 
   const [name, setName] = useState<string>("")
@@ -96,4 +111,3 @@ function App() {
 }
 
 export default App;
-
