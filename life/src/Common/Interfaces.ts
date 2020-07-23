@@ -16,7 +16,7 @@ export interface IGame {
 export enum BorderPolicy {alive, dead, roll}
 
 export interface ICellStyle {
-    size: number,
+    size: string,
     color: string,
     borderRadius: string,
     borderWidth: string,
