@@ -17,24 +17,25 @@ export default function Cell(props: IProps) {
             height: props.size,
             borderRadius: props.borderRadius,
             borderWidth: props.borderWidth,
+            borderColor: props.borderColor,
             alignSelf: 'center',
-            justifySelf: 'center',
             '&:hover' : {
                 transform: 'scale(1.1)'
             }
         },
         play: {
-            backgroundColor: props.color,
-            borderColor: props.borderColor
+            backgroundColor: props.color
         },
         alive: {
             backgroundColor: 'green'
         },
         dead: {
-            backgroundColor: '#eeeeee'
+            backgroundColor: 'blue'
         },
     })();
     
+    console.log(`cell: ${props.isPlayMode}`);
+
     return (
         <div className={classes.container}>
             <div className={`${classes.cell} ${props.isPlayMode ? classes.play : props.isAlive ? classes.alive : classes.dead}`} 

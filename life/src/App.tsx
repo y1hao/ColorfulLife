@@ -16,10 +16,10 @@ function App() {
   }
 
   const defaultStyle = {
-    size: 5,
-    color: 'red',
+    size: 10,
+    color: 'black',
     borderRadius: '20%',
-    borderWidth: '2',
+    borderWidth: '2px',
     borderColor: 'blue'
   }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ICellConfig } from '../Common/Interfaces';
 import Cell from './Cell';
 import { makeStyles } from '@material-ui/core';
@@ -22,11 +22,23 @@ export default function Board(props: IProps) {
         }
     })();
 
+    props.map.forEach(row => row.forEach(cell => console.log(`board: ${cell.isPlayMode}`)))
 
     return <div className={classes.root}>{
         props.map.map((row) => 
             <div className={classes.row}>{
-                row.map((cell) => <Cell {...{...cell}}/>)    
+                row.map((cell) => 
+                    <Cell
+                        isPlayMode={cell.isPlayMode}
+                        defaultSize={cell.defaultSize}
+                        size={cell.size} 
+                        color={cell.color} 
+                        borderRadius={cell.borderRadius}
+                        borderWidth={cell.borderWidth} 
+                        borderColor={cell.borderColor}
+                        isAlive={cell.isAlive} 
+                        setIsAlive={cell.setIsAlive} 
+                    />)    
             }</div>
         )
     }</div>
