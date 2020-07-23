@@ -11,14 +11,15 @@ interface IProps {
     setDescription: (value: string) => void
     isPlayMode: boolean,
     setIsPlayMode: (value: boolean) => void,
-    isPlaying: boolean
+    isPlaying: boolean,
+    isPanelOpen: boolean
 }
 
 export default function LeftPanel(props: IProps) {
     const handleSetName = (name: string) => props.setName(name);
     const handleSetDescription = (description: string) => props.setDescription(description);
     const handleSetIsPlayMode = () => props.setIsPlayMode(!props.isPlayMode);
-    return <Drawer variant="permanent">
+    return <Drawer variant="persistent" open={props.isPanelOpen}>
         {
             props.isPlayMode
             ? <Button onClick={handleSetIsPlayMode}>Set Seeds</Button>

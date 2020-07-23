@@ -7,6 +7,7 @@ interface IProps {
     isPlayMode: boolean,
     isPlaying: boolean,
     setIsPlaying: (value: boolean) => void,
+    setIsPanelOpen: (value: boolean) => void,
     refreshFrequency: number,
     width: number,
     height: number,
@@ -22,7 +23,10 @@ export default function CentralPanel(props: IProps) {
     const defaultBoardWidth = '80vh';
     const defaultCellSize = `calc(${defaultBoardWidth}/${props.width})`;
 
-    const handlePlay = () => props.setIsPlaying(!props.isPlaying);
+    const handlePlay = () => {
+        props.setIsPanelOpen(props.isPlaying);
+        props.setIsPlaying(!props.isPlaying);
+    }
 
     const map = props.seeds.map((row) =>
         row.map((cell) => {
@@ -42,6 +46,10 @@ export default function CentralPanel(props: IProps) {
 
     return <div>
         <Board map={map} width={defaultBoardWidth} />
-        <Button onClick={handlePlay}>Play</Button>
+        {
+            props.isPlaying
+            ? <Button onClick={handlePlay}>Stop</Button>
+            :<Button onClick={handlePlay}>Play</Button>
+        }
     </div>
 }

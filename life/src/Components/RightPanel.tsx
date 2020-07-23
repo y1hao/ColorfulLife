@@ -16,9 +16,10 @@ interface IProps {
     borderPolicy: BorderPolicy,
     setBorderPolicy: (value: BorderPolicy) => void,
     styles: ICellStyle[][]
-    setStyles: (value: ICellStyle[][]) => void
+    setStyles: (value: ICellStyle[][]) => void,
+    isPanelOpen: boolean
 }
 
 export default function RightPanel(props: IProps) {
-    return <Drawer variant="permanent" anchor="right">Place holder for right panel</Drawer>
+    return <Drawer variant="persistent" anchor="right" open={props.isPanelOpen}>Place holder for right panel</Drawer>
 }

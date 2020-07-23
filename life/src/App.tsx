@@ -41,7 +41,8 @@ function App() {
     , [borderPolicy, setBorderPolicy] = useState<BorderPolicy>(BorderPolicy.dead)
     , [styles, setStyles] = useState<ICellStyle[][]>(defaultStyles)
     , [isPlayMode, setIsPlayMode] = useState<boolean>(true)
-    , [isPlaying, setIsPlaying] = useState<boolean>(false);
+    , [isPlaying, setIsPlaying] = useState<boolean>(false)
+    , [isPanelOpen, setIsPanelOpen] = useState<boolean>(true)
 
   return (
     <div className="App">
@@ -56,11 +57,13 @@ function App() {
         isPlayMode={isPlayMode}
         setIsPlayMode={setIsPlayMode}
         isPlaying={isPlaying}
+        isPanelOpen={isPanelOpen}
       />
       <CentralPanel
         isPlayMode={isPlayMode}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
+        setIsPanelOpen={setIsPanelOpen}
         refreshFrequency={refreshFrequency}
         width={width}
         height={height}
@@ -86,6 +89,7 @@ function App() {
         setBorderPolicy={setBorderPolicy}
         styles={styles}
         setStyles={setStyles}
+        isPanelOpen={isPanelOpen}
       />
     </div>
   );
