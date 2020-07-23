@@ -25,6 +25,7 @@ export default function Board(props: IProps) {
 
     //props.map.forEach(row => row.forEach(cell => console.log(`board: ${cell.isPlayMode}`)))
 
+    console.log('rerender')
     return <div className={classes.root}>{
         props.map.map((row) => 
             <div className={classes.row}>{

@@ -28,20 +28,31 @@ export default function CentralPanel(props: IProps) {
         defaultNeighbors[i] = new Array(props.width).fill(0);
     }
 
+    const [seeds, setSeeds] = useState<boolean[][]>(props.seeds);
+
     const [neighbors, setNeighbors] = useState<number[][]>(defaultNeighbors);
 
-    const [map, setMap] = useState<ICellConfig[][]>(
-        getMap(props.seeds, getNeighbors(props.seeds, neighbors), null)
-    );
+    const [tempMap1, setTempMap1] = useState<ICellConfig[][]>(
+        getMap(seeds, getNeighbors(seeds, neighbors), null)
+    )
 
-    
+    const [tempMap2, setTempMap2] = useState<ICellConfig[][]>(
+        getMap(seeds, getNeighbors(seeds, neighbors), null)
+    )
+
+    const [map, setMap] = useState<ICellConfig[][]>(tempMap1);
+
+    const [refreshHandler, setRefreshHandler] = useState<any>(null);
 
     const handlePlay = () => {
+        setRefreshHandler(setInterval(refresh, 100));
         props.setIsPanelOpen(props.isPlaying);
         props.setIsPlaying(!props.isPlaying);
     }
 
     const handleStop = () => {
+        clearInterval(refreshHandler);
+        setRefreshHandler(null);
         props.setIsPanelOpen(props.isPlaying);
         props.setIsPlaying(!props.isPlaying);
     }
@@ -83,9 +94,9 @@ export default function CentralPanel(props: IProps) {
     function getNextSeeds(seeds: boolean[][], neighbors: number[][]) {
         for (let i = 0; i < props.height; i++) {
             for (let j = 0; j < props.width; j++) {
-                if (seeds[i][j] && neighbors[i][j] < props.starveCriterion)
+                if (seeds[i][j] && (neighbors[i][j] < props.starveCriterion || neighbors[i][j] > props.reviveCriterion))
                     seeds[i][j] = false;
-                else if (!seeds[i][j] && neighbors[i][j] > props.reviveCriterion)
+                else if (!seeds[i][j] && neighbors[i][j] >= props.starveCriterion && neighbors[i][j] <= props.reviveCriterion)
                     seeds[i][j] = true;
             }
         }
@@ -113,6 +124,14 @@ export default function CentralPanel(props: IProps) {
             }
         }
         return map;
+    }
+
+    function refresh() {
+        const nextSeeds = getNextSeeds(seeds, neighbors);
+        setSeeds(nextSeeds);
+        const nextNeighbors = getNeighbors(nextSeeds, neighbors);
+        setNeighbors(nextNeighbors);
+        setMap(getMap(nextSeeds, nextNeighbors, null))
     }
 
     // useEffect(() => {
