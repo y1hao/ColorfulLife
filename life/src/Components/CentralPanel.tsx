@@ -1,7 +1,7 @@
 import React from 'react';
 import Board from './Board';
 import { IGame, BorderPolicy, ICellStyle } from '../Common/Interfaces';
-import { Container, makeStyles } from '@material-ui/core';
+import { Container, makeStyles, Button } from '@material-ui/core';
 
 interface IProps {
     isPlayMode: boolean,
@@ -22,6 +22,8 @@ export default function CentralPanel(props: IProps) {
     const defaultBoardWidth = '80vh';
     const defaultCellSize = `calc(${defaultBoardWidth}/${props.width})`;
 
+    const handlePlay = () => props.setIsPlaying(!props.isPlaying);
+
     const map = props.seeds.map((row) =>
         row.map((cell) => {
             return {
@@ -38,7 +40,8 @@ export default function CentralPanel(props: IProps) {
         })
     )
 
-    return <Container>
+    return <div>
         <Board map={map} width={defaultBoardWidth} />
-    </Container>
+        <Button onClick={handlePlay}>Play</Button>
+    </div>
 }
