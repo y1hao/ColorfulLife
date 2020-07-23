@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer } from '@material-ui/core';
+import { Drawer, Button } from '@material-ui/core';
 
 interface IProps {
     name: string,
@@ -19,6 +19,10 @@ export default function LeftPanel(props: IProps) {
     const handleSetDescription = (description: string) => props.setDescription(description);
     const handleSetIsPlayMode = () => props.setIsPlayMode(!props.isPlayMode);
     return <Drawer variant="permanent">
-        Place holder for left panel
-        </Drawer>
+        {
+            props.isPlayMode
+            ? <Button onClick={handleSetIsPlayMode}>Set Seeds</Button>
+            : <Button onClick={handleSetIsPlayMode}>Done</Button>
+        }
+    </Drawer>
 }
