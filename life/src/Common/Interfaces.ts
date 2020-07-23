@@ -6,7 +6,7 @@ export interface IGame {
     refreshFrequency: number,
     width: number,
     height: number,
-    seeds: Array<Array<boolean>>,
+    seeds: boolean[][],
     starveCriterion: number,
     reviveCriterion: number,
     borderPolicy: BorderPolicy,

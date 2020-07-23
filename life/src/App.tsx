@@ -39,7 +39,9 @@ function App() {
     , [starveCriterion, setStarveCriterion] = useState<number>(3)
     , [reviveCriterion, setReviveCriterion] = useState<number>(5)
     , [borderPolicy, setBorderPolicy] = useState<BorderPolicy>(BorderPolicy.dead)
-    , [styles, setStyles] = useState<ICellStyle[][]>(defaultStyles);
+    , [styles, setStyles] = useState<ICellStyle[][]>(defaultStyles)
+    , [isPlayMode, setIsPlayMode] = useState<boolean>(true)
+    , [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   return (
     <div className="App">
@@ -53,10 +55,16 @@ function App() {
             time={time}
             description={description}
             setDescription={setDescription}
+            isPlayMode={isPlayMode}
+            setIsPlayMode={setIsPlayMode}
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
           />
         </Grid>
         <Grid item xs={6}>
           <CentralPanel
+            isPlayMode={isPlayMode}
+            isPlaying={isPlaying}
             refreshFrequency={refreshFrequency}
             width={width}
             height={height}

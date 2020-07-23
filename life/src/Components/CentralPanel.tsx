@@ -3,6 +3,8 @@ import Board from './Board';
 import { IGame, BorderPolicy, ICellStyle } from '../Common/Interfaces';
 
 interface IProps {
+    isPlayMode: boolean,
+    isPlaying: boolean,
     refreshFrequency: number,
     width: number,
     height: number,

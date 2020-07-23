@@ -8,6 +8,10 @@ interface IProps {
     setAuthor: (value: string) => void,
     description: string,
     setDescription: (value: string) => void
+    isPlayMode: boolean,
+    setIsPlayMode: (value: boolean) => void,
+    isPlaying: boolean,
+    setIsPlaying: (value: boolean) => void
 }
 
 export default function LeftPanel(props: IProps) {
