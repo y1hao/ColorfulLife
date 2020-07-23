@@ -1,4 +1,5 @@
 import React from 'react';
+import { Drawer } from '@material-ui/core';
 
 interface IProps {
     name: string,
@@ -10,10 +11,14 @@ interface IProps {
     setDescription: (value: string) => void
     isPlayMode: boolean,
     setIsPlayMode: (value: boolean) => void,
-    isPlaying: boolean,
-    setIsPlaying: (value: boolean) => void
+    isPlaying: boolean
 }
 
 export default function LeftPanel(props: IProps) {
-    return <p>Place holder for left panel</p>
+    const handleSetName = (name: string) => props.setName(name);
+    const handleSetDescription = (description: string) => props.setDescription(description);
+    const handleSetIsPlayMode = () => props.setIsPlayMode(!props.isPlayMode);
+    return <Drawer variant="permanent">
+        Place holder for left panel
+        </Drawer>
 }

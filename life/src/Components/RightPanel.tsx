@@ -1,5 +1,6 @@
 import React from 'react';
 import { BorderPolicy, ICellStyle } from '../Common/Interfaces';
+import { Drawer } from '@material-ui/core';
 
 interface IProps {
     refreshFrequency: number,
@@ -19,5 +20,5 @@ interface IProps {
 }
 
 export default function RightPanel(props: IProps) {
-    return <p>Place holder for right panel</p>
+    return <Drawer variant="permanent" anchor="right">Place holder for right panel</Drawer>
 }

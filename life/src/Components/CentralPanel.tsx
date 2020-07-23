@@ -5,6 +5,7 @@ import { IGame, BorderPolicy, ICellStyle } from '../Common/Interfaces';
 interface IProps {
     isPlayMode: boolean,
     isPlaying: boolean,
+    setIsPlaying: (value: boolean) => void,
     refreshFrequency: number,
     width: number,
     height: number,
