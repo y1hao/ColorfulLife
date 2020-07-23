@@ -14,7 +14,8 @@ export default function Board(props: IProps) {
         root: {
             display: 'flex',
             flexDirection: 'column',
-            width: props.width
+            width: props.width,
+            margin: 'auto'
         },
         row: {
             display: 'flex'
