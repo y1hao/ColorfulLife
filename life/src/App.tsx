@@ -55,8 +55,10 @@ function App() {
     , [width, setWidth] = useState<number>(defaultWidth)
     , [height, setHeight] = useState<number>(defaultHeight)
     , [seeds, setSeeds] = useState<boolean[][]>(defaultSeeds)
-    , [underPopulationCriterion, setUnderPopulationCriterion] = useState<number>(2)
-    , [overPopulationCriterion, setOverPopulationCriterion] = useState<number>(3)
+    , [surviveRangeLower, setSurviveRangeLower] = useState<number>(2)
+    , [surviveRangeUpper, setSurviveRangeUpper] = useState<number>(3)
+    , [reproductionRangeLower, setReproductionRangeLower] = useState<number>(3)
+    , [reproductionRangeUpper, setReproductionRangeUpper] = useState<number>(3)
     , [borderPolicy, setBorderPolicy] = useState<BorderPolicy>(BorderPolicy.roll)
     , [styles, setStyles] = useState<ICellStyle[][]>(defaultStyles)
     , [isPlayMode, setIsPlayMode] = useState<boolean>(true)
@@ -88,8 +90,10 @@ function App() {
         height={height}
         seeds={seeds}
         setSeeds={setSeeds}
-        underPopulationCriterion={underPopulationCriterion}
-        overPopulationCriterion={overPopulationCriterion}
+        surviveRangeLower={surviveRangeLower}
+        surviveRangeUpper={surviveRangeUpper}
+        reproductionRangeLower={reproductionRangeLower}
+        reproductionRangeUpper={reproductionRangeUpper}
         borderPolicy={borderPolicy}
         styles={styles}
       />
@@ -100,10 +104,14 @@ function App() {
         setWidth={setWidth}
         height={height}
         setHeight={setHeight}
-        underPopulationCriterion={underPopulationCriterion}
-        setUnderPopulationCriterion={setUnderPopulationCriterion}
-        overPopulationCriterion={overPopulationCriterion}
-        setOverPopulationCriterion={setOverPopulationCriterion}
+        surviveRangeLower={surviveRangeLower}
+        setSurviveRangeLower={setSurviveRangeLower}
+        surviveRangeUpper={surviveRangeUpper}
+        setSurviveRangeUpper={setSurviveRangeUpper}
+        reproductionRangeLower={reproductionRangeLower}
+        setReproductionRangeLower={setReproductionRangeLower}
+        reproductionRangeUpper={reproductionRangeUpper}
+        setReproductionRangeUpper={setReproductionRangeUpper}
         borderPolicy={borderPolicy}
         setBorderPolicy={setBorderPolicy}
         styles={styles}

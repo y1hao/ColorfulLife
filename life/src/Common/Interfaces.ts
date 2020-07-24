@@ -7,8 +7,10 @@ export interface IGame {
     width: number,
     height: number,
     seeds: boolean[][],
-    underPopulationCriterion: number,
-    overPupulationCriterion: number,
+    surviveRangeLower: number,
+    surviveRangeUpper: number,
+    reproductionRangeLower: number,
+    reproductionRangeUpper: number,
     borderPolicy: BorderPolicy,
     styles: Array<Array<ICellStyle>>
 }

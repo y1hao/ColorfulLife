@@ -13,8 +13,10 @@ interface IProps {
     height: number,
     seeds: boolean[][],
     setSeeds: (value: boolean[][]) => void,
-    underPopulationCriterion: number,
-    overPopulationCriterion: number,
+    surviveRangeLower: number,
+    surviveRangeUpper: number,
+    reproductionRangeLower: number,
+    reproductionRangeUpper: number,
     borderPolicy: BorderPolicy,
     styles: ICellStyle[][]
 }
@@ -104,9 +106,9 @@ export default function CentralPanel(props: IProps) {
     function getNextSeeds(seeds: boolean[][], neighbors: number[][]) {
         for (let i = 0; i < props.height; i++) {
             for (let j = 0; j < props.width; j++) {
-                if (seeds[i][j] && (neighbors[i][j] < props.underPopulationCriterion || neighbors[i][j] > props.overPopulationCriterion))
+                if (seeds[i][j] && (neighbors[i][j] < props.surviveRangeLower || neighbors[i][j] > props.surviveRangeUpper))
                     seeds[i][j] = false;
-                else if (!seeds[i][j] &&  neighbors[i][j] <= props.overPopulationCriterion && neighbors[i][j] >= props.overPopulationCriterion)
+                else if (!seeds[i][j] &&  neighbors[i][j] <= props.reproductionRangeUpper && neighbors[i][j] >= props.reproductionRangeLower)
                     seeds[i][j] = true;
             }
         }
