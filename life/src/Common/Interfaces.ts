@@ -18,14 +18,18 @@ export enum BorderPolicy {alive, dead, roll}
 export interface ICellStyle {
     size: string,
     color: string,
-    borderRadius: string
+    borderRadius: string,
+    borderWidth: number,
+    borderColor: string
 }
 
 export interface ICellConfig {
     defaultSize: string,
     size: string,
     color: string,
-    borderRadius: string
+    borderRadius: string,
+    borderWidth: string,
+    borderColor: string,
     isAlive: boolean,
     setIsAlive: (value: boolean) => void
 }

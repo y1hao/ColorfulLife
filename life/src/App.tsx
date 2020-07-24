@@ -26,13 +26,17 @@ function App() {
       size: `50%`,
       //color: `rgb(${20 + (255-20)/9*i}, 20, 20)`,
       color: '#eeeeee',
-      borderRadius: '0%'
+      borderRadius: '0%',
+      borderWidth: 20,
+      borderColor: 'gray'
     };
     defaultStyleAlive[i] = {
       size: '100%',
       //color: `rgb(20, 20, ${20 + (255-20)/9*i})`,
       color: 'green',
-      borderRadius: `0%`
+      borderRadius: `0%`,
+      borderWidth: 0,
+      borderColor: 'gray'
     };
   }
 

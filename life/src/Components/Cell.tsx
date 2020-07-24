@@ -16,6 +16,7 @@ export default function Cell(props: IProps) {
         },
         cell: {
             boxSizing: "border-box",
+            border: `${props.config.borderWidth} ${props.config.borderColor} solid`,
             width: props.config.size,
             height: props.config.size,
             borderRadius: props.config.borderRadius,

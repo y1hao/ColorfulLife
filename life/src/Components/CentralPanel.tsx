@@ -123,6 +123,8 @@ export default function CentralPanel(props: IProps) {
                     size : style.size,
                     color : style.color,
                     borderRadius : style.borderRadius,
+                    borderWidth: `calc(${defaultBoardWidth}/${props.width}*${style.borderWidth}/100)`,
+                    borderColor: style.borderColor,
                     setIsAlive : () => null
                 }
             }
