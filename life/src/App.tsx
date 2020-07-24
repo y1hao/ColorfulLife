@@ -26,17 +26,13 @@ function App() {
       size: `100%`,
       //color: `rgb(${20 + (255-20)/9*i}, 20, 20)`,
       color: '#eeeeee',
-      borderRadius: '0%',
-      borderWidth: '2px',
-      borderColor: 'blue'
+      borderRadius: '0%'
     };
     defaultStyleAlive[i] = {
       size: '100%',
       //color: `rgb(20, 20, ${20 + (255-20)/9*i})`,
       color: 'green',
-      borderRadius: `0%`,
-      borderWidth: '2px',
-      borderColor: 'blue'
+      borderRadius: `0%`
     };
   }
 
@@ -53,8 +49,8 @@ function App() {
     , [width, setWidth] = useState<number>(defaultWidth)
     , [height, setHeight] = useState<number>(defaultHeight)
     , [seeds, setSeeds] = useState<boolean[][]>(defaultSeeds)
-    , [starveCriterion, setStarveCriterion] = useState<number>(3)
-    , [reviveCriterion, setReviveCriterion] = useState<number>(5)
+    , [starveCriterion, setStarveCriterion] = useState<number>(2)
+    , [reviveCriterion, setReviveCriterion] = useState<number>(3)
     , [borderPolicy, setBorderPolicy] = useState<BorderPolicy>(BorderPolicy.dead)
     , [styles, setStyles] = useState<ICellStyle[][]>(defaultStyles)
     , [isPlayMode, setIsPlayMode] = useState<boolean>(true)

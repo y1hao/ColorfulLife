@@ -27,10 +27,11 @@ export default function Board(props: IProps) {
 
     console.log('rerender')
     return <div className={classes.root}>{
-        props.map.map((row) => 
-            <div className={classes.row}>{
-                row.map((cell) => 
+        props.map.map((row, i) => 
+            <div className={classes.row} key={i}>{
+                row.map((cell, j) => 
                     <Cell
+                        key={j}
                         isPlayMode={props.isPlayMode}
                         config={
                             {
@@ -38,8 +39,6 @@ export default function Board(props: IProps) {
                                 size: cell.size,
                                 color: cell.color,
                                 borderRadius: cell.borderRadius,
-                                borderWidth: cell.borderWidth,
-                                borderColor: cell.borderColor,
                                 isAlive: cell.isAlive,
                                 setIsAlive: cell.setIsAlive
                             }

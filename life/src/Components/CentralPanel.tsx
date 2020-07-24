@@ -32,20 +32,14 @@ export default function CentralPanel(props: IProps) {
 
     const [neighbors, setNeighbors] = useState<number[][]>(defaultNeighbors);
 
-    const [tempMap1, setTempMap1] = useState<ICellConfig[][]>(
+    const [map, setMap] = useState<ICellConfig[][]>(
         getMap(seeds, getNeighbors(seeds, neighbors), null)
-    )
-
-    const [tempMap2, setTempMap2] = useState<ICellConfig[][]>(
-        getMap(seeds, getNeighbors(seeds, neighbors), null)
-    )
-
-    const [map, setMap] = useState<ICellConfig[][]>(tempMap1);
+    );
 
     const [refreshHandler, setRefreshHandler] = useState<any>(null);
 
     const handlePlay = () => {
-        setRefreshHandler(setInterval(refresh, 100));
+        setRefreshHandler(setInterval(refresh, 1000 / props.refreshFrequency));
         props.setIsPanelOpen(props.isPlaying);
         props.setIsPlaying(!props.isPlaying);
     }
@@ -117,8 +111,6 @@ export default function CentralPanel(props: IProps) {
                     size : style.size,
                     color : style.color,
                     borderRadius : style.borderRadius,
-                    borderWidth : style.borderWidth,
-                    borderColor : style.borderColor,
                     setIsAlive : () => null
                 }
             }
@@ -131,7 +123,7 @@ export default function CentralPanel(props: IProps) {
         setSeeds(nextSeeds);
         const nextNeighbors = getNeighbors(nextSeeds, neighbors);
         setNeighbors(nextNeighbors);
-        setMap(getMap(nextSeeds, nextNeighbors, null))
+        setMap([...getMap(nextSeeds, nextNeighbors, map)])
     }
 
     // useEffect(() => {

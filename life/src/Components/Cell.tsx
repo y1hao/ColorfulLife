@@ -19,8 +19,6 @@ export default function Cell(props: IProps) {
             width: props.config.size,
             height: props.config.size,
             borderRadius: props.config.borderRadius,
-            borderWidth: props.config.borderWidth,
-            borderColor: props.config.borderColor,
             alignSelf: 'center',
             '&:hover' : {
                 transform: 'scale(1.1)'
