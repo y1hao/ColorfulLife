@@ -23,7 +23,7 @@ function App() {
   const defaultStyleAlive: ICellStyle[] = new Array(9);
   for (let i = 0; i < 9; i++) {
     defaultStyleDead[i] = {
-      size: `100%`,
+      size: `50%`,
       //color: `rgb(${20 + (255-20)/9*i}, 20, 20)`,
       color: '#eeeeee',
       borderRadius: '0%'
