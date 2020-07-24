@@ -15,7 +15,7 @@ export default function Cell(props: IProps) {
             display: 'grid'
         },
         cell: {
-            boxSizing: "border-box",
+            boxSizing: 'border-box',
             border: `${props.config.borderWidth} ${props.config.borderColor} solid`,
             width: props.config.size,
             height: props.config.size,
@@ -27,13 +27,21 @@ export default function Cell(props: IProps) {
             backgroundColor: props.config.color
         },
         alive: {
+            width: props.config.defaultSize,
+            height: props.config.defaultSize,
+            border: 'none',
+            borderRadius: '50%',
             backgroundColor: 'green',
             '&:hover' : {
                 transform: 'scale(1.1)'
             }
         },
         dead: {
-            backgroundColor: 'blue',
+            width: props.config.defaultSize,
+            height: props.config.defaultSize,
+            border: 'none',
+            borderRadius: '50%',
+            backgroundColor: '#eeeeee',
             '&:hover' : {
                 transform: 'scale(1.1)'
             }

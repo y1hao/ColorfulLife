@@ -20,8 +20,8 @@ interface IProps {
 }
 
 export default function CentralPanel(props: IProps) {
-    const defaultBoardWidth = '80vh';
-    const defaultCellSize = `calc(${defaultBoardWidth}/${props.width})`;
+    const boardWidth = '80vh';
+    const defaultCellSize = `calc(${boardWidth}/${props.width})`;
 
     const defaultNeighbors: number[][] = new Array(props.height);
     for (let i = 0; i < props.height; i++) {
@@ -63,13 +63,17 @@ export default function CentralPanel(props: IProps) {
         props.setIsPlaying(!props.isPlaying);
     }
 
+    function handleSetIsAlive(i: number, j: number, value: boolean) {
+        props.seeds[i][j] = value;
+        props.setSeeds([...props.seeds]);
+    }
+
     function getNeighbors(seeds: boolean[][], neighbors: number[][]) {
         for (let i = 0; i < props.height; i++) {
             for (let j = 0; j < props.width; j++) {
                 neighbors[i][j] = 0;
-
-                if (seeds[i][j - 1])      neighbors[i][j]++;
-                if (seeds[i][j + 1])      neighbors[i][j]++;
+                if (seeds[i][j - 1])                      neighbors[i][j]++;
+                if (seeds[i][j + 1])                      neighbors[i][j]++;
                 if (seeds[i - 1] && seeds[i - 1][j - 1])  neighbors[i][j]++;
                 if (seeds[i - 1] && seeds[i - 1][j])      neighbors[i][j]++;
                 if (seeds[i - 1] && seeds[i - 1][j + 1])  neighbors[i][j]++;
@@ -123,9 +127,9 @@ export default function CentralPanel(props: IProps) {
                     size : `${style.size}%`,
                     color : style.color,
                     borderRadius : `${style.borderRadius}%`,
-                    borderWidth: `calc(${defaultBoardWidth}/${props.width}*${style.borderWidth}*${style.size}/10000)`,
+                    borderWidth: `calc(${boardWidth}/${props.width}*${style.borderWidth}*${style.size}/10000)`,
                     borderColor: style.borderColor,
-                    setIsAlive : () => null
+                    setIsAlive : handleSetIsAlive.bind(null, i, j)
                 }
             }
         }
@@ -140,18 +144,12 @@ export default function CentralPanel(props: IProps) {
         setMap([...getMap(nextSeeds, nextNeighbors, map)])
     }
 
-    // useEffect(() => {
-    //     setNeighbors(()=>getNeighbors(props.seeds, neighbors));
-    //     setMap(()=>getMap(props.seeds, neighbors, map));
-    //     //map.forEach(row => row.forEach(cell => console.log(`Panel: ${cell.isPlayMode}`)))
-    // })
-
     return <div>
-        <Board isPlayMode={props.isPlayMode} map={map} width={defaultBoardWidth} />
+        <Board isPlayMode={props.isPlayMode} map={map} width={boardWidth} />
         {
             props.isPlaying
-            ? <Button onClick={handleStop}>Stop</Button>
-            : <Button onClick={handlePlay}>Play</Button>
+            ? <Button onClick={handleStop} disabled={!props.isPlayMode}>Stop</Button>
+            : <Button onClick={handlePlay} disabled={!props.isPlayMode}>Play</Button>
         }
     </div>
 }
