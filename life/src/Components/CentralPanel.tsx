@@ -13,8 +13,8 @@ interface IProps {
     height: number,
     seeds: boolean[][],
     setSeeds: (value: boolean[][]) => void,
-    starveCriterion: number,
-    reviveCriterion: number,
+    underPopulationCriterion: number,
+    overPopulationCriterion: number,
     borderPolicy: BorderPolicy,
     styles: ICellStyle[][]
 }
@@ -28,7 +28,12 @@ export default function CentralPanel(props: IProps) {
         defaultNeighbors[i] = new Array(props.width).fill(0);
     }
 
-    const [seeds, setSeeds] = useState<boolean[][]>(props.seeds);
+    const seedsCopy = new Array(props.height);
+    for (let i = 0; i < props.height; i++) {
+        seedsCopy[i] = [...props.seeds[i]];
+    }
+
+    const [seeds, setSeeds] = useState<boolean[][]>(seedsCopy);
 
     const [neighbors, setNeighbors] = useState<number[][]>(defaultNeighbors);
 
@@ -47,6 +52,13 @@ export default function CentralPanel(props: IProps) {
     const handleStop = () => {
         clearInterval(refreshHandler);
         setRefreshHandler(null);
+        const seedsCopy = new Array(props.height);
+        for (let i = 0; i < props.height; i++) {
+            seedsCopy[i] = [...props.seeds[i]];
+        } 
+        setSeeds(seedsCopy);
+        setNeighbors(getNeighbors(props.seeds, neighbors));
+        setMap([...getMap(props.seeds, neighbors, map)]);
         props.setIsPanelOpen(props.isPlaying);
         props.setIsPlaying(!props.isPlaying);
     }
@@ -88,9 +100,9 @@ export default function CentralPanel(props: IProps) {
     function getNextSeeds(seeds: boolean[][], neighbors: number[][]) {
         for (let i = 0; i < props.height; i++) {
             for (let j = 0; j < props.width; j++) {
-                if (seeds[i][j] && (neighbors[i][j] < props.starveCriterion || neighbors[i][j] > props.reviveCriterion))
+                if (seeds[i][j] && (neighbors[i][j] < props.underPopulationCriterion || neighbors[i][j] > props.overPopulationCriterion))
                     seeds[i][j] = false;
-                else if (!seeds[i][j] && neighbors[i][j] >= props.starveCriterion && neighbors[i][j] <= props.reviveCriterion)
+                else if (!seeds[i][j] &&  neighbors[i][j] <= props.overPopulationCriterion && neighbors[i][j] >= props.overPopulationCriterion)
                     seeds[i][j] = true;
             }
         }

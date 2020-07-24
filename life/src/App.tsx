@@ -49,9 +49,9 @@ function App() {
     , [width, setWidth] = useState<number>(defaultWidth)
     , [height, setHeight] = useState<number>(defaultHeight)
     , [seeds, setSeeds] = useState<boolean[][]>(defaultSeeds)
-    , [starveCriterion, setStarveCriterion] = useState<number>(2)
-    , [reviveCriterion, setReviveCriterion] = useState<number>(3)
-    , [borderPolicy, setBorderPolicy] = useState<BorderPolicy>(BorderPolicy.dead)
+    , [underPopulationCriterion, setUnderPopulationCriterion] = useState<number>(2)
+    , [overPopulationCriterion, setOverPopulationCriterion] = useState<number>(3)
+    , [borderPolicy, setBorderPolicy] = useState<BorderPolicy>(BorderPolicy.roll)
     , [styles, setStyles] = useState<ICellStyle[][]>(defaultStyles)
     , [isPlayMode, setIsPlayMode] = useState<boolean>(true)
     , [isPlaying, setIsPlaying] = useState<boolean>(false)
@@ -82,8 +82,8 @@ function App() {
         height={height}
         seeds={seeds}
         setSeeds={setSeeds}
-        starveCriterion={starveCriterion}
-        reviveCriterion={reviveCriterion}
+        underPopulationCriterion={underPopulationCriterion}
+        overPopulationCriterion={overPopulationCriterion}
         borderPolicy={borderPolicy}
         styles={styles}
       />
@@ -94,10 +94,10 @@ function App() {
         setWidth={setWidth}
         height={height}
         setHeight={setHeight}
-        starveCriterion={starveCriterion}
-        setStarveCriterion={setStarveCriterion}
-        reviveCriterion={reviveCriterion}
-        setReviveCriterion={setReviveCriterion}
+        underPopulationCriterion={underPopulationCriterion}
+        setUnderPopulationCriterion={setUnderPopulationCriterion}
+        overPopulationCriterion={overPopulationCriterion}
+        setOverPopulationCriterion={setOverPopulationCriterion}
         borderPolicy={borderPolicy}
         setBorderPolicy={setBorderPolicy}
         styles={styles}

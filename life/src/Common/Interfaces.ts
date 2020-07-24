@@ -7,8 +7,8 @@ export interface IGame {
     width: number,
     height: number,
     seeds: boolean[][],
-    starveCriterion: number,
-    reviveCriterion: number,
+    underPopulationCriterion: number,
+    overPupulationCriterion: number,
     borderPolicy: BorderPolicy,
     styles: Array<Array<ICellStyle>>
 }
