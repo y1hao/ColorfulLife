@@ -10,7 +10,7 @@ interface IProps {
     description: string,
     setDescription: (value: string) => void
     isPlayMode: boolean,
-    setIsPlayMode:  (f: (value: boolean) => boolean) => void,
+    setIsPlayMode: (value: boolean) => void,
     isPlaying: boolean,
     isPanelOpen: boolean
 }
@@ -21,8 +21,8 @@ export default function LeftPanel(props: IProps) {
     return <Drawer variant="persistent" open={props.isPanelOpen}>
         {
             props.isPlayMode
-            ? <Button onClick={() => props.setIsPlayMode(isPlayMode=>!isPlayMode)}>Set Seeds</Button>
-            : <Button onClick={() => props.setIsPlayMode(isPlayMode=>!isPlayMode)}>Done</Button>
+            ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
+            : <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
         }
     </Drawer>
 }

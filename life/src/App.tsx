@@ -15,7 +15,7 @@ function App() {
   for (let i = 0; i < defaultHeight; ++i) {
     defaultSeeds[i] = new Array(defaultWidth);
     for (let j = 0; j < defaultWidth; j++) {
-      defaultSeeds[i][j] = !!(i & j);
+      defaultSeeds[i][j] = false;
     }
   }
 

@@ -37,6 +37,13 @@ export default function CentralPanel(props: IProps) {
 
     const [seeds, setSeeds] = useState<boolean[][]>(seedsCopy);
 
+    useEffect(() => {
+        const seedsCopy = new Array(props.height);
+        for (let i = 0; i < props.height; i++) {
+            seedsCopy[i] = [...props.seeds[i]];
+        setSeeds(seedsCopy);
+    }}, [props.isPlayMode])
+
     const [neighbors, setNeighbors] = useState<number[][]>(defaultNeighbors);
 
     const [map, setMap] = useState<ICellConfig[][]>(
