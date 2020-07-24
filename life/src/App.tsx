@@ -23,22 +23,22 @@ function App() {
   const defaultStyleAlive: ICellStyle[] = new Array(9);
   for (let i = 0; i < 9; i++) {
     defaultStyleDead[i] = {
-      size: 50,
+      size: 100,
       //color: `rgb(${20 + (255-20)/9*i}, 20, 20)`,
       color: '#eeeeee',
       borderRadius: 0,
-      borderWidth: 20,
+      borderWidth: 0,
       borderColor: 'gray',
       elevation: 0
     };
     defaultStyleAlive[i] = {
       size: 100,
       //color: `rgb(20, 20, ${20 + (255-20)/9*i})`,
-      color: 'green',
+      color: '#eeeeee',
       borderRadius: 0,
       borderWidth: 0,
       borderColor: 'gray',
-      elevation:  i >= 6 ? 3 : i >= 3 ? 2 : 1
+      elevation: i
     };
   }
 

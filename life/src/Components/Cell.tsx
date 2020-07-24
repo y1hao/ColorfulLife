@@ -24,7 +24,8 @@ export default function Cell(props: IProps) {
             borderRadius: props.config.borderRadius,
             alignSelf: 'center',
             justifySelf: 'center',
-            boxShadow: `#333333 0 0 ${boxShadowMapping[props.config.elevation]}`
+            boxShadow: `#333333 0 0 ${props.config.elevation * 2}px`,
+            zIndex: props.config.elevation + 1
         },
         play: {
             backgroundColor: props.config.color
