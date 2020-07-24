@@ -59,7 +59,7 @@ function App() {
       , [ surviveRangeUpper,      setSurviveRangeUpper ]      = useState<number>(3)
       , [ reproductionRangeLower, setReproductionRangeLower ] = useState<number>(3)
       , [ reproductionRangeUpper, setReproductionRangeUpper ] = useState<number>(3)
-      , [ borderPolicy,           setBorderPolicy ]           = useState<BorderPolicy>(BorderPolicy.roll)
+      , [ borderPolicy,           setBorderPolicy ]           = useState<BorderPolicy>(BorderPolicy.alive)
       , [ styles,                 setStyles ]                 = useState<ICellStyle[][]>(defaultStyles)
       , [ isPlayMode,             setIsPlayMode ]             = useState<boolean>(true)
       , [ isPlaying,              setIsPlaying ]              = useState<boolean>(false)

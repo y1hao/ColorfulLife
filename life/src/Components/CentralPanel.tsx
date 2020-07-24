@@ -91,17 +91,7 @@ export default function CentralPanel(props: IProps) {
                 if (seeds[i + 1] && seeds[i + 1][j])      neighbors[i][j]++;
                 if (seeds[i + 1] && seeds[i + 1][j + 1])  neighbors[i][j]++;
 
-                if (props.borderPolicy === BorderPolicy.alive) {
-                    if (i === 0 || i === props.height - 1) {
-                        neighbors[i][j] += 3;
-                    }  
-                    if (j === 0 || j === props.width - 1) {
-                        neighbors[i][j] += 3;
-                        if (i === 0 || i === props.height - 1) {
-                            neighbors[i][j]--;
-                        }  
-                    }    
-                } else if (props.borderPolicy === BorderPolicy.roll) {
+               if (props.borderPolicy === BorderPolicy.roll) {
                     if (i === 0) {
                        neighbors[i][j] += +seeds[props.height - 1][j];
                        neighbors[i][j] += +(seeds[props.height - 1][j - 1] === true);
@@ -132,7 +122,31 @@ export default function CentralPanel(props: IProps) {
                 }
             }
         }
+        if (props.borderPolicy === BorderPolicy.alive) {
+            adjustForAlivePolicy(neighbors);
+        } else if (props.borderPolicy === BorderPolicy.roll) {
+
+        }
         return neighbors;
+    }
+
+    function adjustForAlivePolicy(neighbors: number[][]) {
+        for (let i = 0; i < props.height; i++) {
+            neighbors[i][0] += 3;
+            neighbors[i][props.width - 1] += 3;
+        }
+        for (let j = 1; j < props.width - 1; j++) {
+            neighbors[0][j] += 3;
+            neighbors[props.height - 1][j] += 3;
+        }
+        neighbors[0][0] += 2;
+        neighbors[0][props.width - 1] += 2;
+        neighbors[props.height - 1][0] += 2;
+        neighbors[props.height - 1][props.width - 1] += 2;
+    }
+
+    function adjustForRollPolicy(seeds: boolean[][], neighbors: number[][]) {
+
     }
 
     function getNextSeeds(seeds: boolean[][], neighbors: number[][]) {
