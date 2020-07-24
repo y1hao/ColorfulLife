@@ -120,10 +120,10 @@ export default function CentralPanel(props: IProps) {
                 map[i][j] = {
                     isAlive : seeds[i][j],
                     defaultSize : defaultCellSize,
-                    size : style.size,
+                    size : `${style.size}%`,
                     color : style.color,
-                    borderRadius : style.borderRadius,
-                    borderWidth: `calc(${defaultBoardWidth}/${props.width}*${style.borderWidth}/100)`,
+                    borderRadius : `${style.borderRadius}%`,
+                    borderWidth: `calc(${defaultBoardWidth}/${props.width}*${style.borderWidth}*${style.size}/10000)`,
                     borderColor: style.borderColor,
                     setIsAlive : () => null
                 }
