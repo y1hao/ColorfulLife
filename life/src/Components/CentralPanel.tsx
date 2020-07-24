@@ -90,36 +90,6 @@ export default function CentralPanel(props: IProps) {
                 if (seeds[i + 1] && seeds[i + 1][j - 1])  neighbors[i][j]++;
                 if (seeds[i + 1] && seeds[i + 1][j])      neighbors[i][j]++;
                 if (seeds[i + 1] && seeds[i + 1][j + 1])  neighbors[i][j]++;
-
-            //    if (props.borderPolicy === BorderPolicy.roll) {
-            //         if (i === 0) {
-            //            neighbors[i][j] += +seeds[props.height - 1][j];
-            //            neighbors[i][j] += +(seeds[props.height - 1][j - 1] === true);
-            //            neighbors[i][j] += +(seeds[props.height - 1][j + 1] === true);
-            //         } else if (i === props.height - 1) {
-            //             neighbors[i][j] += +seeds[0][j];
-            //             neighbors[i][j] += +(seeds[0][j - 1] === true);
-            //             neighbors[i][j] += +(seeds[0][j + 1] === true);
-            //         }
-            //         if (j === 0) {
-            //             neighbors[i][j] += +seeds[i][props.width - 1];
-            //             neighbors[i][j] += +(i - 1 >= 0 && seeds[i - 1][props.width - 1]);
-            //             neighbors[i][j] += +(i + 1 < props.height && seeds[i + 1][props.width - 1]);
-            //         } else if (j === props.width - 1) {
-            //             neighbors[i][j] += +seeds[i][0];
-            //             neighbors[i][j] += +(i - 1 >= 0 && seeds[i - 1][0]);
-            //             neighbors[i][j] += +(i + 1 < props.height && seeds[i + 1][0]);
-            //         }
-            //         if (i === 0 && j === 0) {
-            //             neighbors[i][j] += +seeds[props.height - 1][props.width - 1];
-            //         } else if (i === 0 && j === props.width - 1) {
-            //             neighbors[i][j] += +seeds[props.height - 1][0];
-            //         } else if (i === props.height - 1 && j === 0) {
-            //             neighbors[i][j] += +seeds[0][props.width - 1];
-            //         } else if(i === props.height - 1 && j === props.width - 1) {
-            //             neighbors[i][j] += +seeds[0][0];
-            //         }
-            //     }
             }
         }
         if (props.borderPolicy === BorderPolicy.alive) {
