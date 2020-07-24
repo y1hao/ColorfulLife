@@ -68,6 +68,7 @@ export default function CentralPanel(props: IProps) {
     function handleSetIsAlive(i: number, j: number, value: boolean) {
         props.seeds[i][j] = value;
         props.setSeeds([...props.seeds]);
+        setMap([...getMap(props.seeds, getNeighbors(props.seeds, neighbors), map)]);
     }
 
     function getNeighbors(seeds: boolean[][], neighbors: number[][]) {

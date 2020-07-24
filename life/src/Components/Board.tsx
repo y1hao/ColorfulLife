@@ -43,14 +43,6 @@ export default function Board(props: IProps) {
                                 setIsAlive: cell.setIsAlive
                             }
                         }
-                        // defaultSize={cell.defaultSize}
-                        // size={cell.size} 
-                        // color={cell.color} 
-                        // borderRadius={cell.borderRadius}
-                        // borderWidth={cell.borderWidth} 
-                        // borderColor={cell.borderColor}
-                        // isAlive={cell.isAlive} 
-                        // setIsAlive={cell.setIsAlive} 
                     />)    
             }</div>
         )

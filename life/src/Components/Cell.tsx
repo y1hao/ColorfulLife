@@ -7,8 +7,6 @@ interface IProps {
     isPlayMode: boolean
 }
 
-const boxShadowMapping = ['0', '2px', '5px', '10px'];
-
 export default function Cell(props: IProps) {
     const classes = makeStyles({
         container: {
@@ -24,11 +22,11 @@ export default function Cell(props: IProps) {
             borderRadius: props.config.borderRadius,
             alignSelf: 'center',
             justifySelf: 'center',
-            boxShadow: `#333333 0 0 ${props.config.elevation * 2}px`,
             zIndex: props.config.elevation + 1
         },
         play: {
-            backgroundColor: props.config.color
+            backgroundColor: props.config.color,
+            boxShadow: `#333333 0 0 ${props.config.elevation * 2}px`
         },
         alive: {
             width: props.config.defaultSize,
@@ -36,8 +34,9 @@ export default function Cell(props: IProps) {
             border: 'none',
             borderRadius: '50%',
             backgroundColor: 'green',
+            boxShadow: '#333333 0 0 5px',
             '&:hover' : {
-                boxShadow: '#333333 0 0 4px'
+                boxShadow: '#333333 0 0 10px'
             }
         },
         dead: {
@@ -47,15 +46,24 @@ export default function Cell(props: IProps) {
             borderRadius: '50%',
             backgroundColor: '#eeeeee',
             '&:hover' : {
-                boxShadow: '#333333 0 0 4px'
+                boxShadow: '#333333 0 0 5px'
             }
         },
     })();
     
     return (
-        <div className={classes.container}>
-            <div className={`${classes.cell} ${props.isPlayMode ? classes.play : props.config.isAlive ? classes.alive : classes.dead}`} 
-            onClick={() => props.isPlayMode && props.config.setIsAlive(!props.config.isAlive)}/>
+        <div className={classes.container} onClick={() => {
+                //console.log(props.config.isAlive)
+                if (!props.isPlayMode)
+                    props.config.setIsAlive(!props.config.isAlive)
+                //console.log(props.config.isAlive)
+            }}
+        >
+            <div className={`${classes.cell} 
+                ${props.isPlayMode 
+                    ? classes.play 
+                    : props.config.isAlive ? classes.alive : classes.dead}`} 
+            />
         </div>
     )
 }
