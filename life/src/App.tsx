@@ -28,7 +28,8 @@ function App() {
       color: '#eeeeee',
       borderRadius: 0,
       borderWidth: 20,
-      borderColor: 'gray'
+      borderColor: 'gray',
+      elevation: 0
     };
     defaultStyleAlive[i] = {
       size: 100,
@@ -36,7 +37,8 @@ function App() {
       color: 'green',
       borderRadius: 0,
       borderWidth: 0,
-      borderColor: 'gray'
+      borderColor: 'gray',
+      elevation:  i >= 6 ? 3 : i >= 3 ? 2 : 1
     };
   }
 

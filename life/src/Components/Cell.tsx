@@ -7,6 +7,8 @@ interface IProps {
     isPlayMode: boolean
 }
 
+const boxShadowMapping = ['0', '2px', '5px', '10px'];
+
 export default function Cell(props: IProps) {
     const classes = makeStyles({
         container: {
@@ -21,7 +23,8 @@ export default function Cell(props: IProps) {
             height: props.config.size,
             borderRadius: props.config.borderRadius,
             alignSelf: 'center',
-            justifySelf: 'center'
+            justifySelf: 'center',
+            boxShadow: `#333333 0 0 ${boxShadowMapping[props.config.elevation]}`
         },
         play: {
             backgroundColor: props.config.color
@@ -33,7 +36,7 @@ export default function Cell(props: IProps) {
             borderRadius: '50%',
             backgroundColor: 'green',
             '&:hover' : {
-                transform: 'scale(1.1)'
+                boxShadow: '#333333 0 0 4px'
             }
         },
         dead: {
@@ -43,7 +46,7 @@ export default function Cell(props: IProps) {
             borderRadius: '50%',
             backgroundColor: '#eeeeee',
             '&:hover' : {
-                transform: 'scale(1.1)'
+                boxShadow: '#333333 0 0 4px'
             }
         },
     })();

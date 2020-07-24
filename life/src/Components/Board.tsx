@@ -38,6 +38,7 @@ export default function Board(props: IProps) {
                                 borderRadius: cell.borderRadius,
                                 borderWidth: cell.borderWidth,
                                 borderColor: cell.borderColor,
+                                elevation: cell.elevation,
                                 isAlive: cell.isAlive,
                                 setIsAlive: cell.setIsAlive
                             }

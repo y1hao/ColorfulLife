@@ -20,7 +20,8 @@ export interface ICellStyle {
     color: string,
     borderRadius: number,
     borderWidth: number,
-    borderColor: string
+    borderColor: string,
+    elevation: number
 }
 
 export interface ICellConfig {
@@ -30,6 +31,7 @@ export interface ICellConfig {
     borderRadius: string,
     borderWidth: string,
     borderColor: string,
+    elevation: number,
     isAlive: boolean,
     setIsAlive: (value: boolean) => void
 }

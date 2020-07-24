@@ -129,6 +129,7 @@ export default function CentralPanel(props: IProps) {
                     borderRadius : `${style.borderRadius}%`,
                     borderWidth: `calc(${boardWidth}/${props.width}*${style.borderWidth}*${style.size}/10000)`,
                     borderColor: style.borderColor,
+                    elevation: style.elevation,
                     setIsAlive : handleSetIsAlive.bind(null, i, j)
                 }
             }
