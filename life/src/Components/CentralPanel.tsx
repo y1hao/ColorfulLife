@@ -184,10 +184,12 @@ export default function CentralPanel(props: IProps) {
 
     return <div>
         <Board isPlayMode={props.isPlayMode} map={map} width={boardWidth} />
-        {
-            props.isPlaying
-            ? <Button onClick={handleStop} disabled={!props.isPlayMode}>Stop</Button>
-            : <Button onClick={handlePlay} disabled={!props.isPlayMode}>Play</Button>
+        {   
+            props.isPlayMode && (
+                props.isPlaying
+                ? <Button onClick={handleStop} disabled={!props.isPlayMode}>Stop</Button>
+                : <Button onClick={handlePlay} disabled={!props.isPlayMode}>Play</Button>
+            ) 
         }
     </div>
 }

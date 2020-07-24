@@ -23,24 +23,26 @@ function App() {
   const defaultStyleAlive: ICellStyle[] = new Array(9);
   for (let i = 0; i < 9; i++) {
     defaultStyleDead[i] = {
-      size: 100,
+      size: 50 + i * 5,
       //color: `rgb(${20 + (255-20)/9*i}, 20, 20)`,
-      color: '#eeeeee',
-      borderRadius: 0,
+      color: 'while',
+      borderRadius: 50,
       borderWidth: 0,
       borderColor: 'gray',
       elevation: 0
     };
     defaultStyleAlive[i] = {
-      size: 100,
+      size: 50 + i * 5,
       //color: `rgb(20, 20, ${20 + (255-20)/9*i})`,
-      color: '#eeeeee',
-      borderRadius: 0,
+      color: i < 2 ? '#cccccc' : i > 3 ? 'pink' : 'green',
+      borderRadius: 50,
       borderWidth: 0,
-      borderColor: 'gray',
+      borderColor: 'green',
       elevation: i
     };
   }
+
+  defaultStyleDead[3].color = 'lightgreen'
 
   const defaultStyles = [
     defaultStyleDead,
