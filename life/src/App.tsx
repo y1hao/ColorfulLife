@@ -48,9 +48,9 @@ function App() {
     defaultStyleAlive
   ]
 
-  const [ name,                   setName ]                   = useState<string>("")
-      , [ author,                 setAuthor ]                 = useState<string>("")
-      , [ description,            setDescription ]            = useState<string>("")
+  const [ name,                   setName ]                   = useState<string>("Title")
+      , [ author,                 setAuthor ]                 = useState<string>("author")
+      , [ description,            setDescription ]            = useState<string>("description")
       , [ time,                   setTime ]                   = useState<Date>(new Date())
       , [ refreshFrequency,       setRefreshFrequency ]       = useState<number>(10)
       , [ width,                  setWidth ]                  = useState<number>(defaultWidth)
