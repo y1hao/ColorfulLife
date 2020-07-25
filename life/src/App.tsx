@@ -10,6 +10,7 @@ import { green } from '@material-ui/core/colors';
 function App() {
   const defaultWidth = 20;
   const defaultHeight = 20;
+  const panelWidth = 250;
 
   const defaultSeeds: boolean[][] = new Array(defaultHeight);
   for (let i = 0; i < defaultHeight; ++i) {
@@ -68,6 +69,7 @@ function App() {
   return (
     <div className="App">
       <LeftPanel
+        panelWidth={panelWidth}
         name={name}
         setName={setName}
         author={author}
@@ -95,6 +97,7 @@ function App() {
         styles={styles}
       />
       <RightPanel
+        panelWidth={panelWidth}
         refreshFrequency={refreshFrequency}
         setRefreshFrequency={setRefreshFrequency}
         width={width}

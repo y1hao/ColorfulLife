@@ -1,8 +1,9 @@
 import React from 'react';
 import { BorderPolicy, ICellStyle } from '../Common/Interfaces';
-import { Drawer, Button } from '@material-ui/core';
+import { Drawer, Button, makeStyles } from '@material-ui/core';
 
 interface IProps {
+    panelWidth: number,
     refreshFrequency: number,
     setRefreshFrequency: (value: number) => void,
     width: number,
@@ -27,7 +28,21 @@ interface IProps {
 }
 
 export default function RightPanel(props: IProps) {
-    return <Drawer variant="persistent" anchor="right" open={props.isPanelOpen}>
+    const classes = makeStyles({
+        root: {
+            width: props.panelWidth
+        },
+        drawerPaper: {
+            width: props.panelWidth
+        }
+    })();
+
+    return <Drawer 
+        variant="persistent" 
+        anchor="right" 
+        open={props.isPanelOpen} 
+        className={classes.root}
+        classes={{paper: classes.drawerPaper}}>
         {
             props.isPlayMode
             ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
