@@ -1,6 +1,6 @@
 import React from 'react';
 import { BorderPolicy, ICellStyle } from '../Common/Interfaces';
-import { Drawer } from '@material-ui/core';
+import { Drawer, Button } from '@material-ui/core';
 
 interface IProps {
     refreshFrequency: number,
@@ -21,9 +21,17 @@ interface IProps {
     setBorderPolicy: (value: BorderPolicy) => void,
     styles: ICellStyle[][]
     setStyles: (value: ICellStyle[][]) => void,
-    isPanelOpen: boolean
+    isPanelOpen: boolean,
+    isPlayMode: boolean,
+    setIsPlayMode: (value: boolean) => void
 }
 
 export default function RightPanel(props: IProps) {
-    return <Drawer variant="persistent" anchor="right" open={props.isPanelOpen}>Place holder for right panel</Drawer>
+    return <Drawer variant="persistent" anchor="right" open={props.isPanelOpen}>
+        {
+            props.isPlayMode
+            ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
+            : <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
+        }
+    </Drawer>
 }

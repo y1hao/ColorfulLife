@@ -24,7 +24,6 @@ function App() {
   for (let i = 0; i < 9; i++) {
     defaultStyleDead[i] = {
       size: 50 + i * 5,
-      //color: `rgb(${20 + (255-20)/9*i}, 20, 20)`,
       color: 'while',
       borderRadius: 50,
       borderWidth: 0,
@@ -33,7 +32,6 @@ function App() {
     };
     defaultStyleAlive[i] = {
       size: 50 + i * 5,
-      //color: `rgb(20, 20, ${20 + (255-20)/9*i})`,
       color: i < 2 ? '#cccccc' : i > 3 ? 'pink' : 'green',
       borderRadius: 50,
       borderWidth: 0,
@@ -77,9 +75,6 @@ function App() {
         time={time}
         description={description}
         setDescription={setDescription}
-        isPlayMode={isPlayMode}
-        setIsPlayMode={setIsPlayMode}
-        isPlaying={isPlaying}
         isPanelOpen={isPanelOpen}
       />
       <CentralPanel
@@ -119,6 +114,8 @@ function App() {
         styles={styles}
         setStyles={setStyles}
         isPanelOpen={isPanelOpen}
+        isPlayMode={isPlayMode}
+        setIsPlayMode={setIsPlayMode}
       />
     </div>
   );
