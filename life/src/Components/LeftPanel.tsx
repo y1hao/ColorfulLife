@@ -1,5 +1,6 @@
 import React from 'react';
 import { Drawer, Button, makeStyles, Typography } from '@material-ui/core';
+import { CreateSharp } from '@material-ui/icons';
 import { prependOnceListener } from 'process';
 
 interface IProps {
@@ -31,8 +32,8 @@ export default function LeftPanel(props: IProps) {
             open={props.isPanelOpen} 
             className={classes.root} 
             classes={{paper: classes.drawerPaper}}>
-        <Typography variant="h4">{props.name}</Typography>
-<Typography variant="body1">{props.author}</Typography>
-<Typography variant="body1">{props.description}</Typography>
+        <Typography variant="h4">{props.name}<CreateSharp /></Typography>
+        <Typography variant="body1">{props.author}<CreateSharp /></Typography>
+        <Typography variant="body1">{props.description}<CreateSharp /></Typography>
     </Drawer>
 }
