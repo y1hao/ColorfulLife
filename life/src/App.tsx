@@ -48,9 +48,9 @@ function App() {
     defaultStyleAlive
   ]
 
-  const [ name,                   setName ]                   = useState<string>("Title")
-      , [ author,                 setAuthor ]                 = useState<string>("author")
-      , [ description,            setDescription ]            = useState<string>("description")
+  const [ name,                   setName ]                   = useState<string>("New Game")
+      , [ author,                 setAuthor ]                 = useState<string>("Colorful Life player")
+      , [ description,            setDescription ]            = useState<string>("No descriptions...")
       , [ time,                   setTime ]                   = useState<Date>(new Date())
       , [ boardColor,             setBoardColor ]             = useState<string>("white")
       , [ refreshFrequency,       setRefreshFrequency ]       = useState<number>(10)
