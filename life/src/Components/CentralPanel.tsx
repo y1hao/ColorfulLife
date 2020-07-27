@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board';
 import { IGame, BorderPolicy, ICellStyle, ICellConfig } from '../Common/Interfaces';
-import { Container, makeStyles, Button } from '@material-ui/core';
+import { Container, makeStyles, Button, Paper } from '@material-ui/core';
 
 interface IProps {
     isPlayMode: boolean,
@@ -21,7 +21,17 @@ interface IProps {
     styles: ICellStyle[][]
 }
 
+const useStyles = makeStyles({
+    root: {
+        margin: "auto",
+        width: "80vh",
+        padding: "5vh"
+    }
+})
+
 export default function CentralPanel(props: IProps) {
+    const classes = useStyles();
+
     const boardWidth = '80vh';
     const defaultCellSize = `calc(${boardWidth}/${props.width})`;
 
@@ -183,14 +193,16 @@ export default function CentralPanel(props: IProps) {
         setMap([...getMap(nextSeeds, nextNeighbors, map)])
     }
 
-    return <div>
+    return <div className={classes.root}>
+    <Paper elevation={5}>
         <Board isPlayMode={props.isPlayMode} map={map} width={boardWidth} />
-        {   
-            props.isPlayMode && (
-                props.isPlaying
-                ? <Button onClick={handleStop} disabled={!props.isPlayMode}>Stop</Button>
-                : <Button onClick={handlePlay} disabled={!props.isPlayMode}>Play</Button>
-            ) 
-        }
+    </Paper>
+    {   
+        props.isPlayMode && (
+            props.isPlaying
+            ? <Button onClick={handleStop} disabled={!props.isPlayMode}>Stop</Button>
+            : <Button onClick={handlePlay} disabled={!props.isPlayMode}>Play</Button>
+        ) 
+    }
     </div>
 }

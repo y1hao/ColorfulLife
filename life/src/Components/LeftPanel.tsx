@@ -50,7 +50,8 @@ export default function LeftPanel(props: IProps) {
             width: props.panelWidth
         },
         drawerPaper: {
-            width: props.panelWidth
+            width: props.panelWidth,
+            border: 'none'
         }
     })();
 
@@ -63,7 +64,9 @@ export default function LeftPanel(props: IProps) {
             variant="persistent" 
             open={props.isPanelOpen} 
             className={classes.root} 
-            classes={{paper: classes.drawerPaper}}>
+            classes={{paper: classes.drawerPaper}}
+            PaperProps={{elevation: 5}}
+            >
         <InputTitle>Game Title</InputTitle>
         <Typography variant="h4">
             {props.name}

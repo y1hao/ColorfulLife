@@ -29,7 +29,7 @@ function App() {
       borderRadius: 50,
       borderWidth: 0,
       borderColor: 'gray',
-      backgroundColor: '#eeeeee',
+      backgroundColor: '#222222',
       elevation: 0
     };
     defaultStyleAlive[i] = {
@@ -38,7 +38,7 @@ function App() {
       borderRadius: 50,
       borderWidth: 0,
       borderColor: 'green',
-      backgroundColor: '#eeeeee',
+      backgroundColor: '#222222',
       elevation: i
     };
   }

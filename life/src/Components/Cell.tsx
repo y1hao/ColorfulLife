@@ -27,7 +27,7 @@ export default function Cell(props: IProps) {
         },
         play: {
             backgroundColor: props.config.color,
-            boxShadow: `#333333 0 0 ${props.config.elevation * 2}px`
+            boxShadow: `#000000 0 0 ${props.config.elevation * 1.2}px`
         },
         alive: {
             width: props.config.defaultSize,
