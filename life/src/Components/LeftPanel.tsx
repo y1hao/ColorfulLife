@@ -65,7 +65,7 @@ export default function LeftPanel(props: IProps) {
             open={props.isPanelOpen} 
             className={classes.root} 
             classes={{paper: classes.drawerPaper}}
-            PaperProps={{elevation: 5}}
+            PaperProps={{elevation: 10}}
             >
         <InputTitle>Game Title</InputTitle>
         <Typography variant="h4">

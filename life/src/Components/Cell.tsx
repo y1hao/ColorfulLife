@@ -27,7 +27,7 @@ export default function Cell(props: IProps) {
         },
         play: {
             backgroundColor: props.config.color,
-            boxShadow: `#000000 0 0 ${props.config.elevation * 1.2}px`
+            boxShadow: `black 0 0 ${props.config.elevation}px`
         },
         alive: {
             width: props.config.defaultSize,
@@ -35,9 +35,9 @@ export default function Cell(props: IProps) {
             border: 'none',
             borderRadius: '50%',
             backgroundColor: 'green',
-            boxShadow: '#333333 0 0 5px',
+            boxShadow: 'black 0 0 5px',
             '&:hover' : {
-                boxShadow: '#333333 0 0 10px'
+                boxShadow: 'black 0 0 10px'
             }
         },
         dead: {

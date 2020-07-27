@@ -1,6 +1,6 @@
 import React from 'react';
 import { BorderPolicy, ICellStyle } from '../Common/Interfaces';
-import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography } from '@material-ui/core';
 import InputTitle from './InputTitle';
 
 interface IProps {
@@ -48,8 +48,9 @@ export default function RightPanel(props: IProps) {
         open={props.isPanelOpen} 
         className={classes.root}
         classes={{paper: classes.drawerPaper}}
-        PaperProps={{elevation: 5}}
+        PaperProps={{elevation: 10}}
         >
+        <Typography variant="h5">Settings</Typography>
         <Accordion>
             <AccordionSummary>
                 Game Settings
@@ -94,7 +95,7 @@ export default function RightPanel(props: IProps) {
             <AccordionSummary>
                 Cell Settings
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails className={classes.accordionDetails}>
 
             </AccordionDetails>
         </Accordion>
@@ -102,15 +103,15 @@ export default function RightPanel(props: IProps) {
             <AccordionSummary>
                 Seeds
             </AccordionSummary>
-            <AccordionDetails>
-                
+            <AccordionDetails className={classes.accordionDetails}>
+            {
+                props.isPlayMode
+                ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
+                : <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
+            } 
             </AccordionDetails>
         </Accordion>
 
-        {
-            props.isPlayMode
-            ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
-            : <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
-        }
+        
     </Drawer>
 }
