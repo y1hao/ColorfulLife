@@ -15,6 +15,32 @@ interface IProps {
     isPanelOpen: boolean
 }
 
+const inputDialog = (
+    isOpen: boolean, 
+    heading: string, 
+    id: string, 
+    defaultValue: string,
+    setIsOpen: (value: boolean) => void,
+    setValue: (value: string) => void
+) =>  <Dialog open={isOpen}>
+    <DialogTitle>{heading}</DialogTitle>
+    <DialogContent> 
+    <TextField
+        id={id}
+        autoFocus
+        defaultValue={defaultValue} 
+    />
+    </DialogContent>
+    <DialogActions>
+        <Button onClick={() => {
+            setValue((document.getElementById(id) as any).value);
+            setIsOpen(false);
+        }}>
+            Save
+        </Button>
+    </DialogActions>
+</Dialog>
+
 export default function LeftPanel(props: IProps) {
     const classes = makeStyles({
         root: {
@@ -25,29 +51,8 @@ export default function LeftPanel(props: IProps) {
         }
     })();
 
-    const [nameDialogOpen, setNameDialogOpen] = useState<boolean>(false);
-
-    const nameDialog = <Dialog open={nameDialogOpen}>
-        <DialogTitle>
-            Game Title
-        </DialogTitle>
-        <DialogContent> 
-        <TextField
-            id="nameInput"
-            autoFocus
-            defaultValue={props.name} 
-        />
-        </DialogContent>
-        <DialogActions>
-            <Button onClick={() => {
-                props.setName((document.getElementById("nameInput") as any).value);
-                setNameDialogOpen(false);
-            }}>
-                Save
-            </Button>
-        </DialogActions>
-    </Dialog>
-        
+    const [isNameDialogOpen, setIsNameDialogOpen] = useState<boolean>(false);
+    
     return <Drawer 
             variant="persistent" 
             open={props.isPanelOpen} 
@@ -55,9 +60,17 @@ export default function LeftPanel(props: IProps) {
             classes={{paper: classes.drawerPaper}}>
         <Typography variant="h4">
             {props.name}
-            <CreateSharp fontSize="small" onClick={() => setNameDialogOpen(true)}/>
+            <CreateSharp fontSize="small" onClick={() => setIsNameDialogOpen(true)}/>
         </Typography>
-        {nameDialog}
+        {
+            inputDialog(
+                isNameDialogOpen, 
+                "Game Title",
+                "GameTitleInput",
+                props.name, 
+                setIsNameDialogOpen,
+                props.setName)
+        }
         <Typography variant="body1">{props.author}<CreateSharp fontSize="inherit"/></Typography>
         <Typography variant="body1">{props.description}<CreateSharp fontSize="inherit"/></Typography>
     </Drawer>
