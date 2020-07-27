@@ -4,6 +4,8 @@ import { Drawer, Button, makeStyles } from '@material-ui/core';
 
 interface IProps {
     panelWidth: number,
+    boardColor: string,
+    setBoardColor: (value: string) => void,
     refreshFrequency: number,
     setRefreshFrequency: (value: number) => void,
     width: number,

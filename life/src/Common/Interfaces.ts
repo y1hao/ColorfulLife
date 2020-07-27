@@ -2,7 +2,8 @@ export interface IGame {
     name: string,
     author: string,
     time: Date,
-    description?: string
+    description?: string,
+    boardColor: string,
     refreshFrequency: number,
     width: number,
     height: number,
@@ -12,7 +13,7 @@ export interface IGame {
     reproductionRangeLower: number,
     reproductionRangeUpper: number,
     borderPolicy: BorderPolicy,
-    styles: Array<Array<ICellStyle>>
+    styles: ICellStyle[][]
 }
 
 export enum BorderPolicy {alive, dead, roll}

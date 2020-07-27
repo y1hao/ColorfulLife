@@ -52,6 +52,7 @@ function App() {
       , [ author,                 setAuthor ]                 = useState<string>("author")
       , [ description,            setDescription ]            = useState<string>("description")
       , [ time,                   setTime ]                   = useState<Date>(new Date())
+      , [ boardColor,             setBoardColor ]             = useState<string>("white")
       , [ refreshFrequency,       setRefreshFrequency ]       = useState<number>(10)
       , [ width,                  setWidth ]                  = useState<number>(defaultWidth)
       , [ height,                 setHeight ]                 = useState<number>(defaultHeight)
@@ -94,10 +95,13 @@ function App() {
         reproductionRangeLower={reproductionRangeLower}
         reproductionRangeUpper={reproductionRangeUpper}
         borderPolicy={borderPolicy}
+        boardColor={boardColor}
         styles={styles}
       />
       <RightPanel
         panelWidth={panelWidth}
+        boardColor={boardColor}
+        setBoardColor={setBoardColor}
         refreshFrequency={refreshFrequency}
         setRefreshFrequency={setRefreshFrequency}
         width={width}
