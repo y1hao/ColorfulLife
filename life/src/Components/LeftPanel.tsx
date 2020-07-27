@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider } from '@material-ui/core';
 import { CreateSharp } from '@material-ui/icons';
+import InputTitle from './InputTitle';
 
 interface IProps {
     panelWidth: number,
@@ -63,6 +64,7 @@ export default function LeftPanel(props: IProps) {
             open={props.isPanelOpen} 
             className={classes.root} 
             classes={{paper: classes.drawerPaper}}>
+        <InputTitle>Game Title</InputTitle>
         <Typography variant="h4">
             {props.name}
             <CreateSharp fontSize="small" onClick={() => setIsNameDialogOpen(true)}/>

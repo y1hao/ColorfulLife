@@ -16,7 +16,7 @@ function App() {
   for (let i = 0; i < defaultHeight; ++i) {
     defaultSeeds[i] = new Array(defaultWidth);
     for (let j = 0; j < defaultWidth; j++) {
-      defaultSeeds[i][j] = false;
+      defaultSeeds[i][j] = !!(i & j);
     }
   }
 
@@ -25,7 +25,7 @@ function App() {
   for (let i = 0; i < 9; i++) {
     defaultStyleDead[i] = {
       size: 50 + i * 5,
-      color: 'while',
+      color: '#eeeeee',
       borderRadius: 50,
       borderWidth: 0,
       borderColor: 'gray',
@@ -34,7 +34,7 @@ function App() {
     };
     defaultStyleAlive[i] = {
       size: 50 + i * 5,
-      color: i < 2 ? '#cccccc' : i > 3 ? 'pink' : 'green',
+      color: i < 2 ? '#cccccc' : i > 3 ? 'darkgreen' : 'green',
       borderRadius: 50,
       borderWidth: 0,
       borderColor: 'green',
