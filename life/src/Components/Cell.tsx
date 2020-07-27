@@ -12,6 +12,7 @@ export default function Cell(props: IProps) {
         container: {
             width: props.config.defaultSize,
             height: props.config.defaultSize,
+            backgroundColor: props.config.backgroundColor,
             display: 'grid'
         },
         cell: {
@@ -53,10 +54,8 @@ export default function Cell(props: IProps) {
     
     return (
         <div className={classes.container} onClick={() => {
-                //console.log(props.config.isAlive)
                 if (!props.isPlayMode)
                     props.config.setIsAlive(!props.config.isAlive)
-                //console.log(props.config.isAlive)
             }}
         >
             <div className={`${classes.cell} 

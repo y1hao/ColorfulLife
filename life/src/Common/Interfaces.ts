@@ -12,6 +12,7 @@ export interface IGame {
     reproductionRangeLower: number,
     reproductionRangeUpper: number,
     borderPolicy: BorderPolicy,
+    backgroundColor: string,
     styles: ICellStyle[][]
 }
 
@@ -23,6 +24,7 @@ export interface ICellStyle {
     borderRadius: number,
     borderWidth: number,
     borderColor: string,
+    backgroundColor: string,
     elevation: number
 }
 
@@ -33,6 +35,7 @@ export interface ICellConfig {
     borderRadius: string,
     borderWidth: string,
     borderColor: string,
+    backgroundColor: string,
     elevation: number,
     isAlive: boolean,
     setIsAlive: (value: boolean) => void
