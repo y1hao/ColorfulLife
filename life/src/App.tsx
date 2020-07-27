@@ -8,8 +8,8 @@ import { Grid } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 
 function App() {
-  const defaultWidth = 20;
-  const defaultHeight = 20;
+  const defaultWidth = 15;
+  const defaultHeight = 15;
   const panelWidth = 250;
 
   const defaultSeeds: boolean[][] = new Array(defaultHeight);
@@ -116,6 +116,8 @@ function App() {
         setReproductionRangeUpper={setReproductionRangeUpper}
         borderPolicy={borderPolicy}
         setBorderPolicy={setBorderPolicy}
+        seeds={seeds}
+        setSeeds={setSeeds}
         styles={styles}
         setStyles={setStyles}
         isPanelOpen={isPanelOpen}

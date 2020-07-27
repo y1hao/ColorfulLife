@@ -54,14 +54,30 @@ export default function CentralPanel(props: IProps) {
         const seedsCopy = new Array(props.height);
         for (let i = 0; i < props.height; i++) {
             seedsCopy[i] = [...props.seeds[i]];
+        }
         setSeeds(seedsCopy);
-    }}, [props.isPlayMode])
+    }, [props.isPlayMode])
 
     const [neighbors, setNeighbors] = useState<number[][]>(defaultNeighbors);
 
-    const [map, setMap] = useState<ICellConfig[][]>(
-        getMap(seeds, getNeighbors(seeds, neighbors), null)
-    );
+    const defaultMap = getMap(seeds, getNeighbors(seeds, neighbors), null);
+
+    const [map, setMap] = useState<ICellConfig[][]>(defaultMap);
+
+    useEffect(() => {
+        const seedsCopy = new Array(props.height);
+        for (let i = 0; i < props.height; i++) {
+            seedsCopy[i] = [...props.seeds[i]];
+        }
+        setSeeds(seedsCopy);
+        const newNeighbors: number[][] = new Array(props.height);
+        for (let i = 0; i < props.height; i++) {
+            newNeighbors[i] = new Array(props.width).fill(0);
+        }
+        getNeighbors(seeds, newNeighbors);
+        setNeighbors(newNeighbors);
+        setMap(getMap(seeds, newNeighbors, null))
+    }, [props.seeds])
 
     const [refreshHandler, setRefreshHandler] = useState<any>(null);
 
@@ -198,7 +214,11 @@ export default function CentralPanel(props: IProps) {
 
     return <div className={classes.root}>
     <Paper elevation={10} className={classes.paper}>
-        <Board isPlayMode={props.isPlayMode} map={map} width={boardWidth} />
+        <Board 
+            isPlayMode={props.isPlayMode} 
+            map={map} 
+            width={boardWidth}
+        />
     </Paper>
     {   
         props.isPlayMode && (

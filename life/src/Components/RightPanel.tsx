@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { BorderPolicy, ICellStyle } from '../Common/Interfaces';
-import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider } from '@material-ui/core';
 import InputTitle from './InputTitle';
 
 interface IProps {
@@ -23,6 +23,8 @@ interface IProps {
     setBorderPolicy: (value: BorderPolicy) => void,
     styles: ICellStyle[][]
     setStyles: (value: ICellStyle[][]) => void,
+    seeds: boolean[][],
+    setSeeds: (value: boolean[][]) => void,
     isPanelOpen: boolean,
     isPlayMode: boolean,
     setIsPlayMode: (value: boolean) => void
@@ -42,6 +44,23 @@ export default function RightPanel(props: IProps) {
         }
     })();
 
+    const setSize = (v: number) => {
+        props.setWidth(v);
+        props.setHeight(v);
+        const newSeeds = new Array(v);
+        for (let i = 0; i < v; i++) {
+            newSeeds[i] = new Array(v);
+            for (let j = 0; j < v; j++) {
+                if (props.seeds[i] === undefined || props.seeds[i][j] === undefined) {
+                    newSeeds[i][j] = false;
+                } else {
+                    newSeeds[i][j] = props.seeds[i][j];
+                }
+            }
+        }
+        props.setSeeds(newSeeds);
+    }
+
     return <Drawer 
         variant="persistent" 
         anchor="right" 
@@ -59,8 +78,14 @@ export default function RightPanel(props: IProps) {
                 <InputTitle>
                     Board Size
                 </InputTitle>
-
-
+                <Slider
+                    defaultValue={props.width}
+                    marks
+                    valueLabelDisplay="auto"
+                    min={2}
+                    max={20}
+                    onChangeCommitted={(e, v) => {console.log(v);setSize(v as number)}}
+                />
                 <InputTitle>
                     Game Speed
                 </InputTitle>
