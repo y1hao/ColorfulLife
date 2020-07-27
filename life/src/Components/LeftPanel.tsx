@@ -78,6 +78,7 @@ export default function LeftPanel(props: IProps) {
                 setIsNameDialogOpen,
                 props.setName)
         }
+        <InputTitle>Author</InputTitle>
         <Typography variant="body1">
             {props.author}
             <CreateSharp fontSize="inherit" onClick={() => setIsAuthorDialogOpen(true)}/>
@@ -92,6 +93,7 @@ export default function LeftPanel(props: IProps) {
                 props.setAuthor)
         }
         <Divider />
+        <InputTitle>Description</InputTitle>
         <Typography variant="body1">
             {props.description}
             <CreateSharp fontSize="inherit" onClick={() => setIsDescriptionDialogOpen(true)}/>
