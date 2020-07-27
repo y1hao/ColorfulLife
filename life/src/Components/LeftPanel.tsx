@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@material-ui/core';
 import { CreateSharp } from '@material-ui/icons';
-import { prependOnceListener } from 'process';
 
 interface IProps {
     panelWidth: number,
@@ -38,6 +37,9 @@ const inputDialog = (
         }}>
             Save
         </Button>
+        <Button onClick={() => setIsOpen(false)}>
+            Cancel
+        </Button>
     </DialogActions>
 </Dialog>
 
@@ -52,7 +54,10 @@ export default function LeftPanel(props: IProps) {
     })();
 
     const [isNameDialogOpen, setIsNameDialogOpen] = useState<boolean>(false);
-    
+    const [isAuthorDialogOpen, setIsAuthorDialogOpen] = useState<boolean>(false);
+    const [isDescriptionDialogOpen, setIsDescriptionDialogOpen] = useState<boolean>(false);
+
+
     return <Drawer 
             variant="persistent" 
             open={props.isPanelOpen} 
@@ -71,7 +76,31 @@ export default function LeftPanel(props: IProps) {
                 setIsNameDialogOpen,
                 props.setName)
         }
-        <Typography variant="body1">{props.author}<CreateSharp fontSize="inherit"/></Typography>
-        <Typography variant="body1">{props.description}<CreateSharp fontSize="inherit"/></Typography>
+        <Typography variant="body1">
+            {props.author}
+            <CreateSharp fontSize="inherit" onClick={() => setIsAuthorDialogOpen(true)}/>
+        </Typography>
+        {
+            inputDialog(
+                isAuthorDialogOpen, 
+                "Author Name",
+                "AuthorNameInput",
+                props.author, 
+                setIsAuthorDialogOpen,
+                props.setAuthor)
+        }
+        <Typography variant="body1">
+            {props.description}
+            <CreateSharp fontSize="inherit" onClick={() => setIsDescriptionDialogOpen(true)}/>
+        </Typography>
+        {
+            inputDialog(
+                isDescriptionDialogOpen, 
+                "Game Description",
+                "DescriptionInput",
+                props.description, 
+                setIsDescriptionDialogOpen,
+                props.setDescription)
+        }
     </Drawer>
 }
