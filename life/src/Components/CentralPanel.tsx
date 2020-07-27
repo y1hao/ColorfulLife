@@ -26,6 +26,9 @@ const useStyles = makeStyles({
         margin: "auto",
         width: "80vh",
         padding: "5vh"
+    },
+    paper: {
+        overflow: "hidden"
     }
 })
 
@@ -194,7 +197,7 @@ export default function CentralPanel(props: IProps) {
     }
 
     return <div className={classes.root}>
-    <Paper elevation={5}>
+    <Paper elevation={5} className={classes.paper}>
         <Board isPlayMode={props.isPlayMode} map={map} width={boardWidth} />
     </Paper>
     {   
