@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider } from '@material-ui/core';
 import { CreateSharp } from '@material-ui/icons';
 
 interface IProps {
@@ -89,6 +89,7 @@ export default function LeftPanel(props: IProps) {
                 setIsAuthorDialogOpen,
                 props.setAuthor)
         }
+        <Divider />
         <Typography variant="body1">
             {props.description}
             <CreateSharp fontSize="inherit" onClick={() => setIsDescriptionDialogOpen(true)}/>

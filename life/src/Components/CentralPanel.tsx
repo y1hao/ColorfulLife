@@ -18,7 +18,6 @@ interface IProps {
     reproductionRangeLower: number,
     reproductionRangeUpper: number,
     borderPolicy: BorderPolicy,
-    boardColor: string,
     styles: ICellStyle[][]
 }
 

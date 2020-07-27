@@ -3,7 +3,6 @@ export interface IGame {
     author: string,
     time: Date,
     description?: string,
-    boardColor: string,
     refreshFrequency: number,
     width: number,
     height: number,
