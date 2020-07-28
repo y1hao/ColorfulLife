@@ -1,7 +1,8 @@
 import React, { ChangeEvent } from 'react';
 import { BorderPolicy, ICellStyle } from '../Common/Interfaces';
-import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import InputTitle from './InputTitle';
+import { Policy } from '@material-ui/icons';
 
 interface IProps {
     panelWidth: number,
@@ -28,6 +29,18 @@ interface IProps {
     isPanelOpen: boolean,
     isPlayMode: boolean,
     setIsPlayMode: (value: boolean) => void
+}
+
+const borderPolicies = {
+    "alive": BorderPolicy.alive,
+    "dead": BorderPolicy.dead,
+    "roll": BorderPolicy.roll
+}
+
+const borderPoliciesReverse = {
+    [BorderPolicy.alive]: "alive",
+    [BorderPolicy.dead]: "dead",
+    [BorderPolicy.roll]: "roll"
 }
 
 export default function RightPanel(props: IProps) {
@@ -104,21 +117,41 @@ export default function RightPanel(props: IProps) {
                 <InputTitle>
                     Survival Range
                 </InputTitle>
-
-
+                <Slider
+                    defaultValue={[props.surviveRangeLower, props.surviveRangeUpper]}
+                    value={[props.surviveRangeLower, props.surviveRangeUpper]}
+                    marks
+                    valueLabelDisplay="auto"
+                    min={0}
+                    max={8}
+                    onChange={(e, v) => {
+                        props.setSurviveRangeLower((v as number[])[0]);
+                        props.setSurviveRangeUpper((v as number[])[1]);
+                    }}
+                />
                 <InputTitle>
                     Reproduction Range
                 </InputTitle>
-
-
-                <InputTitle>
-                    Reproduction Upper Limit
-                </InputTitle>
-
-
+                <Slider
+                    defaultValue={[props.reproductionRangeLower, props.reproductionRangeUpper]}
+                    value={[props.reproductionRangeLower, props.reproductionRangeUpper]}
+                    marks
+                    valueLabelDisplay="auto"
+                    min={0}
+                    max={8}
+                    onChange={(e, v) => {
+                        props.setReproductionRangeLower((v as number[])[0]);
+                        props.setReproductionRangeUpper((v as number[])[1]);
+                    }}
+                />
                 <InputTitle>
                     Boarder Setting
                 </InputTitle>
+                <RadioGroup value={borderPoliciesReverse[props.borderPolicy]} onChange={(e, v) => props.setBorderPolicy(borderPolicies[v as "alive" | "dead" | "roll"])}>
+                    <FormControlLabel value="alive" control={<Radio />} label="Alive" />
+                    <FormControlLabel value="dead" control={<Radio />} label="Dead" />
+                    <FormControlLabel value="roll" control={<Radio />} label="Roll over" />
+                </RadioGroup>
             </AccordionDetails>
         </Accordion>
         <Accordion>
