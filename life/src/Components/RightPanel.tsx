@@ -59,7 +59,7 @@ export default function RightPanel(props: IProps) {
                     }
                 }
             }
-            return newSeeds 
+            return newSeeds;
         });
     }
 
@@ -82,29 +82,32 @@ export default function RightPanel(props: IProps) {
                 </InputTitle>
                 <Slider
                     defaultValue={props.width}
+                    value={props.width}
                     marks
                     valueLabelDisplay="auto"
                     min={2}
                     max={20}
-                    onChangeCommitted={(e, v) => {console.log(v);setSize(v as number)}}
+                    onChange={(e, v) => setSize(v as number)}
                 />
                 <InputTitle>
                     Game Speed
                 </InputTitle>
-
-
+                <Slider
+                    defaultValue={props.refreshFrequency}
+                    value={props.refreshFrequency}
+                    marks
+                    valueLabelDisplay="auto"
+                    min={1}
+                    max={10}
+                    onChange={(e, v) => props.setRefreshFrequency(v as number)}
+                />
                 <InputTitle>
-                    Survive Lower Limit
+                    Survival Range
                 </InputTitle>
 
 
                 <InputTitle>
-                    Survive Upper Limit
-                </InputTitle>
-
-
-                <InputTitle>
-                    Reproduction Lower Limit
+                    Reproduction Range
                 </InputTitle>
 
 
