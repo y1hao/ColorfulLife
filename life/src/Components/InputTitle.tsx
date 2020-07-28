@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Tooltip } from '@material-ui/core';
+import { Typography, Tooltip, makeStyles } from '@material-ui/core';
 import { InfoSharp } from '@material-ui/icons';
 
 interface IProps{
@@ -7,9 +7,17 @@ interface IProps{
     children: string
 }
 
-export default function InputTitle(props: IProps) {
+const useStyles = makeStyles({
+    root: {
+        textAlign: "start",
+        color: "#666666",
+        fontSize: "15px"
+    }
+})
 
-    return <Typography>
+export default function InputTitle(props: IProps) {
+    const classes = useStyles();
+    return <Typography className={classes.root}>
         {props.children}
         {
             props.info !== undefined &&
