@@ -1,6 +1,6 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { ICellStyle, BorderPolicy } from '../Common/Interfaces';
-import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio, Paper, Tabs, Tab } from '@material-ui/core';
 import InputTitle from './InputTitle';
 import { Policy } from '@material-ui/icons';
 
@@ -42,8 +42,14 @@ export default function RightPanel(props: IProps) {
         },
         accordionDetails: {
             flexDirection: 'column' 
+        },
+        tab: {
+            minWidth: 0,
+            width: '50%'
         }
     })();
+
+    const [tab, setTab] = useState<number>(0);
 
     const setSize = (v: number) => {
         props.setSeeds(() => {
@@ -147,7 +153,19 @@ export default function RightPanel(props: IProps) {
                 Cell Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
-
+                <Tabs
+                    value={tab}
+                    onChange={(e, v) => setTab(v)}
+                >
+                    <Tab label="Alive" className={classes.tab}/>
+                    <Tab label="Dead" className={classes.tab}/>
+                </Tabs>    
+                <div hidden={tab !== 0}>
+                    alive cells
+                </div>
+                <div hidden={tab !== 1}>
+                    dead
+                </div>
             </AccordionDetails>
         </Accordion>
         <Accordion>
