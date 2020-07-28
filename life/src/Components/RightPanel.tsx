@@ -45,8 +45,6 @@ export default function RightPanel(props: IProps) {
     })();
 
     const setSize = (v: number) => {
-        
-        
         props.setSeeds(() => {
             props.setWidth(v);
             props.setHeight(v);
