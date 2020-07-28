@@ -69,7 +69,7 @@ export default function CentralPanel(props: IProps) {
             setNeighbors(defaultNeighbors);
             setMap(defaultMap);
         }
-    }, [props.seeds, props.borderPolicy])
+    }, [props.seeds, props.borderPolicy, props.styles])
 
     const [refreshHandler, setRefreshHandler] = useState<any>(null);
 
