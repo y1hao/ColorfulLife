@@ -38,42 +38,32 @@ export default function CentralPanel(props: IProps) {
     const boardWidth = '80vh';
     const defaultCellSize = `calc(${boardWidth}/${props.width})`;
 
-    const defaultNeighbors: number[][] = new Array(props.height);
-    for (let i = 0; i < props.height; i++) {
-        defaultNeighbors[i] = new Array(props.width).fill(0);
-    }
-
     const seedsCopy = new Array(props.height);
     for (let i = 0; i < props.height; i++) {
         seedsCopy[i] = [...props.seeds[i]];
     }
 
+    const defaultNeighbors: number[][] = new Array(props.height);
+    for (let i = 0; i < props.height; i++) {
+        defaultNeighbors[i] = new Array(props.width).fill(0);
+    }
+    getNeighbors(seedsCopy, defaultNeighbors);
+
+    const defaultMap = getMap(seedsCopy, defaultNeighbors, null);
+
     const [seeds, setSeeds] = useState<boolean[][]>(seedsCopy);
 
-    useEffect(() => {
-        setSeeds(seedsCopy);
-    }, [props.isPlayMode])
-
     const [neighbors, setNeighbors] = useState<number[][]>(defaultNeighbors);
-
-    const defaultMap = getMap(seeds, getNeighbors(seeds, neighbors), null);
 
     const [map, setMap] = useState<ICellConfig[][]>(defaultMap);
 
     useEffect(() => {
-        // const seedsCopy = new Array(props.height);
-        // for (let i = 0; i < props.height; i++) {
-        //     seedsCopy[i] = [...props.seeds[i]];
-        // }
-        // setSeeds(seedsCopy);
-        // const newNeighbors: number[][] = new Array(props.height);
-        // for (let i = 0; i < props.height; i++) {
-        //     newNeighbors[i] = new Array(props.width).fill(0);
-        // }
-        // getNeighbors(seeds, newNeighbors);
-        // setNeighbors(newNeighbors);
-        // setMap(getMap(seeds, newNeighbors, null))
-    }, [props.seeds])
+        if (props.isPlayMode) {
+            setSeeds(seedsCopy);
+            setNeighbors(defaultNeighbors);
+            setMap(defaultMap);
+        }
+    }, [props.seeds, props.isPlayMode])
 
     const [refreshHandler, setRefreshHandler] = useState<any>(null);
 

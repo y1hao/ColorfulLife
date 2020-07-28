@@ -24,7 +24,7 @@ interface IProps {
     styles: ICellStyle[][]
     setStyles: (value: ICellStyle[][]) => void,
     seeds: boolean[][],
-    setSeeds: (value: boolean[][]) => void,
+    setSeeds: React.Dispatch<React.SetStateAction<boolean[][]>>,
     isPanelOpen: boolean,
     isPlayMode: boolean,
     setIsPlayMode: (value: boolean) => void
@@ -45,20 +45,24 @@ export default function RightPanel(props: IProps) {
     })();
 
     const setSize = (v: number) => {
-        props.setWidth(v);
-        props.setHeight(v);
-        const newSeeds = new Array(v);
-        for (let i = 0; i < v; i++) {
-            newSeeds[i] = new Array(v);
-            for (let j = 0; j < v; j++) {
-                if (props.seeds[i] === undefined || props.seeds[i][j] === undefined) {
-                    newSeeds[i][j] = false;
-                } else {
-                    newSeeds[i][j] = props.seeds[i][j];
+        
+        
+        props.setSeeds(() => {
+            props.setWidth(v);
+            props.setHeight(v);
+            const newSeeds = new Array(v);
+            for (let i = 0; i < v; i++) {
+                newSeeds[i] = new Array(v);
+                for (let j = 0; j < v; j++) {
+                    if (props.seeds[i] === undefined || props.seeds[i][j] === undefined) {
+                        newSeeds[i][j] = false;
+                    } else {
+                        newSeeds[i][j] = props.seeds[i][j];
+                    }
                 }
             }
-        }
-        props.setSeeds(newSeeds);
+            return newSeeds 
+        });
     }
 
     return <Drawer 
