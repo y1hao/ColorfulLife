@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import CentralPanel from './Components/CentralPanel';
-import { IGame, BorderPolicy, ICellStyle } from './Common/Interfaces';
+import { IGame, ICellStyle, BorderPolicy } from './Common/Interfaces';
 import LeftPanel from './Components/LeftPanel';
 import RightPanel from './Components/RightPanel';
 import { Grid } from '@material-ui/core';
@@ -62,7 +62,7 @@ function App() {
       , [ surviveRangeUpper,      setSurviveRangeUpper ]      = useState<number>(3)
       , [ reproductionRangeLower, setReproductionRangeLower ] = useState<number>(3)
       , [ reproductionRangeUpper, setReproductionRangeUpper ] = useState<number>(3)
-      , [ borderPolicy,           setBorderPolicy ]           = useState<BorderPolicy>(BorderPolicy.roll)
+      , [ borderPolicy,           setBorderPolicy ]           = useState<BorderPolicy>("dead")
       , [ styles,                 setStyles ]                 = useState<ICellStyle[][]>(defaultStyles)
       , [ isPlayMode,             setIsPlayMode ]             = useState<boolean>(true)
       , [ isPlaying,              setIsPlaying ]              = useState<boolean>(false)

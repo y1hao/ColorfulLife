@@ -16,7 +16,7 @@ export interface IGame {
     styles: ICellStyle[][]
 }
 
-export enum BorderPolicy {alive, dead, roll}
+export type BorderPolicy = "alive" | "dead" | "roll";
 
 export interface ICellStyle {
     size: number,

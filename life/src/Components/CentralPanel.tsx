@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board';
-import { IGame, BorderPolicy, ICellStyle, ICellConfig } from '../Common/Interfaces';
+import { IGame, ICellStyle, ICellConfig, BorderPolicy } from '../Common/Interfaces';
 import { Container, makeStyles, Button, Paper } from '@material-ui/core';
 
 interface IProps {
@@ -113,9 +113,9 @@ export default function CentralPanel(props: IProps) {
                 if (seeds[i + 1] && seeds[i + 1][j + 1])  neighbors[i][j]++;
             }
         }
-        if (props.borderPolicy === BorderPolicy.alive) {
+        if (props.borderPolicy === "alive") {
             adjustForAlivePolicy(neighbors);
-        } else if (props.borderPolicy === BorderPolicy.roll) {
+        } else if (props.borderPolicy === "roll") {
             adjustForRollPolicy(seeds, neighbors);
         }
         return neighbors;

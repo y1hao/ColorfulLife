@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { BorderPolicy, ICellStyle } from '../Common/Interfaces';
+import { ICellStyle, BorderPolicy } from '../Common/Interfaces';
 import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import InputTitle from './InputTitle';
 import { Policy } from '@material-ui/icons';
@@ -29,18 +29,6 @@ interface IProps {
     isPanelOpen: boolean,
     isPlayMode: boolean,
     setIsPlayMode: (value: boolean) => void
-}
-
-const borderPolicies = {
-    "alive": BorderPolicy.alive,
-    "dead": BorderPolicy.dead,
-    "roll": BorderPolicy.roll
-}
-
-const borderPoliciesReverse = {
-    [BorderPolicy.alive]: "alive",
-    [BorderPolicy.dead]: "dead",
-    [BorderPolicy.roll]: "roll"
 }
 
 export default function RightPanel(props: IProps) {
@@ -147,7 +135,7 @@ export default function RightPanel(props: IProps) {
                 <InputTitle>
                     Boarder Setting
                 </InputTitle>
-                <RadioGroup value={borderPoliciesReverse[props.borderPolicy]} onChange={(e, v) => props.setBorderPolicy(borderPolicies[v as "alive" | "dead" | "roll"])}>
+                <RadioGroup value={props.borderPolicy} onChange={(e, v) => props.setBorderPolicy(v as "alive" | "dead" | "roll")}>
                     <FormControlLabel value="alive" control={<Radio />} label="Alive" />
                     <FormControlLabel value="dead" control={<Radio />} label="Dead" />
                     <FormControlLabel value="roll" control={<Radio />} label="Roll over" />
