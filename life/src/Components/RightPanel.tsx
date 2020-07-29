@@ -3,6 +3,7 @@ import { ICellStyle, BorderPolicy } from '../Common/Interfaces';
 import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio, Paper, Tabs, Tab } from '@material-ui/core';
 import InputTitle from './InputTitle';
 import { Policy } from '@material-ui/icons';
+import StyleSettingsPanel from './StyleSettingsPanel';
 
 interface IProps {
     panelWidth: number,
@@ -42,10 +43,6 @@ export default function RightPanel(props: IProps) {
         },
         accordionDetails: {
             flexDirection: 'column' 
-        },
-        tab: {
-            minWidth: 0,
-            width: '50%'
         }
     })();
 
@@ -70,6 +67,79 @@ export default function RightPanel(props: IProps) {
         });
     }
 
+    const GameSettingsPanel = <div>
+        <InputTitle>
+            Board Size
+        </InputTitle>
+        <Slider
+            defaultValue={props.width}
+            value={props.width}
+            marks
+            valueLabelDisplay="auto"
+            min={2}
+            max={20}
+            onChange={(e, v) => setSize(v as number)}
+        />
+        <InputTitle>
+            Game Speed
+        </InputTitle>
+        <Slider
+            defaultValue={props.refreshFrequency}
+            value={props.refreshFrequency}
+            marks
+            valueLabelDisplay="auto"
+            min={1}
+            max={10}
+            onChange={(e, v) => props.setRefreshFrequency(v as number)}
+        />
+        <InputTitle>
+            Survival Range
+        </InputTitle>
+        <Slider
+            defaultValue={[props.surviveRangeLower, props.surviveRangeUpper]}
+            value={[props.surviveRangeLower, props.surviveRangeUpper]}
+            marks
+            valueLabelDisplay="auto"
+            min={0}
+            max={8}
+            onChange={(e, v) => {
+                props.setSurviveRangeLower((v as number[])[0]);
+                props.setSurviveRangeUpper((v as number[])[1]);
+            }}
+        />
+        <InputTitle>
+            Reproduction Range
+        </InputTitle>
+        <Slider
+            defaultValue={[props.reproductionRangeLower, props.reproductionRangeUpper]}
+            value={[props.reproductionRangeLower, props.reproductionRangeUpper]}
+            marks
+            valueLabelDisplay="auto"
+            min={0}
+            max={8}
+            onChange={(e, v) => {
+                props.setReproductionRangeLower((v as number[])[0]);
+                props.setReproductionRangeUpper((v as number[])[1]);
+            }}
+        />
+        <InputTitle>
+            Boarder Setting
+        </InputTitle>
+        <RadioGroup value={props.borderPolicy} onChange={(e, v) => props.setBorderPolicy(v as "alive" | "dead" | "roll")}>
+            <FormControlLabel value="alive" control={<Radio />} label="Alive" />
+            <FormControlLabel value="dead" control={<Radio />} label="Dead" />
+            <FormControlLabel value="roll" control={<Radio />} label="Roll over" />
+        </RadioGroup>
+    </div>
+
+    const SeedsSettingsPanal = <div>
+    {
+        props.isPlayMode
+        ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
+        : <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
+    } 
+    </div>
+
     return <Drawer 
         variant="persistent" 
         anchor="right" 
@@ -84,68 +154,7 @@ export default function RightPanel(props: IProps) {
                 Game Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
-                <InputTitle>
-                    Board Size
-                </InputTitle>
-                <Slider
-                    defaultValue={props.width}
-                    value={props.width}
-                    marks
-                    valueLabelDisplay="auto"
-                    min={2}
-                    max={20}
-                    onChange={(e, v) => setSize(v as number)}
-                />
-                <InputTitle>
-                    Game Speed
-                </InputTitle>
-                <Slider
-                    defaultValue={props.refreshFrequency}
-                    value={props.refreshFrequency}
-                    marks
-                    valueLabelDisplay="auto"
-                    min={1}
-                    max={10}
-                    onChange={(e, v) => props.setRefreshFrequency(v as number)}
-                />
-                <InputTitle>
-                    Survival Range
-                </InputTitle>
-                <Slider
-                    defaultValue={[props.surviveRangeLower, props.surviveRangeUpper]}
-                    value={[props.surviveRangeLower, props.surviveRangeUpper]}
-                    marks
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={8}
-                    onChange={(e, v) => {
-                        props.setSurviveRangeLower((v as number[])[0]);
-                        props.setSurviveRangeUpper((v as number[])[1]);
-                    }}
-                />
-                <InputTitle>
-                    Reproduction Range
-                </InputTitle>
-                <Slider
-                    defaultValue={[props.reproductionRangeLower, props.reproductionRangeUpper]}
-                    value={[props.reproductionRangeLower, props.reproductionRangeUpper]}
-                    marks
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={8}
-                    onChange={(e, v) => {
-                        props.setReproductionRangeLower((v as number[])[0]);
-                        props.setReproductionRangeUpper((v as number[])[1]);
-                    }}
-                />
-                <InputTitle>
-                    Boarder Setting
-                </InputTitle>
-                <RadioGroup value={props.borderPolicy} onChange={(e, v) => props.setBorderPolicy(v as "alive" | "dead" | "roll")}>
-                    <FormControlLabel value="alive" control={<Radio />} label="Alive" />
-                    <FormControlLabel value="dead" control={<Radio />} label="Dead" />
-                    <FormControlLabel value="roll" control={<Radio />} label="Roll over" />
-                </RadioGroup>
+                { GameSettingsPanel }
             </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -153,19 +162,10 @@ export default function RightPanel(props: IProps) {
                 Cell Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
-                <Tabs
-                    value={tab}
-                    onChange={(e, v) => setTab(v)}
-                >
-                    <Tab label="Alive" className={classes.tab}/>
-                    <Tab label="Dead" className={classes.tab}/>
-                </Tabs>    
-                <div hidden={tab !== 0}>
-                    alive cells
-                </div>
-                <div hidden={tab !== 1}>
-                    dead
-                </div>
+                <StyleSettingsPanel 
+                    styles={props.styles}
+                    setStyles={props.setStyles}
+                />
             </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -173,14 +173,8 @@ export default function RightPanel(props: IProps) {
                 Seeds
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
-            {
-                props.isPlayMode
-                ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
-                : <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
-            } 
+                { SeedsSettingsPanal }
             </AccordionDetails>
         </Accordion>
-
-        
     </Drawer>
 }
