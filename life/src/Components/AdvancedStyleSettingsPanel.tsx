@@ -1,14 +1,24 @@
 import React from 'react';
 import { ICellConfig, ICellStyle } from '../Common/Interfaces';
-import { Modal } from '@material-ui/core';
+import { Modal, Dialog, DialogActions, Button } from '@material-ui/core';
 
 interface IProps {
+    isOpen: boolean,
+    setIsOpen: (value: boolean) => void,
     styles: ICellStyle[][],
     setStyles: (value: ICellStyle[][]) => void
 }
 
 export default function AdvancedStyleSettingsPanel(props: IProps) {
-    return <Modal open={false}>
+    return <Dialog open={props.isOpen}>
         <div>Advanced settings...</div>
-    </Modal>
+        <DialogActions>
+            <Button>
+                Save
+            </Button>
+            <Button onClick={() => props.setIsOpen(false)}>
+                Cancel
+            </Button>
+        </DialogActions>
+    </Dialog>
 }

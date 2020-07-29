@@ -46,8 +46,6 @@ export default function RightPanel(props: IProps) {
         }
     })();
 
-    const [tab, setTab] = useState<number>(0);
-
     const setSize = (v: number) => {
         props.setSeeds(() => {
             props.setWidth(v);
