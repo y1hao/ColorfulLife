@@ -8,12 +8,7 @@ import ColorPicker from './ColorPicker';
 export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead", property: IPropertyName) {
     return function(props: IStyleSettingsPanelProps) {
         const index = tabName === "dead" ? 0 : 1
-        const colorSummaryStyle: React.CSSProperties = {
-            border: "2px #eeeeee solid",
-            width: "100%",
-            height: "1.5em"
-        }
-
+        
         const SizePanel = <div>
         {
             new Array(9).fill(0).map((v, i) => <div key={i}>

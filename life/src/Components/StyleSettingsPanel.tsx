@@ -23,7 +23,7 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     const NeighborsSelector = <div>
         <FormControlLabel
             labelPlacement="start"
-            label="Number of Neighbors: "
+            label="Neighbors: "
             control={
                 <Select value={neighbors} onChange={(e) => setNeighbors(e.target.value as number)}>
                 {
@@ -38,16 +38,16 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     const PropertyNameSelector = <div>
         <FormControlLabel 
             labelPlacement="start"
-            label="Property Name: "
+            label="Property: "
             control={
                 <Select value={propertyName} onChange={(e) => setPropertyName(e.target.value as IPropertyName)}>
                     <MenuItem value="size">Size</MenuItem>
                     <MenuItem value="shape">Shape</MenuItem>
+                    <MenuItem value="elevation">Elevation</MenuItem>
+                    <MenuItem value="borderWidth">Border Width</MenuItem>
                     <MenuItem value="color">Color</MenuItem>
                     <MenuItem value="background">Background Color</MenuItem>
                     <MenuItem value="borderColor">Border Color</MenuItem>
-                    <MenuItem value="borderWidth">Border Width</MenuItem>
-                    <MenuItem value="elevation">Elevation</MenuItem>
                 </Select>
             }
         />

@@ -8,11 +8,6 @@ import ColorPicker from './ColorPicker';
 
 export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", neighbors: number) {
     const index = tabName === "dead" ? 0 : 1
-    const colorSummaryStyle: React.CSSProperties = {
-        border: "2px #eeeeee solid",
-        width: "100%",
-        height: "1.5em"
-    }
 
     return function(props: IStyleSettingsPanelProps) {
         const handleApplyToAll = () => {
