@@ -1,7 +1,7 @@
 import React from 'react';
 import { IStyleSettingsPanelProps } from '../Common/Interfaces';
 import InputTitle from './InputTitle';
-import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles } from '@material-ui/core';
+import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles, Button } from '@material-ui/core';
 import { ChromePicker } from 'react-color';
 import classes from '*.module.css';
 
@@ -14,6 +14,14 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
     }
 
     return function(props: IStyleSettingsPanelProps) {
+        const handleApplyToAll = () => {
+            const style = props.styles[index][neighbors]
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i] = {...style}
+            }
+            props.setStyles([...props.styles])
+        }
+
         return <div>
             <InputTitle>Size</InputTitle>
             <Slider 
@@ -114,7 +122,9 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
                     />
                 </AccordionDetails>    
             </Accordion>
-
+            <Button onClick={handleApplyToAll}>
+                Apply to all living cells
+            </Button>
         </div>
     }
 }
