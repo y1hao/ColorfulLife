@@ -40,3 +40,11 @@ export interface ICellConfig {
     isAlive: boolean,
     setIsAlive: (value: boolean) => void
 }
+
+export type IPropertyName = 
+    "size" | "color" | "background" | "borderColor" | "borderWidth" | "shape" | "elevation" 
+
+export interface IStyleSettingsPanelProps {
+    styles: ICellStyle[][],
+    setStyles: (value: ICellStyle[][]) => void
+}

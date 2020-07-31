@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
-import { ICellStyle } from '../Common/Interfaces';
-import { Tabs, makeStyles, Tab, Button } from '@material-ui/core';
-import AdvancedStyleSettingsPanel from './AdvancedStyleSettingsPanel';
+import { ICellStyle, IPropertyName, IStyleSettingsPanelProps } from '../Common/Interfaces';
+import { Tabs, makeStyles, Tab, Button, Slider, Popover, Modal, Switch, FormControlLabel, Select, MenuItem, RadioGroup, Radio } from '@material-ui/core';
 import InputTitle from './InputTitle';
-
-interface IProps {
-    styles: ICellStyle[][],
-    setStyles: (value: ICellStyle[][]) => void
-}
+import makeSettingsByPropertiesPanel from './SettingsByPropertiesPanel';
+import makeSettingsByNeighborsPanel from './SettingsByNeighborsPanel';
 
 const useStyles = makeStyles({
     tab: {
@@ -16,85 +12,56 @@ const useStyles = makeStyles({
     }
 })
 
-function makeSettingsPanel(tabName: "alive" | "dead") {
-    const index = tabName === "dead" ? 0 : 1;
-    return function(props: IProps) {
-        const [size, setSize] = useState<number>()
-        const [shape, setShape] = useState<number>()
-        const [color, setColor] = useState<string>()
-        const [background, setBackground] = useState<string>()
-        const [borderWidth, setBorderWidth] = useState<number>()
-        const [borderColor, setBorderColor] = useState<string>()
-        const [elevation, setElevation] = useState<number>()
-        
-        const handleSetSize = (index: number, size: number) => {
-    
-        }
-    
-        const handleSetShape = (index: number, shape: number) => {
-    
-        }
-    
-        const handleSetColor = (index: number, size: number) => {
-    
-        }
-    
-        const handleSetBackground = (index: number, size: number) => {
-    
-        }
-    
-        const handleSetBorderWidth = (index: number, size: number) => {
-    
-        }
-    
-        const handleSetBorderColor = (index: number, size: number) => {
-    
-        }
-    
-        const handleSetElevation = (index: number, size: number) => {
-    
-        }
-    
-        return <div>
-            <InputTitle>
-                Size
-            </InputTitle>
-    
-            <InputTitle>
-                Shape
-            </InputTitle>
-    
-            <InputTitle>
-                Color
-            </InputTitle>
-    
-            <InputTitle>
-                Background
-            </InputTitle>
-    
-            <InputTitle>
-                Border Color
-            </InputTitle>
-    
-            <InputTitle>
-                Border Width
-            </InputTitle>
-    
-            <InputTitle>
-                Elevation
-            </InputTitle>
-        </div> 
-    }
-}
-
-
-export default function StyleSettingsPanel(props: IProps) {
+export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     const classes = useStyles();
     
     const [tab, setTab] = useState<number>(0);
-    const [isAdvancedSettingsOpen, setIsAdvancedSettingsOpen] = useState<boolean>(false);
+    const [isGroupedByProperties, setIsGroupedByProperties] = useState<boolean>(false)
+    const [neighbors, setNeighbors] = useState<number>(0)
+    const [propertyName, setPropertyName] = useState<IPropertyName>("size")
+
+    const NeighborsSelector = <div>
+        <FormControlLabel
+            labelPlacement="start"
+            label="Number of Neighbors: "
+            control={
+                <Select value={neighbors} onChange={(e) => setNeighbors(e.target.value as number)}>
+                {
+                    new Array(9).fill(0)
+                    .map((v, i) => <MenuItem value={i}>{i}</MenuItem>)
+                } 
+                </Select>
+            }
+        /> 
+    </div>
+
+    const PropertyNameSelector = <div>
+        <FormControlLabel 
+            labelPlacement="start"
+            label="Property Name: "
+            control={
+                <Select value={propertyName} onChange={(e) => setPropertyName(e.target.value as IPropertyName)}>
+                    <MenuItem value="size">Size</MenuItem>
+                    <MenuItem value="shape">Shape</MenuItem>
+                    <MenuItem value="color">Color</MenuItem>
+                    <MenuItem value="background">Background Color</MenuItem>
+                    <MenuItem value="borderColor">Border Color</MenuItem>
+                    <MenuItem value="borderWidth">Border Width</MenuItem>
+                    <MenuItem value="elevation">Elevation</MenuItem>
+                </Select>
+            }
+        />
+    </div>
 
     return <div>
+        <InputTitle>Group by:</InputTitle>
+        <RadioGroup 
+            value={isGroupedByProperties} 
+            onChange={(e) => setIsGroupedByProperties((e.target as HTMLInputElement).value === "properties")}
+        >
+            <FormControlLabel value={"neighbors"} control={<Radio checked={!isGroupedByProperties}/>} label="Number of Neighbors"/>  
+            <FormControlLabel value={"properties"} control={<Radio checked={isGroupedByProperties}/>} label="Property Names"/>   
+        </RadioGroup>
         <Tabs
             value={tab}
             onChange={(e, v) => setTab(v)}
@@ -103,20 +70,28 @@ export default function StyleSettingsPanel(props: IProps) {
             <Tab label="Dead" className={classes.tab}/>
         </Tabs>    
         <div hidden={tab !== 0}>
-            { makeSettingsPanel("alive")(props) }
+        {
+            isGroupedByProperties
+            ? PropertyNameSelector
+            : NeighborsSelector
+        }
+        {
+            isGroupedByProperties
+            ? makeSettingsByPropertiesPanel("alive", propertyName)(props)
+            : makeSettingsByPropertiesPanel("dead", propertyName)(props)
+        }
         </div>
         <div hidden={tab !== 1}>
-            { makeSettingsPanel("dead")(props) }
+        {
+            isGroupedByProperties
+            ? PropertyNameSelector
+            : NeighborsSelector
+        }
+        {
+            isGroupedByProperties
+            ? makeSettingsByNeighborsPanel("alive", neighbors)(props)
+            : makeSettingsByNeighborsPanel("dead", neighbors)(props)
+        }
         </div>
-        <Button onClick={() => setIsAdvancedSettingsOpen(true)}>
-            Advanced Settings
-        </Button>
-        <AdvancedStyleSettingsPanel 
-            isOpen={isAdvancedSettingsOpen}
-            setIsOpen={setIsAdvancedSettingsOpen}
-            styles={props.styles}
-            setStyles={props.setStyles}
-        />
     </div>
-    
 }
