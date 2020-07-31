@@ -28,7 +28,7 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
                 <Select value={neighbors} onChange={(e) => setNeighbors(e.target.value as number)}>
                 {
                     new Array(9).fill(0)
-                    .map((v, i) => <MenuItem value={i}>{i}</MenuItem>)
+                    .map((v, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)
                 } 
                 </Select>
             }

@@ -1,11 +1,18 @@
 import React from 'react';
 import { IStyleSettingsPanelProps } from '../Common/Interfaces';
 import InputTitle from './InputTitle';
-import { Slider } from '@material-ui/core';
+import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles } from '@material-ui/core';
+import { ChromePicker } from 'react-color';
+import classes from '*.module.css';
 
 export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", neighbors: number) {
-    const index = tabName === "dead" ? 0 : 1;
-    
+    const index = tabName === "dead" ? 0 : 1
+    const colorSummaryStyle: React.CSSProperties = {
+        border: "2px #eeeeee solid",
+        width: "100%",
+        height: "1.5em"
+    }
+
     return function(props: IStyleSettingsPanelProps) {
         return <div>
             <InputTitle>Size</InputTitle>
@@ -57,10 +64,53 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
             />
 
             <InputTitle>Color</InputTitle>
+            <Accordion elevation={0}>
+                <AccordionSummary>
+                    <div style={{...colorSummaryStyle, backgroundColor: props.styles[index][neighbors].color}}/>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <ChromePicker 
+                        color={props.styles[index][neighbors].color}
+                        onChangeComplete={(color) => {
+                            props.styles[index][neighbors].color = color.hex
+                            props.setStyles([...props.styles])
+                        }}
+                    />
+                </AccordionDetails>    
+            </Accordion>
+
 
             <InputTitle>Background Color</InputTitle>
+            <Accordion elevation={0}>
+                <AccordionSummary>
+                    <div style={{...colorSummaryStyle, backgroundColor: props.styles[index][neighbors].backgroundColor}}/>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <ChromePicker 
+                        color={props.styles[index][neighbors].backgroundColor}
+                        onChangeComplete={(color) => {
+                            props.styles[index][neighbors].backgroundColor = color.hex
+                            props.setStyles([...props.styles])
+                        }}
+                    />
+                </AccordionDetails>    
+            </Accordion>
 
             <InputTitle>Border Color</InputTitle>
+            <Accordion elevation={0}>
+                <AccordionSummary>
+                    <div style={{...colorSummaryStyle, backgroundColor: props.styles[index][neighbors].borderColor}}/>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <ChromePicker 
+                        color={props.styles[index][neighbors].borderColor}
+                        onChangeComplete={(color) => {
+                            props.styles[index][neighbors].borderColor = color.hex
+                            props.setStyles([...props.styles])
+                        }}
+                    />
+                </AccordionDetails>    
+            </Accordion>
 
         </div>
     }
