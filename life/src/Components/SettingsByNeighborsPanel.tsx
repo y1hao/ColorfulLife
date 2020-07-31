@@ -4,6 +4,7 @@ import InputTitle from './InputTitle';
 import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles, Button } from '@material-ui/core';
 import { ChromePicker } from 'react-color';
 import classes from '*.module.css';
+import ColorPicker from './ColorPicker';
 
 export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", neighbors: number) {
     const index = tabName === "dead" ? 0 : 1
@@ -72,56 +73,32 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
             />
 
             <InputTitle>Color</InputTitle>
-            <Accordion elevation={0}>
-                <AccordionSummary>
-                    <div style={{...colorSummaryStyle, backgroundColor: props.styles[index][neighbors].color}}/>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <ChromePicker 
-                        disableAlpha
-                        color={props.styles[index][neighbors].color}
-                        onChangeComplete={(color) => {
-                            props.styles[index][neighbors].color = color.hex
-                            props.setStyles([...props.styles])
-                        }}
-                    />
-                </AccordionDetails>    
-            </Accordion>
-
+            <ColorPicker
+                color={props.styles[index][neighbors].color}
+                onChangeComplete={(color) => {
+                    props.styles[index][neighbors].color = color.hex
+                    props.setStyles([...props.styles])
+                }}
+            />
 
             <InputTitle>Background Color</InputTitle>
-            <Accordion elevation={0}>
-                <AccordionSummary>
-                    <div style={{...colorSummaryStyle, backgroundColor: props.styles[index][neighbors].backgroundColor}}/>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <ChromePicker 
-                        disableAlpha
-                        color={props.styles[index][neighbors].backgroundColor}
-                        onChangeComplete={(color) => {
-                            props.styles[index][neighbors].backgroundColor = color.hex
-                            props.setStyles([...props.styles])
-                        }}
-                    />
-                </AccordionDetails>    
-            </Accordion>
+            <ColorPicker
+                color={props.styles[index][neighbors].backgroundColor}
+                onChangeComplete={(color) => {
+                    props.styles[index][neighbors].backgroundColor = color.hex
+                    props.setStyles([...props.styles])
+                }}
+            />
 
             <InputTitle>Border Color</InputTitle>
-            <Accordion elevation={0}>
-                <AccordionSummary>
-                    <div style={{...colorSummaryStyle, backgroundColor: props.styles[index][neighbors].borderColor}}/>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <ChromePicker 
-                        disableAlpha
-                        color={props.styles[index][neighbors].borderColor}
-                        onChangeComplete={(color) => {
-                            props.styles[index][neighbors].borderColor = color.hex
-                            props.setStyles([...props.styles])
-                        }}
-                    />
-                </AccordionDetails>    
-            </Accordion>
+            <ColorPicker
+                color={props.styles[index][neighbors].borderColor}
+                onChangeComplete={(color) => {
+                    props.styles[index][neighbors].borderColor = color.hex
+                    props.setStyles([...props.styles])
+                }}
+            />
+
             <Button onClick={handleApplyToAll}>
                 Apply to all {tabName === "dead" ? "dead" : "living"} cells
             </Button>

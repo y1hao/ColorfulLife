@@ -3,6 +3,7 @@ import { IPropertyName, IStyleSettingsPanelProps } from '../Common/Interfaces';
 import InputTitle from './InputTitle';
 import { Slider, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
 import { ChromePicker } from 'react-color';
+import ColorPicker from './ColorPicker';
 
 export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead", property: IPropertyName) {
     return function(props: IStyleSettingsPanelProps) {
@@ -90,21 +91,13 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         {
             new Array(9).fill(0).map((v, i) => <div key={i}>
                 <InputTitle>{`Neighbors = ${i}`}</InputTitle>
-                <Accordion elevation={0}>
-                <AccordionSummary>
-                    <div style={{...colorSummaryStyle, backgroundColor: props.styles[index][i].color}}/>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <ChromePicker 
-                        disableAlpha
-                        color={props.styles[index][i].color}
-                        onChangeComplete={(color) => {
-                            props.styles[index][i].color = color.hex
-                            props.setStyles([...props.styles])
-                        }}
-                    />
-                </AccordionDetails>    
-            </Accordion>
+                <ColorPicker
+                    color={props.styles[index][i].color}
+                    onChangeComplete={(color) => {
+                       props.styles[index][i].color = color.hex
+                       props.setStyles([...props.styles])
+                    }}
+                />
             </div>)
         }
         </div>
@@ -114,21 +107,13 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         {
             new Array(9).fill(0).map((v, i) => <div key={i}>
                 <InputTitle>{`Neighbors = ${i}`}</InputTitle>
-                <Accordion elevation={0}>
-                <AccordionSummary>
-                    <div style={{...colorSummaryStyle, backgroundColor: props.styles[index][i].backgroundColor}}/>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <ChromePicker 
-                        disableAlpha
-                        color={props.styles[index][i].backgroundColor}
-                        onChangeComplete={(color) => {
-                            props.styles[index][i].backgroundColor = color.hex
-                            props.setStyles([...props.styles])
-                        }}
-                    />
-                </AccordionDetails>    
-            </Accordion>
+                <ColorPicker
+                    color={props.styles[index][i].backgroundColor}
+                    onChangeComplete={(color) => {
+                       props.styles[index][i].backgroundColor = color.hex
+                       props.setStyles([...props.styles])
+                    }}
+                />
             </div>)
         }
         </div>
@@ -138,21 +123,13 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         {
             new Array(9).fill(0).map((v, i) => <div key={i}>
                 <InputTitle>{`Neighbors = ${i}`}</InputTitle>
-                <Accordion elevation={0}>
-                <AccordionSummary>
-                    <div style={{...colorSummaryStyle, backgroundColor: props.styles[index][i].borderColor}}/>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <ChromePicker 
-                        disableAlpha
-                        color={props.styles[index][i].borderColor}
-                        onChangeComplete={(color) => {
-                            props.styles[index][i].borderColor = color.hex
-                            props.setStyles([...props.styles])
-                        }}
-                    />
-                </AccordionDetails>    
-            </Accordion>
+                <ColorPicker
+                    color={props.styles[index][i].borderColor}
+                    onChangeComplete={(color) => {
+                       props.styles[index][i].borderColor = color.hex
+                       props.setStyles([...props.styles])
+                    }}
+                />
             </div>)
         }
         </div>
