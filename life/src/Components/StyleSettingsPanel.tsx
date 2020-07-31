@@ -59,8 +59,8 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
             value={isGroupedByProperties} 
             onChange={(e) => setIsGroupedByProperties((e.target as HTMLInputElement).value === "properties")}
         >
-            <FormControlLabel value={"neighbors"} control={<Radio checked={!isGroupedByProperties}/>} label="Number of Neighbors"/>  
-            <FormControlLabel value={"properties"} control={<Radio checked={isGroupedByProperties}/>} label="Property Names"/>   
+            <FormControlLabel value={"neighbors"} control={<Radio checked={!isGroupedByProperties}/>} label="Neighbors"/>  
+            <FormControlLabel value={"properties"} control={<Radio checked={isGroupedByProperties}/>} label="Properties"/>   
         </RadioGroup>
         <Tabs
             value={tab}
