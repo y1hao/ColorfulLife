@@ -70,6 +70,7 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
                 </AccordionSummary>
                 <AccordionDetails>
                     <ChromePicker 
+                        disableAlpha
                         color={props.styles[index][neighbors].color}
                         onChangeComplete={(color) => {
                             props.styles[index][neighbors].color = color.hex
@@ -87,6 +88,7 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
                 </AccordionSummary>
                 <AccordionDetails>
                     <ChromePicker 
+                        disableAlpha
                         color={props.styles[index][neighbors].backgroundColor}
                         onChangeComplete={(color) => {
                             props.styles[index][neighbors].backgroundColor = color.hex
@@ -103,6 +105,7 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
                 </AccordionSummary>
                 <AccordionDetails>
                     <ChromePicker 
+                        disableAlpha
                         color={props.styles[index][neighbors].borderColor}
                         onChangeComplete={(color) => {
                             props.styles[index][neighbors].borderColor = color.hex
