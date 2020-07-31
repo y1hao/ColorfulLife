@@ -78,7 +78,7 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
         {
             isGroupedByProperties
             ? makeSettingsByPropertiesPanel("alive", propertyName)(props)
-            : makeSettingsByPropertiesPanel("dead", propertyName)(props)
+            : makeSettingsByNeighborsPanel("alive", neighbors)(props)
         }
         </div>
         <div hidden={tab !== 1}>
@@ -89,7 +89,7 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
         }
         {
             isGroupedByProperties
-            ? makeSettingsByNeighborsPanel("alive", neighbors)(props)
+            ? makeSettingsByPropertiesPanel("dead", propertyName)(props)
             : makeSettingsByNeighborsPanel("dead", neighbors)(props)
         }
         </div>

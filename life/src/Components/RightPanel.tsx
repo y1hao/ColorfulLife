@@ -70,9 +70,7 @@ export default function RightPanel(props: IProps) {
             Board Size
         </InputTitle>
         <Slider
-            defaultValue={props.width}
             value={props.width}
-            marks
             valueLabelDisplay="auto"
             min={2}
             max={20}
@@ -82,9 +80,7 @@ export default function RightPanel(props: IProps) {
             Game Speed
         </InputTitle>
         <Slider
-            defaultValue={props.refreshFrequency}
             value={props.refreshFrequency}
-            marks
             valueLabelDisplay="auto"
             min={1}
             max={10}
@@ -94,9 +90,7 @@ export default function RightPanel(props: IProps) {
             Survival Range
         </InputTitle>
         <Slider
-            defaultValue={[props.surviveRangeLower, props.surviveRangeUpper]}
             value={[props.surviveRangeLower, props.surviveRangeUpper]}
-            marks
             valueLabelDisplay="auto"
             min={0}
             max={8}
@@ -109,9 +103,7 @@ export default function RightPanel(props: IProps) {
             Reproduction Range
         </InputTitle>
         <Slider
-            defaultValue={[props.reproductionRangeLower, props.reproductionRangeUpper]}
             value={[props.reproductionRangeLower, props.reproductionRangeUpper]}
-            marks
             valueLabelDisplay="auto"
             min={0}
             max={8}
