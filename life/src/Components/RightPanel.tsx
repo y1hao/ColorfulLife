@@ -70,31 +70,31 @@ export default function RightPanel(props: IProps) {
             Board Size
         </InputTitle>
         <Slider
-            value={props.width}
+            defaultValue={props.width}
             valueLabelDisplay="auto"
             min={2}
             max={20}
-            onChange={(e, v) => setSize(v as number)}
+            onChangeCommitted={(e, v) => setSize(v as number)}
         />
         <InputTitle>
             Game Speed
         </InputTitle>
         <Slider
-            value={props.refreshFrequency}
+            defaultValue={props.refreshFrequency}
             valueLabelDisplay="auto"
             min={1}
             max={10}
-            onChange={(e, v) => props.setRefreshFrequency(v as number)}
+            onChangeCommitted={(e, v) => props.setRefreshFrequency(v as number)}
         />
         <InputTitle>
             Survival Range
         </InputTitle>
         <Slider
-            value={[props.surviveRangeLower, props.surviveRangeUpper]}
+            defaultValue={[props.surviveRangeLower, props.surviveRangeUpper]}
             valueLabelDisplay="auto"
             min={0}
             max={8}
-            onChange={(e, v) => {
+            onChangeCommitted={(e, v) => {
                 props.setSurviveRangeLower((v as number[])[0]);
                 props.setSurviveRangeUpper((v as number[])[1]);
             }}
@@ -103,11 +103,11 @@ export default function RightPanel(props: IProps) {
             Reproduction Range
         </InputTitle>
         <Slider
-            value={[props.reproductionRangeLower, props.reproductionRangeUpper]}
+            defaultValue={[props.reproductionRangeLower, props.reproductionRangeUpper]}
             valueLabelDisplay="auto"
             min={0}
             max={8}
-            onChange={(e, v) => {
+            onChangeCommitted={(e, v) => {
                 props.setReproductionRangeLower((v as number[])[0]);
                 props.setReproductionRangeUpper((v as number[])[1]);
             }}
