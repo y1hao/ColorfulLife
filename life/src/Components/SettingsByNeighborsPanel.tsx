@@ -123,7 +123,7 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
                 </AccordionDetails>    
             </Accordion>
             <Button onClick={handleApplyToAll}>
-                Apply to all living cells
+                Apply to all {tabName === "dead" ? "dead" : "living"} cells
             </Button>
         </div>
     }
