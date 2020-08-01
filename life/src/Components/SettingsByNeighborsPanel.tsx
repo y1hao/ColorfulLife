@@ -93,14 +93,14 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
                     props.setStyles([...props.styles])
                 }}
             />
-            <Button onClick={handleApplyToAll}>
-                Apply to all {tabName === "dead" ? "dead" : "living"} cells
-            </Button>
-            <Button>
+             <Button>
                 Reset
             </Button>
             <Button>
                 Random
+            </Button>
+            <Button onClick={handleApplyToAll}>
+                Apply to all {tabName === "dead" ? "dead" : "living"} cells
             </Button>
         </div>
     }

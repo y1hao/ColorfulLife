@@ -164,6 +164,14 @@ export default function RightPanel(props: IProps) {
         <Typography variant="h5">Settings</Typography>
         <Accordion>
             <AccordionSummary>
+                Seed Settings
+            </AccordionSummary>
+            <AccordionDetails className={classes.accordionDetails}>
+                { SeedsSettingsPanal }
+            </AccordionDetails>
+        </Accordion>
+        <Accordion>
+            <AccordionSummary>
                 Game Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
@@ -179,14 +187,6 @@ export default function RightPanel(props: IProps) {
                     styles={props.styles}
                     setStyles={props.setStyles}
                 />
-            </AccordionDetails>
-        </Accordion>
-        <Accordion>
-            <AccordionSummary>
-                Seeds
-            </AccordionSummary>
-            <AccordionDetails className={classes.accordionDetails}>
-                { SeedsSettingsPanal }
             </AccordionDetails>
         </Accordion>
     </Drawer>
