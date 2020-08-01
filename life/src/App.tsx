@@ -10,7 +10,7 @@ import { green } from '@material-ui/core/colors';
 function App() {
   const defaultWidth = 15;
   const defaultHeight = 15;
-  const panelWidth = 250;
+  const panelWidth = 300;
 
   const defaultSeeds: boolean[][] = new Array(defaultHeight);
   for (let i = 0; i < defaultHeight; ++i) {

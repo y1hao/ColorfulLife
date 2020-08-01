@@ -5,6 +5,7 @@ import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles, Butt
 import { ChromePicker } from 'react-color';
 import classes from '*.module.css';
 import ColorPicker from './ColorPicker';
+import Cell from './Cell';
 
 export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", neighbors: number) {
     const index = tabName === "dead" ? 0 : 1
