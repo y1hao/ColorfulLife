@@ -2,7 +2,6 @@ import React, { ChangeEvent, useState } from 'react';
 import { ICellStyle, BorderPolicy, IGame } from '../Common/Interfaces';
 import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio, Paper, Tabs, Tab } from '@material-ui/core';
 import InputTitle from './InputTitle';
-import { Policy } from '@material-ui/icons';
 import StyleSettingsPanel from './StyleSettingsPanel';
 
 interface IProps {
@@ -48,6 +47,22 @@ export default function RightPanel(props: IProps) {
     })();
 
     const handleRandomGame = () => {
+
+    }
+
+    const handleResetGame = () => {
+
+    }
+
+    const handleRandomSeeds = () => {
+
+    }
+
+    const handleClearSeeds = () => {
+
+    }
+
+    const handleResetSeeds = () => {
 
     }
 
@@ -125,10 +140,10 @@ export default function RightPanel(props: IProps) {
             <FormControlLabel value="dead" control={<Radio />} label="Dead" />
             <FormControlLabel value="roll" control={<Radio />} label="Roll over" />
         </RadioGroup>
-        <Button>
+        <Button onClick={handleResetGame}>
             Reset
         </Button>
-        <Button onChange={handleRandomGame}>
+        <Button onClick={handleRandomGame}>
             Random
         </Button>
     </div>
@@ -139,19 +154,19 @@ export default function RightPanel(props: IProps) {
         ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
         : <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
     } 
-    <Button>
-        Clear All
-    </Button>
-    <Button>
-        Reset
-    </Button>
-    <Button>
-        Random
-    </Button>
-    <InputTitle>Random Seed Density</InputTitle>
-    <Slider 
+        <Button onClick={handleClearSeeds}>
+            Clear All
+        </Button>
+        <Button onClick={handleResetSeeds}>
+            Reset
+        </Button>
+        <Button onClick={handleRandomSeeds}>
+            Random
+        </Button>
+        <InputTitle>Random Seed Density</InputTitle>
+        <Slider 
 
-    />
+        />
     </div>
 
     return <Drawer 

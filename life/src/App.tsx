@@ -4,8 +4,6 @@ import CentralPanel from './Components/CentralPanel';
 import { IGame, ICellStyle, BorderPolicy } from './Common/Interfaces';
 import LeftPanel from './Components/LeftPanel';
 import RightPanel from './Components/RightPanel';
-import { Grid } from '@material-ui/core';
-import { green } from '@material-ui/core/colors';
 import Templates from './Common/Templates';
 
 function App() {
