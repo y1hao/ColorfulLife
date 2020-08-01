@@ -46,6 +46,10 @@ export default function RightPanel(props: IProps) {
         }
     })();
 
+    const handleRandomGame = () => {
+
+    }
+
     const setSize = (v: number) => {
         props.setSeeds(() => {
             props.setWidth(v);
@@ -120,6 +124,12 @@ export default function RightPanel(props: IProps) {
             <FormControlLabel value="dead" control={<Radio />} label="Dead" />
             <FormControlLabel value="roll" control={<Radio />} label="Roll over" />
         </RadioGroup>
+        <Button>
+            Reset
+        </Button>
+        <Button onChange={handleRandomGame}>
+            Random
+        </Button>
     </div>
 
     const SeedsSettingsPanal = <div>
@@ -128,6 +138,19 @@ export default function RightPanel(props: IProps) {
         ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
         : <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
     } 
+    <Button>
+        Clear All
+    </Button>
+    <Button>
+        Reset
+    </Button>
+    <Button>
+        Random
+    </Button>
+    <InputTitle>Random Seed Density</InputTitle>
+    <Slider 
+
+    />
     </div>
 
     return <Drawer 

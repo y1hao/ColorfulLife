@@ -1,14 +1,14 @@
 import React from 'react';
 import { IPropertyName, IStyleSettingsPanelProps } from '../Common/Interfaces';
 import InputTitle from './InputTitle';
-import { Slider, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
+import { Slider, Accordion, AccordionSummary, AccordionDetails, Button } from '@material-ui/core';
 import { ChromePicker } from 'react-color';
 import ColorPicker from './ColorPicker';
 
 export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead", property: IPropertyName) {
     return function(props: IStyleSettingsPanelProps) {
         const index = tabName === "dead" ? 0 : 1
-        
+
         const SizePanel = <div>
         {
             new Array(9).fill(0).map((v, i) => <div key={i}>
@@ -139,6 +139,12 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 ? ColorPanel : property === "background"
                 ? BackgroundColorPanel : BorderColorPanel
             }
+            <Button>
+                Reset
+            </Button>
+            <Button>
+                Random
+            </Button>
         </div>
     }
 }

@@ -54,6 +54,12 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     </div>
 
     return <div>
+        <Button>
+            Reset
+        </Button>
+        <Button>
+            Random
+        </Button>
         <InputTitle>Group by:</InputTitle>
         <RadioGroup 
             value={isGroupedByProperties} 
