@@ -6,6 +6,7 @@ import { ChromePicker } from 'react-color';
 import classes from '*.module.css';
 import ColorPicker from './ColorPicker';
 import Cell from './Cell';
+import CellSample from './CellSample';
 
 export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", neighbors: number) {
     const index = tabName === "dead" ? 0 : 1
@@ -20,6 +21,7 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
         }
 
         return <div>
+            <CellSample {...props.styles[index][neighbors]}/>
             <InputTitle>Size</InputTitle>
             <Slider 
                 defaultValue={props.styles[index][neighbors].size / 10}
