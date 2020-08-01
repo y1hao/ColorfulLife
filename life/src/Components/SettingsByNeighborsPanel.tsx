@@ -33,11 +33,11 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
             <CellSample {...props.styles[index][neighbors]}/>
             <InputTitle>Size</InputTitle>
             <Slider 
-                defaultValue={props.styles[index][neighbors].size / 10}
+                value={props.styles[index][neighbors].size / 10}
                 valueLabelDisplay="auto"
                 min={0}
                 max={10}
-                onChangeCommitted={(e, v) => {
+                onChange={(e, v) => {
                     props.styles[index][neighbors].size = (v as number) * 10
                     props.setStyles([...props.styles])
                 }}
@@ -45,11 +45,11 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
 
             <InputTitle>Shape</InputTitle>
             <Slider 
-                defaultValue={props.styles[index][neighbors].borderRadius / 5}
+                value={props.styles[index][neighbors].borderRadius / 5}
                 valueLabelDisplay="auto"
                 min={0}
                 max={10}
-                onChangeCommitted={(e, v) => {
+                onChange={(e, v) => {
                     props.styles[index][neighbors].borderRadius = (v as number) * 5
                     props.setStyles([...props.styles])
                 }}
@@ -57,11 +57,11 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
 
             <InputTitle>Elevation</InputTitle>
             <Slider 
-                defaultValue={props.styles[index][neighbors].elevation}
+                value={props.styles[index][neighbors].elevation}
                 valueLabelDisplay="auto"
                 min={0}
                 max={10}
-                onChangeCommitted={(e, v) => {
+                onChange={(e, v) => {
                     props.styles[index][neighbors].elevation = (v as number)
                     props.setStyles([...props.styles])
                 }}
@@ -69,11 +69,11 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
 
             <InputTitle>Border Width</InputTitle>
             <Slider 
-                defaultValue = {props.styles[index][neighbors].borderWidth / 5}
+                value = {props.styles[index][neighbors].borderWidth / 5}
                 valueLabelDisplay="auto"
                 min={0}
                 max={10}
-                onChangeCommitted={(e, v) => {
+                onChange={(e, v) => {
                     props.styles[index][neighbors].borderWidth = (v as number) * 5
                     props.setStyles([...props.styles])
                 }}

@@ -14,11 +14,11 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             new Array(9).fill(0).map((v, i) => <div key={i}>
                 <InputTitle>{`Neighbors = ${i}`}</InputTitle>
                 <Slider 
-                     defaultValue={props.styles[index][i].size / 10}
+                     value={props.styles[index][i].size / 10}
                      valueLabelDisplay="auto"
                      min={0}
                      max={10}
-                     onChangeCommitted={(e, v) => {
+                     onChange={(e, v) => {
                          props.styles[index][i].size = (v as number) * 10
                          props.setStyles([...props.styles])
                      }}
@@ -45,11 +45,11 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             new Array(9).fill(0).map((v, i) => <div key={i}>
                 <InputTitle>{`Neighbors = ${i}`}</InputTitle>
                 <Slider 
-                     defaultValue={props.styles[index][i].borderRadius / 5}
+                     value={props.styles[index][i].borderRadius / 5}
                      valueLabelDisplay="auto"
                      min={0}
                      max={10}
-                     onChangeCommitted={(e, v) => {
+                     onChange={(e, v) => {
                          props.styles[index][i].borderRadius = (v as number) * 5
                          props.setStyles([...props.styles])
                      }}
@@ -76,11 +76,11 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             new Array(9).fill(0).map((v, i) => <div key={i}>
                 <InputTitle>{`Neighbors = ${i}`}</InputTitle>
                 <Slider 
-                     defaultValue={props.styles[index][i].elevation}
+                     value={props.styles[index][i].elevation}
                      valueLabelDisplay="auto"
                      min={0}
                      max={10}
-                     onChangeCommitted={(e, v) => {
+                     onChange={(e, v) => {
                          props.styles[index][i].elevation = (v as number)
                          props.setStyles([...props.styles])
                      }}
@@ -107,11 +107,11 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             new Array(9).fill(0).map((v, i) => <div key={i}>
                 <InputTitle>{`Neighbors = ${i}`}</InputTitle>
                 <Slider 
-                     defaultValue = {props.styles[index][i].borderWidth / 5}
+                     value = {props.styles[index][i].borderWidth / 5}
                      valueLabelDisplay="auto"
                      min={0}
                      max={10}
-                     onChangeCommitted={(e, v) => {
+                     onChange={(e, v) => {
                          props.styles[index][i].borderWidth = (v as number) * 5
                          props.setStyles([...props.styles])
                      }}
