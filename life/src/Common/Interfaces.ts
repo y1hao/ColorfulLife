@@ -2,7 +2,7 @@ export interface IGame {
     name: string,
     author: string,
     time: Date,
-    description?: string,
+    description: string,
     refreshFrequency: number,
     width: number,
     height: number,

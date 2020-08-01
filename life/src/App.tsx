@@ -9,52 +9,12 @@ import { green } from '@material-ui/core/colors';
 import Templates from './Common/Templates';
 
 function App() {
-  // const defaultWidth = 15;
-  // const defaultHeight = 15;
   const panelWidth = 300;
-
-  // const defaultSeeds: boolean[][] = new Array(defaultHeight);
-  // for (let i = 0; i < defaultHeight; ++i) {
-  //   defaultSeeds[i] = new Array(defaultWidth);
-  //   for (let j = 0; j < defaultWidth; j++) {
-  //     defaultSeeds[i][j] = !!(i & j);
-  //   }
-  // }
-
-  // const defaultStyleDead: ICellStyle[] = new Array(9);
-  // const defaultStyleAlive: ICellStyle[] = new Array(9);
-  // for (let i = 0; i < 9; i++) {
-  //   defaultStyleDead[i] = {
-  //     size: 50 + i * 5,
-  //     color: '#eeeeee',
-  //     borderRadius: 50,
-  //     borderWidth: 0,
-  //     borderColor: 'gray',
-  //     backgroundColor: 'white',
-  //     elevation: 0
-  //   };
-  //   defaultStyleAlive[i] = {
-  //     size: 50 + i * 5,
-  //     color: i < 2 ? '#cccccc' : i > 3 ? 'darkgreen' : 'green',
-  //     borderRadius: 50,
-  //     borderWidth: 0,
-  //     borderColor: 'green',
-  //     backgroundColor: 'white',
-  //     elevation: i
-  //   };
-  // }
-
-  // defaultStyleDead[3].color = 'lightgreen'
-
-  // const defaultStyles = [
-  //   defaultStyleDead,
-  //   defaultStyleAlive
-  // ]
 
   const [ template,               setTemplate ]               = useState<IGame>(Templates[0])
       , [ name,                   setName ]                   = useState<string>(template.name)
       , [ author,                 setAuthor ]                 = useState<string>(template.author)
-      , [ description,            setDescription ]            = useState<string>(template.description as string)
+      , [ description,            setDescription ]            = useState<string>(template.description)
       , [ time,                   setTime ]                   = useState<Date>(template.time)
       , [ refreshFrequency,       setRefreshFrequency ]       = useState<number>(template.refreshFrequency)
       , [ width,                  setWidth ]                  = useState<number>(template.width)
@@ -75,7 +35,7 @@ function App() {
     setName(template.name);
     setAuthor(template.author);
     setTime(template.time);
-    setDescription(template.description as string);
+    setDescription(template.description);
     setRefreshFrequency(template.refreshFrequency);
     setWidth(template.width);
     setHeight(template.height);
@@ -88,67 +48,65 @@ function App() {
     setStyles(template.styles);
   }
 
-  return (
-    <div className="App">
-      <LeftPanel
-        panelWidth={panelWidth}
-        name={name}
-        setName={setName}
-        author={author}
-        setAuthor={setAuthor}
-        time={time}
-        description={description}
-        setDescription={setDescription}
-        isPanelOpen={isPanelOpen}
-        template={template}
-        setTemplate={handleSetTemplate}
-      />
-      <CentralPanel
-        isPlayMode={isPlayMode}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-        setIsPanelOpen={setIsPanelOpen}
-        refreshFrequency={refreshFrequency}
-        width={width}
-        height={height}
-        seeds={seeds}
-        setSeeds={setSeeds}
-        surviveRangeLower={surviveRangeLower}
-        surviveRangeUpper={surviveRangeUpper}
-        reproductionRangeLower={reproductionRangeLower}
-        reproductionRangeUpper={reproductionRangeUpper}
-        borderPolicy={borderPolicy}
-        styles={styles}
-      />
-      <RightPanel
-        panelWidth={panelWidth}
-        refreshFrequency={refreshFrequency}
-        setRefreshFrequency={setRefreshFrequency}
-        width={width}
-        setWidth={setWidth}
-        height={height}
-        setHeight={setHeight}
-        surviveRangeLower={surviveRangeLower}
-        setSurviveRangeLower={setSurviveRangeLower}
-        surviveRangeUpper={surviveRangeUpper}
-        setSurviveRangeUpper={setSurviveRangeUpper}
-        reproductionRangeLower={reproductionRangeLower}
-        setReproductionRangeLower={setReproductionRangeLower}
-        reproductionRangeUpper={reproductionRangeUpper}
-        setReproductionRangeUpper={setReproductionRangeUpper}
-        borderPolicy={borderPolicy}
-        setBorderPolicy={setBorderPolicy}
-        seeds={seeds}
-        setSeeds={setSeeds}
-        styles={styles}
-        setStyles={setStyles}
-        isPanelOpen={isPanelOpen}
-        isPlayMode={isPlayMode}
-        setIsPlayMode={setIsPlayMode}
-        template={template}
-      />
-    </div>
-  );
+  return <div className="App">
+    <LeftPanel
+      panelWidth={panelWidth}
+      name={name}
+      setName={setName}
+      author={author}
+      setAuthor={setAuthor}
+      time={time}
+      description={description}
+      setDescription={setDescription}
+      isPanelOpen={isPanelOpen}
+      template={template}
+      setTemplate={handleSetTemplate}
+    />
+    <CentralPanel
+      isPlayMode={isPlayMode}
+      isPlaying={isPlaying}
+      setIsPlaying={setIsPlaying}
+      setIsPanelOpen={setIsPanelOpen}
+      refreshFrequency={refreshFrequency}
+      width={width}
+      height={height}
+      seeds={seeds}
+      setSeeds={setSeeds}
+      surviveRangeLower={surviveRangeLower}
+      surviveRangeUpper={surviveRangeUpper}
+      reproductionRangeLower={reproductionRangeLower}
+      reproductionRangeUpper={reproductionRangeUpper}
+      borderPolicy={borderPolicy}
+      styles={styles}
+    />
+    <RightPanel
+      panelWidth={panelWidth}
+      refreshFrequency={refreshFrequency}
+      setRefreshFrequency={setRefreshFrequency}
+      width={width}
+      setWidth={setWidth}
+      height={height}
+      setHeight={setHeight}
+      surviveRangeLower={surviveRangeLower}
+      setSurviveRangeLower={setSurviveRangeLower}
+      surviveRangeUpper={surviveRangeUpper}
+      setSurviveRangeUpper={setSurviveRangeUpper}
+      reproductionRangeLower={reproductionRangeLower}
+      setReproductionRangeLower={setReproductionRangeLower}
+      reproductionRangeUpper={reproductionRangeUpper}
+      setReproductionRangeUpper={setReproductionRangeUpper}
+      borderPolicy={borderPolicy}
+      setBorderPolicy={setBorderPolicy}
+      seeds={seeds}
+      setSeeds={setSeeds}
+      styles={styles}
+      setStyles={setStyles}
+      isPanelOpen={isPanelOpen}
+      isPlayMode={isPlayMode}
+      setIsPlayMode={setIsPlayMode}
+      template={template}
+    />
+  </div>
 }
 
 export default App;
