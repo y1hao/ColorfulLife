@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider, Select } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider, Select, MenuItem } from '@material-ui/core';
 import { CreateSharp } from '@material-ui/icons';
 import InputTitle from './InputTitle';
+import { IGame } from '../Common/Interfaces';
+import Templates from '../Common/Templates';
 
 interface IProps {
     panelWidth: number,
@@ -12,7 +14,9 @@ interface IProps {
     setAuthor: (value: string) => void,
     description: string,
     setDescription: (value: string) => void,
-    isPanelOpen: boolean
+    isPanelOpen: boolean,
+    template: IGame,
+    setTemplate: (value: IGame) => void
 }
 
 const inputDialog = (
@@ -112,7 +116,18 @@ export default function LeftPanel(props: IProps) {
         }
 
         <InputTitle>Choose Template</InputTitle>
-        <Select>
+        <Select 
+            value={props.template.name} 
+            onChange={(e) => {
+                const template = Templates.find(t => t.name === e.target.value as string)
+                props.setTemplate(template as IGame)
+            }}
+        >
+        {
+            Templates.map((v, i) => <MenuItem key={i} value={v.name}>
+                {v.name}
+            </MenuItem>)
+        }
         </Select>
         <Button>
             Load from file

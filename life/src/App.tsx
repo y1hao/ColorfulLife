@@ -69,7 +69,24 @@ function App() {
       , [ isPlayMode,             setIsPlayMode ]             = useState<boolean>(true)
       , [ isPlaying,              setIsPlaying ]              = useState<boolean>(false)
       , [ isPanelOpen,            setIsPanelOpen ]            = useState<boolean>(true)
-      
+  
+  const handleSetTemplate = (template: IGame) => {
+    setTemplate(template);
+    setName(template.name);
+    setAuthor(template.author);
+    setTime(template.time);
+    setDescription(template.description as string);
+    setRefreshFrequency(template.refreshFrequency);
+    setWidth(template.width);
+    setHeight(template.height);
+    setSeeds(template.seeds);
+    setSurviveRangeLower(template.surviveRangeLower);
+    setSurviveRangeUpper(template.surviveRangeUpper);
+    setReproductionRangeLower(template.reproductionRangeLower);
+    setReproductionRangeUpper(template.reproductionRangeUpper);
+    setBorderPolicy(template.borderPolicy);
+    setStyles(template.styles);
+  }
 
   return (
     <div className="App">
@@ -83,6 +100,8 @@ function App() {
         description={description}
         setDescription={setDescription}
         isPanelOpen={isPanelOpen}
+        template={template}
+        setTemplate={handleSetTemplate}
       />
       <CentralPanel
         isPlayMode={isPlayMode}
@@ -126,6 +145,7 @@ function App() {
         isPanelOpen={isPanelOpen}
         isPlayMode={isPlayMode}
         setIsPlayMode={setIsPlayMode}
+        template={template}
       />
     </div>
   );

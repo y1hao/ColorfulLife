@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import { ICellStyle, BorderPolicy } from '../Common/Interfaces';
+import { ICellStyle, BorderPolicy, IGame } from '../Common/Interfaces';
 import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio, Paper, Tabs, Tab } from '@material-ui/core';
 import InputTitle from './InputTitle';
 import { Policy } from '@material-ui/icons';
@@ -29,7 +29,8 @@ interface IProps {
     setSeeds: React.Dispatch<React.SetStateAction<boolean[][]>>,
     isPanelOpen: boolean,
     isPlayMode: boolean,
-    setIsPlayMode: (value: boolean) => void
+    setIsPlayMode: (value: boolean) => void,
+    template: IGame
 }
 
 export default function RightPanel(props: IProps) {
