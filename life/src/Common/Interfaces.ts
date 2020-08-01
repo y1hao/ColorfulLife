@@ -12,7 +12,6 @@ export interface IGame {
     reproductionRangeLower: number,
     reproductionRangeUpper: number,
     borderPolicy: BorderPolicy,
-    backgroundColor: string,
     styles: ICellStyle[][]
 }
 

@@ -6,67 +6,70 @@ import LeftPanel from './Components/LeftPanel';
 import RightPanel from './Components/RightPanel';
 import { Grid } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
+import Templates from './Common/Templates';
 
 function App() {
-  const defaultWidth = 15;
-  const defaultHeight = 15;
+  // const defaultWidth = 15;
+  // const defaultHeight = 15;
   const panelWidth = 300;
 
-  const defaultSeeds: boolean[][] = new Array(defaultHeight);
-  for (let i = 0; i < defaultHeight; ++i) {
-    defaultSeeds[i] = new Array(defaultWidth);
-    for (let j = 0; j < defaultWidth; j++) {
-      defaultSeeds[i][j] = !!(i & j);
-    }
-  }
+  // const defaultSeeds: boolean[][] = new Array(defaultHeight);
+  // for (let i = 0; i < defaultHeight; ++i) {
+  //   defaultSeeds[i] = new Array(defaultWidth);
+  //   for (let j = 0; j < defaultWidth; j++) {
+  //     defaultSeeds[i][j] = !!(i & j);
+  //   }
+  // }
 
-  const defaultStyleDead: ICellStyle[] = new Array(9);
-  const defaultStyleAlive: ICellStyle[] = new Array(9);
-  for (let i = 0; i < 9; i++) {
-    defaultStyleDead[i] = {
-      size: 50 + i * 5,
-      color: '#eeeeee',
-      borderRadius: 50,
-      borderWidth: 0,
-      borderColor: 'gray',
-      backgroundColor: 'white',
-      elevation: 0
-    };
-    defaultStyleAlive[i] = {
-      size: 50 + i * 5,
-      color: i < 2 ? '#cccccc' : i > 3 ? 'darkgreen' : 'green',
-      borderRadius: 50,
-      borderWidth: 0,
-      borderColor: 'green',
-      backgroundColor: 'white',
-      elevation: i
-    };
-  }
+  // const defaultStyleDead: ICellStyle[] = new Array(9);
+  // const defaultStyleAlive: ICellStyle[] = new Array(9);
+  // for (let i = 0; i < 9; i++) {
+  //   defaultStyleDead[i] = {
+  //     size: 50 + i * 5,
+  //     color: '#eeeeee',
+  //     borderRadius: 50,
+  //     borderWidth: 0,
+  //     borderColor: 'gray',
+  //     backgroundColor: 'white',
+  //     elevation: 0
+  //   };
+  //   defaultStyleAlive[i] = {
+  //     size: 50 + i * 5,
+  //     color: i < 2 ? '#cccccc' : i > 3 ? 'darkgreen' : 'green',
+  //     borderRadius: 50,
+  //     borderWidth: 0,
+  //     borderColor: 'green',
+  //     backgroundColor: 'white',
+  //     elevation: i
+  //   };
+  // }
 
-  defaultStyleDead[3].color = 'lightgreen'
+  // defaultStyleDead[3].color = 'lightgreen'
 
-  const defaultStyles = [
-    defaultStyleDead,
-    defaultStyleAlive
-  ]
+  // const defaultStyles = [
+  //   defaultStyleDead,
+  //   defaultStyleAlive
+  // ]
 
-  const [ name,                   setName ]                   = useState<string>("New Game")
-      , [ author,                 setAuthor ]                 = useState<string>("Colorful Life player")
-      , [ description,            setDescription ]            = useState<string>("No descriptions...")
-      , [ time,                   setTime ]                   = useState<Date>(new Date())
-      , [ refreshFrequency,       setRefreshFrequency ]       = useState<number>(10)
-      , [ width,                  setWidth ]                  = useState<number>(defaultWidth)
-      , [ height,                 setHeight ]                 = useState<number>(defaultHeight)
-      , [ seeds,                  setSeeds ]                  = useState<boolean[][]>(defaultSeeds)
-      , [ surviveRangeLower,      setSurviveRangeLower ]      = useState<number>(2)
-      , [ surviveRangeUpper,      setSurviveRangeUpper ]      = useState<number>(3)
-      , [ reproductionRangeLower, setReproductionRangeLower ] = useState<number>(3)
-      , [ reproductionRangeUpper, setReproductionRangeUpper ] = useState<number>(3)
-      , [ borderPolicy,           setBorderPolicy ]           = useState<BorderPolicy>("dead")
-      , [ styles,                 setStyles ]                 = useState<ICellStyle[][]>(defaultStyles)
+  const [ template,               setTemplate ]               = useState<IGame>(Templates[0])
+      , [ name,                   setName ]                   = useState<string>(template.name)
+      , [ author,                 setAuthor ]                 = useState<string>(template.author)
+      , [ description,            setDescription ]            = useState<string>(template.description as string)
+      , [ time,                   setTime ]                   = useState<Date>(template.time)
+      , [ refreshFrequency,       setRefreshFrequency ]       = useState<number>(template.refreshFrequency)
+      , [ width,                  setWidth ]                  = useState<number>(template.width)
+      , [ height,                 setHeight ]                 = useState<number>(template.height)
+      , [ seeds,                  setSeeds ]                  = useState<boolean[][]>(template.seeds)
+      , [ surviveRangeLower,      setSurviveRangeLower ]      = useState<number>(template.surviveRangeLower)
+      , [ surviveRangeUpper,      setSurviveRangeUpper ]      = useState<number>(template.surviveRangeUpper)
+      , [ reproductionRangeLower, setReproductionRangeLower ] = useState<number>(template.reproductionRangeLower)
+      , [ reproductionRangeUpper, setReproductionRangeUpper ] = useState<number>(template.reproductionRangeUpper)
+      , [ borderPolicy,           setBorderPolicy ]           = useState<BorderPolicy>(template.borderPolicy)
+      , [ styles,                 setStyles ]                 = useState<ICellStyle[][]>(template.styles)
       , [ isPlayMode,             setIsPlayMode ]             = useState<boolean>(true)
       , [ isPlaying,              setIsPlaying ]              = useState<boolean>(false)
       , [ isPanelOpen,            setIsPanelOpen ]            = useState<boolean>(true)
+      
 
   return (
     <div className="App">
