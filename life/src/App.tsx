@@ -19,13 +19,13 @@ function App() {
       , [ refreshFrequency,       setRefreshFrequency ]       = useState<number>(template.refreshFrequency)
       , [ width,                  setWidth ]                  = useState<number>(template.width)
       , [ height,                 setHeight ]                 = useState<number>(template.height)
-      , [ seeds,                  setSeeds ]                  = useState<boolean[][]>(template.seeds)
+      , [ seeds,                  setSeeds ]                  = useState<boolean[][]>(JSON.parse(JSON.stringify(template.seeds)))
       , [ surviveRangeLower,      setSurviveRangeLower ]      = useState<number>(template.surviveRangeLower)
       , [ surviveRangeUpper,      setSurviveRangeUpper ]      = useState<number>(template.surviveRangeUpper)
       , [ reproductionRangeLower, setReproductionRangeLower ] = useState<number>(template.reproductionRangeLower)
       , [ reproductionRangeUpper, setReproductionRangeUpper ] = useState<number>(template.reproductionRangeUpper)
       , [ borderPolicy,           setBorderPolicy ]           = useState<BorderPolicy>(template.borderPolicy)
-      , [ styles,                 setStyles ]                 = useState<ICellStyle[][]>(template.styles)
+      , [ styles,                 setStyles ]                 = useState<ICellStyle[][]>(JSON.parse(JSON.stringify(template.styles)))
       , [ isPlayMode,             setIsPlayMode ]             = useState<boolean>(true)
       , [ isPlaying,              setIsPlaying ]              = useState<boolean>(false)
       , [ isPanelOpen,            setIsPanelOpen ]            = useState<boolean>(true)
@@ -39,13 +39,13 @@ function App() {
     setRefreshFrequency(template.refreshFrequency);
     setWidth(template.width);
     setHeight(template.height);
-    setSeeds(template.seeds);
+    setSeeds(JSON.parse(JSON.stringify(template.seeds)));
     setSurviveRangeLower(template.surviveRangeLower);
     setSurviveRangeUpper(template.surviveRangeUpper);
     setReproductionRangeLower(template.reproductionRangeLower);
     setReproductionRangeUpper(template.reproductionRangeUpper);
     setBorderPolicy(template.borderPolicy);
-    setStyles(template.styles);
+    setStyles(JSON.parse(JSON.stringify(template.styles)));
   }
 
   return <div className="App">
