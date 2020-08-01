@@ -9,14 +9,6 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
     return function(props: IStyleSettingsPanelProps) {
         const index = tabName === "dead" ? 0 : 1
 
-        const handleRandom = () => {
-
-        }
-
-        const handleReset = () => {
-
-        }
-
         const SizePanel = <div>
         {
             new Array(9).fill(0).map((v, i) => <div key={i}>
@@ -33,6 +25,19 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 />
             </div>)
         }
+        <Button onClick={() => {
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].size = props.template.styles[index][i].size;
+            }
+            props.setStyles([...props.styles])
+        }}>
+            Reset
+        </Button>
+        <Button onClick={() => {
+
+        }}>
+            Random
+        </Button>
         </div>
 
         const ShapePanel = <div>
@@ -51,6 +56,19 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 />
             </div>)
         }
+        <Button onClick={() => {
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].borderRadius = props.template.styles[index][i].borderRadius;
+            }
+            props.setStyles([...props.styles])
+        }}>
+            Reset
+        </Button>
+        <Button onClick={() => {
+            
+        }}>
+            Random
+        </Button>
         </div>
 
         const ElevationPanel = <div>
@@ -69,6 +87,19 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 />
             </div>)
         }
+        <Button onClick={() => {
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].elevation = props.template.styles[index][i].elevation;
+            }
+            props.setStyles([...props.styles])
+        }}>
+            Reset
+        </Button>
+        <Button onClick={() => {
+            
+        }}>
+            Random
+        </Button>
         </div>
 
         const BorderWidthPanel = <div>
@@ -87,8 +118,20 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 />
             </div>)
         }
+        <Button onClick={() => {
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].borderWidth = props.template.styles[index][i].borderWidth;
+            }
+            props.setStyles([...props.styles])
+        }}>
+            Reset
+        </Button>
+        <Button onClick={() => {
+            
+        }}>
+            Random
+        </Button>
         </div>
-
 
         const ColorPanel = <div>
         {
@@ -103,6 +146,19 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 />
             </div>)
         }
+        <Button onClick={() => {
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].color = props.template.styles[index][i].color;
+            }
+            props.setStyles([...props.styles])
+        }}>
+            Reset
+        </Button>
+        <Button onClick={() => {
+            
+        }}>
+            Random
+        </Button>
         </div>
 
 
@@ -119,6 +175,19 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 />
             </div>)
         }
+        <Button onClick={() => {
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].backgroundColor = props.template.styles[index][i].backgroundColor;
+            }
+            props.setStyles([...props.styles])
+        }}>
+            Reset
+        </Button>
+        <Button onClick={() => {
+            
+        }}>
+            Random
+        </Button>
         </div>
 
 
@@ -135,6 +204,19 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 />
             </div>)
         }
+        <Button onClick={() => {
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].borderColor = props.template.styles[index][i].borderColor;
+            }
+            props.setStyles([...props.styles])
+        }}>
+            Reset
+        </Button>
+        <Button onClick={() => {
+            
+        }}>
+            Random
+        </Button>
         </div>
 
         return <div>
@@ -147,12 +229,6 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 ? ColorPanel : property === "background"
                 ? BackgroundColorPanel : BorderColorPanel
             }
-            <Button onClick={handleReset}>
-                Reset
-            </Button>
-            <Button onClick={handleRandom}>
-                Random
-            </Button>
         </div>
     }
 }

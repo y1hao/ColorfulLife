@@ -44,6 +44,7 @@ export type IPropertyName =
     "size" | "color" | "background" | "borderColor" | "borderWidth" | "shape" | "elevation" 
 
 export interface IStyleSettingsPanelProps {
+    template: IGame,
     styles: ICellStyle[][],
     setStyles: (value: ICellStyle[][]) => void
 }

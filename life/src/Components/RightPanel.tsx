@@ -51,7 +51,13 @@ export default function RightPanel(props: IProps) {
     }
 
     const handleResetGame = () => {
-
+        props.setBorderPolicy(props.template.borderPolicy); 
+        setSize(props.template.height);
+        props.setRefreshFrequency(props.template.refreshFrequency);
+        props.setReproductionRangeLower(props.template.reproductionRangeLower);
+        props.setReproductionRangeUpper(props.template.reproductionRangeUpper);
+        props.setSurviveRangeLower(props.template.surviveRangeLower);
+        props.setSurviveRangeUpper(props.template.surviveRangeUpper);
     }
 
     const handleRandomSeeds = () => {
@@ -204,6 +210,7 @@ export default function RightPanel(props: IProps) {
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
                 <StyleSettingsPanel 
+                    template={props.template}
                     styles={props.styles}
                     setStyles={props.setStyles}
                 />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { IStyleSettingsPanelProps } from '../Common/Interfaces';
 import InputTitle from './InputTitle';
-import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles, Button } from '@material-ui/core';
+import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles, Button, StylesProvider } from '@material-ui/core';
 import { ChromePicker } from 'react-color';
 import classes from '*.module.css';
 import ColorPicker from './ColorPicker';
@@ -25,7 +25,8 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
         }
 
         const handleReset = () => {
-
+            props.styles[index][neighbors] = props.template.styles[index][neighbors]
+            props.setStyles([...props.styles])
         }
 
         return <div>

@@ -25,7 +25,7 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     }
 
     const handleReset = () => {
-
+        props.setStyles(JSON.parse(JSON.stringify(props.template.styles)))
     }
 
     const NeighborsSelector = <div>
