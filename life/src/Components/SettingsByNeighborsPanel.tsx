@@ -20,6 +20,14 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
             props.setStyles([...props.styles])
         }
 
+        const handleRandom = () => {
+
+        }
+
+        const handleReset = () => {
+
+        }
+
         return <div>
             <CellSample {...props.styles[index][neighbors]}/>
             <InputTitle>Size</InputTitle>
@@ -96,10 +104,10 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
                     props.setStyles([...props.styles])
                 }}
             />
-             <Button>
+             <Button onClick={handleReset}>
                 Reset
             </Button>
-            <Button>
+            <Button onClick={handleRandom}>
                 Random
             </Button>
             <Button onClick={handleApplyToAll}>

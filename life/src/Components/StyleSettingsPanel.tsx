@@ -20,6 +20,14 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     const [neighbors, setNeighbors] = useState<number>(0)
     const [propertyName, setPropertyName] = useState<IPropertyName>("size")
 
+    const handleRandom = () => {
+
+    }
+
+    const handleReset = () => {
+
+    }
+
     const NeighborsSelector = <div>
         <FormControlLabel
             labelPlacement="start"
@@ -54,10 +62,10 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     </div>
 
     return <div>
-        <Button>
+        <Button onClick={handleReset}>
             Reset
         </Button>
-        <Button>
+        <Button onClick={handleRandom}>
             Random
         </Button>
         <InputTitle>Group by:</InputTitle>

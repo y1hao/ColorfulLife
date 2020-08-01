@@ -9,6 +9,14 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
     return function(props: IStyleSettingsPanelProps) {
         const index = tabName === "dead" ? 0 : 1
 
+        const handleRandom = () => {
+
+        }
+
+        const handleReset = () => {
+
+        }
+
         const SizePanel = <div>
         {
             new Array(9).fill(0).map((v, i) => <div key={i}>
@@ -139,10 +147,10 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
                 ? ColorPanel : property === "background"
                 ? BackgroundColorPanel : BorderColorPanel
             }
-            <Button>
+            <Button onClick={handleReset}>
                 Reset
             </Button>
-            <Button>
+            <Button onClick={handleRandom}>
                 Random
             </Button>
         </div>
