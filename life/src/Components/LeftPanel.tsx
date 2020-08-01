@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider, Select } from '@material-ui/core';
 import { CreateSharp } from '@material-ui/icons';
 import InputTitle from './InputTitle';
 
@@ -110,5 +110,15 @@ export default function LeftPanel(props: IProps) {
                 setIsDescriptionDialogOpen,
                 props.setDescription)
         }
+
+        <InputTitle>Choose Template</InputTitle>
+        <Select>
+        </Select>
+        <Button>
+            Load from file
+        </Button>
+        <Button>
+            Save to file
+        </Button>
     </Drawer>
 }
