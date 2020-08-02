@@ -4,7 +4,7 @@ import CentralPanel from './Components/CentralPanel';
 import { IGame, ICellStyle, BorderPolicy } from './Common/Interfaces';
 import LeftPanel from './Components/LeftPanel';
 import RightPanel from './Components/RightPanel';
-import Templates from './Common/Templates';
+import Templates from './Common/Templates/Templates';
 
 function App() {
   const panelWidth = 300;
