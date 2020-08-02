@@ -43,31 +43,31 @@ const Random: IRandom = {
     },
 
     boardSize() {
-        return 0;
+        return randomInt(2, 21);
     },
 
     refreshFrequency() {
-        return 0;
+        return randomInt(1, 11);
     },
 
     neighbors() {
-        return 0;
+        return randomInt(0, 9);
     },
     
     borderPolicy() {
-        return "alive"
+        return (["alive", "dead", "roll"] as ("alive" | "dead" | "roll")[])[randomInt(0, 3)];
     },
 
     elevation() {
-        return 0
+        return randomInt(0, 11);
     },
 
     color() {
-        return ""
+        return `rgb(${randomInt(0, 256)}, ${randomInt(0, 256)}, ${randomInt(0, 256)})`;
     },
 
     percentage(max: number) {
-        return 0
+        return randomInt(0, max + 1);
     }
 }
 

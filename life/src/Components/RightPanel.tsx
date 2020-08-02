@@ -51,7 +51,17 @@ export default function RightPanel(props: IProps) {
     const [randomSeedsDensity, setRandomSeedsDensity] = useState<number>(5)
 
     const handleRandomGame = () => {
+        setSize(Random.boardSize());
+        props.setBorderPolicy(Random.borderPolicy());
+        props.setRefreshFrequency(Random.refreshFrequency());
 
+        const [reproductionRangeLower, reproductionRangeUpper] = [Random.neighbors(), Random.neighbors()].sort((a, b) => a - b);
+        props.setReproductionRangeLower(reproductionRangeLower);
+        props.setReproductionRangeUpper(reproductionRangeUpper);
+
+        const [surviveRangeLower, surviveRangeUpper] = [Random.neighbors(), Random.neighbors()].sort((a, b) => a - b);
+        props.setSurviveRangeLower(surviveRangeLower);
+        props.setSurviveRangeUpper(surviveRangeUpper);
     }
 
     const handleResetGame = () => {
