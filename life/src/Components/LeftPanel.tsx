@@ -3,7 +3,7 @@ import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, Dia
 import { CreateSharp } from '@material-ui/icons';
 import InputTitle from './InputTitle';
 import { IGame } from '../Common/Interfaces';
-import Templates from '../Common/Templates';
+import Templates from '../Common/Templates/Templates';
 
 interface IProps {
     panelWidth: number,

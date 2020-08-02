@@ -73,7 +73,11 @@ export default function RightPanel(props: IProps) {
     }
 
     const handleResetSeeds = () => {
-        props.setSeeds(JSON.parse(JSON.stringify(props.template.seeds)))
+        props.setSeeds(() => {
+            props.setHeight(props.template.height)
+            props.setWidth(props.template.width)
+            return JSON.parse(JSON.stringify(props.template.seeds))
+        })
     }
 
     const setSize = (v: number) => {
