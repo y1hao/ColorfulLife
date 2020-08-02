@@ -1,4 +1,4 @@
-import { BorderPolicy } from "./Interfaces";
+import { BorderPolicy, ICellStyle } from "./Interfaces";
 
 interface IRandom {
     seeds: (height: number, width: number, density: number) => boolean[][],
@@ -8,7 +8,8 @@ interface IRandom {
     borderPolicy: () => BorderPolicy,
     elevation: () => number,
     color: () => string,
-    percentage: (max: number) => number
+    percentage: (max: number) => number,
+    style: () => ICellStyle
 }
 
 const Random: IRandom = {
@@ -68,6 +69,18 @@ const Random: IRandom = {
 
     percentage(max: number) {
         return randomInt(0, max + 1);
+    },
+
+    style() {
+        return {
+            size: this.percentage(100),
+            elevation: this.elevation(),
+            borderRadius: this.percentage(50),
+            borderWidth: this.percentage(50),
+            color: this.color(),
+            backgroundColor: this.color(),
+            borderColor: this.color()
+        }
     }
 }
 

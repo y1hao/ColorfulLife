@@ -4,6 +4,7 @@ import { Tabs, makeStyles, Tab, Button, Slider, Popover, Modal, Switch, FormCont
 import InputTitle from './InputTitle';
 import makeSettingsByPropertiesPanel from './SettingsByPropertiesPanel';
 import makeSettingsByNeighborsPanel from './SettingsByNeighborsPanel';
+import Random from '../Common/Random';
 
 const useStyles = makeStyles({
     tab: {
@@ -21,7 +22,12 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     const [propertyName, setPropertyName] = useState<IPropertyName>("size")
 
     const handleRandom = () => {
-
+        for (let i = 0; i <= 1; i++) {
+            for (let j = 0; j < 9; j++) {
+                props.styles[i][j] = Random.style();
+            }
+        }
+        props.setStyles([...props.styles]);
     }
 
     const handleReset = () => {
