@@ -3,6 +3,7 @@ import { ICellStyle, BorderPolicy, IGame } from '../Common/Interfaces';
 import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio, Paper, Tabs, Tab } from '@material-ui/core';
 import InputTitle from './InputTitle';
 import StyleSettingsPanel from './StyleSettingsPanel';
+import Random from '../Common/Random';
 
 interface IProps {
     panelWidth: number,
@@ -47,6 +48,7 @@ export default function RightPanel(props: IProps) {
     })();
 
     const [isStyleSettingsPanelExpanded, setIsStyleSettingsPanelExpanded] = useState<boolean>(false)
+    const [randomSeedsDensity, setRandomSeedsDensity] = useState<number>(5)
 
     const handleRandomGame = () => {
 
@@ -63,7 +65,7 @@ export default function RightPanel(props: IProps) {
     }
 
     const handleRandomSeeds = () => {
-
+        props.setSeeds(Random.seeds(props.height, props.width, randomSeedsDensity))
     }
 
     const handleClearSeeds = () => {
@@ -179,9 +181,13 @@ export default function RightPanel(props: IProps) {
         <Button onClick={handleRandomSeeds}>
             Random
         </Button>
-        <InputTitle>Random Seed Density</InputTitle>
+        <InputTitle>Random Seeds Density</InputTitle>
         <Slider 
-
+            value={randomSeedsDensity}
+            valueLabelDisplay="auto"
+            min={1}
+            max={9}
+            onChange={(e, v) => setRandomSeedsDensity(v as number)}
         />
     </div>
 
