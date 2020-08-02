@@ -8,7 +8,7 @@ export default function CellSample(props: ICellStyle) {
         display: "grid",
         width: 50,
         height: 50,
-        color: props.backgroundColor
+        backgroundColor: props.backgroundColor
     }
     
     const cellStyle: React.CSSProperties = {
