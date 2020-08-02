@@ -61,13 +61,7 @@ export default function CentralPanel(props: IProps) {
         setSeeds(seedsCopy);
         setNeighbors(defaultNeighbors);
         setMap(defaultMap);
-    }, [props.isPlayMode])
-
-    useEffect(() => {
-        setSeeds(seedsCopy);
-        setNeighbors(defaultNeighbors);
-        setMap(defaultMap);
-    }, [props.seeds, props.borderPolicy, props.styles])
+    }, [props.seeds, props.borderPolicy, props.styles, props.isPlayMode])
 
     const [refreshHandler, setRefreshHandler] = useState<any>(null);
 
