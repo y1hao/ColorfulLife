@@ -46,6 +46,8 @@ export default function RightPanel(props: IProps) {
         }
     })();
 
+    const [isStyleSettingsPanelExpanded, setIsStyleSettingsPanelExpanded] = useState<boolean>(false)
+
     const handleRandomGame = () => {
 
     }
@@ -208,8 +210,11 @@ export default function RightPanel(props: IProps) {
                 { GameSettingsPanel }
             </AccordionDetails>
         </Accordion>
-        <Accordion>
-            <AccordionSummary>
+        <Accordion 
+            disabled={!props.isPlayMode} 
+            expanded={isStyleSettingsPanelExpanded && props.isPlayMode}
+        >
+            <AccordionSummary onClick={() => setIsStyleSettingsPanelExpanded(!isStyleSettingsPanelExpanded)}>
                 Cell Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
