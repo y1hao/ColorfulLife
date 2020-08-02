@@ -5,6 +5,7 @@ import { Slider, Accordion, AccordionSummary, AccordionDetails, Button, makeStyl
 import { ChromePicker } from 'react-color';
 import ColorPicker from './ColorPicker';
 import CellSample from './CellSample';
+import Random from '../Common/Random';
 
 export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead", property: IPropertyName) {
     return function(props: IStyleSettingsPanelProps) {
@@ -43,7 +44,10 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             Reset
         </Button>
         <Button onClick={() => {
-
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].size = Random.cellSize();
+            }
+            props.setStyles([...props.styles]);
         }}>
             Random
         </Button>
@@ -74,7 +78,10 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             Reset
         </Button>
         <Button onClick={() => {
-            
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].borderRadius = Random.borderRadius();
+            }
+            props.setStyles([...props.styles]);
         }}>
             Random
         </Button>
@@ -105,7 +112,10 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             Reset
         </Button>
         <Button onClick={() => {
-            
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].elevation = Random.elevation();
+            }
+            props.setStyles([...props.styles]);
         }}>
             Random
         </Button>
@@ -136,7 +146,10 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             Reset
         </Button>
         <Button onClick={() => {
-            
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].borderWidth = Random.borderWidth();
+            }
+            props.setStyles([...props.styles]);
         }}>
             Random
         </Button>
@@ -164,12 +177,14 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             Reset
         </Button>
         <Button onClick={() => {
-            
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].color = Random.color();
+            }
+            props.setStyles([...props.styles]);
         }}>
             Random
         </Button>
         </div>
-
 
         const BackgroundColorPanel = <div>
         {
@@ -193,12 +208,14 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             Reset
         </Button>
         <Button onClick={() => {
-            
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].backgroundColor = Random.color();
+            }
+            props.setStyles([...props.styles]);
         }}>
             Random
         </Button>
         </div>
-
 
         const BorderColorPanel = <div>
         {
@@ -222,7 +239,10 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
             Reset
         </Button>
         <Button onClick={() => {
-            
+            for (let i = 0; i < 9; i++) {
+                props.styles[index][i].borderColor = Random.color();
+            }
+            props.setStyles([...props.styles]);
         }}>
             Random
         </Button>

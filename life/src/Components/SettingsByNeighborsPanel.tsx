@@ -7,6 +7,7 @@ import classes from '*.module.css';
 import ColorPicker from './ColorPicker';
 import Cell from './Cell';
 import CellSample from './CellSample';
+import Random from '../Common/Random';
 
 export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", neighbors: number) {
     const index = tabName === "dead" ? 0 : 1
@@ -28,7 +29,8 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
         }
 
         const handleRandom = () => {
-
+            props.styles[index][neighbors] = Random.style();
+            props.setStyles([...props.styles]);
         }
 
         const handleReset = () => {
