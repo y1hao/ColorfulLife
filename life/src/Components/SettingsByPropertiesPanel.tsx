@@ -1,13 +1,22 @@
 import React from 'react';
 import { IPropertyName, IStyleSettingsPanelProps } from '../Common/Interfaces';
 import InputTitle from './InputTitle';
-import { Slider, Accordion, AccordionSummary, AccordionDetails, Button } from '@material-ui/core';
+import { Slider, Accordion, AccordionSummary, AccordionDetails, Button, makeStyles, Tooltip, Paper } from '@material-ui/core';
 import { ChromePicker } from 'react-color';
 import ColorPicker from './ColorPicker';
+import CellSample from './CellSample';
 
 export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead", property: IPropertyName) {
     return function(props: IStyleSettingsPanelProps) {
         const index = tabName === "dead" ? 0 : 1
+        const cellSamplesWrapperStyle: React.CSSProperties = {
+            margin: "auto",
+            display: "grid",
+            gridTemplateRows: "1fr 1fr 1fr",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            width: "150px",
+            padding: "15px"
+        }
 
         const SizePanel = <div>
         {
@@ -220,6 +229,15 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         </div>
 
         return <div>
+            <Paper style={cellSamplesWrapperStyle} square elevation={3}>
+            {
+                new Array(9).fill(0).map((v, i) => <Tooltip key={i} title={`Neighbors = ${i}`}>
+                    <div>
+                        <CellSample {...props.styles[index][i]}/>
+                    </div>
+                </Tooltip>)
+            }
+            </Paper>
             {
                 property === "size"
                 ? SizePanel : property === "shape"

@@ -9,6 +9,9 @@ interface IRandom {
     elevation: () => number,
     color: () => string,
     percentage: (max: number) => number,
+    cellSize: () => number,
+    borderWidth: () => number,
+    borderRadius: () => number,
     style: () => ICellStyle
 }
 
@@ -71,12 +74,24 @@ const Random: IRandom = {
         return randomInt(0, max + 1);
     },
 
+    cellSize() {
+        return randomInt(0, 11) * 10;
+    }, 
+
+    borderRadius() {
+        return randomInt(0, 6) * 10;
+    },
+
+    borderWidth() {
+        return randomInt(0, 6) * 10;
+    },
+
     style() {
         return {
-            size: this.percentage(100),
+            size: this.cellSize(),
             elevation: this.elevation(),
-            borderRadius: this.percentage(50),
-            borderWidth: this.percentage(50),
+            borderRadius: this.borderRadius(),
+            borderWidth: this.borderWidth(),
             color: this.color(),
             backgroundColor: this.color(),
             borderColor: this.color()

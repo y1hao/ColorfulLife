@@ -1,7 +1,7 @@
 import React from 'react';
 import { IStyleSettingsPanelProps } from '../Common/Interfaces';
 import InputTitle from './InputTitle';
-import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles, Button, StylesProvider } from '@material-ui/core';
+import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles, Button, StylesProvider, Paper } from '@material-ui/core';
 import { ChromePicker } from 'react-color';
 import classes from '*.module.css';
 import ColorPicker from './ColorPicker';
@@ -10,6 +10,13 @@ import CellSample from './CellSample';
 
 export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", neighbors: number) {
     const index = tabName === "dead" ? 0 : 1
+
+    const cellSampleWrapperStyle: React.CSSProperties = {
+        margin: "auto",
+        width: 50,
+        height: 50,
+        padding: 15
+    };
 
     return function(props: IStyleSettingsPanelProps) {
         const handleApplyToAll = () => {
@@ -30,7 +37,9 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
         }
 
         return <div>
-            <CellSample {...props.styles[index][neighbors]}/>
+            <Paper square elevation={3} style={cellSampleWrapperStyle}>
+                <CellSample {...props.styles[index][neighbors]}/>
+            </Paper>
             <InputTitle>Size</InputTitle>
             <Slider 
                 value={props.styles[index][neighbors].size / 10}
