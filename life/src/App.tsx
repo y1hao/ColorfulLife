@@ -64,12 +64,12 @@ function App() {
        borderPolicy, 
        styles
     }
-    const blob = new Blob([JSON.stringify(game)], {type: "application/json;charset=utf-8"});
+    const blob = new Blob([JSON.stringify(game, undefined, 2)], {type: "application/json;charset=utf-8"});
     FileSaver.saveAs(blob, `${name}.json`);
   }
 
-  const handleReadFile = () => {
-
+  const handleReadFile = (data: string) => {
+    handleSetTemplate(JSON.parse(data) as IGame)
   }
 
   return <div className="App">

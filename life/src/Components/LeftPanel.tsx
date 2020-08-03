@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider, Select, MenuItem } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider, Select, MenuItem, Input } from '@material-ui/core';
 import { CreateSharp } from '@material-ui/icons';
 import InputTitle from './InputTitle';
 import { IGame } from '../Common/Interfaces';
@@ -18,7 +18,7 @@ interface IProps {
     template: IGame,
     setTemplate: (value: IGame) => void,
     saveFile: () => void,
-    readFile: () => void
+    readFile: (data: string) => void
 }
 
 const inputDialog = (
@@ -131,9 +131,24 @@ export default function LeftPanel(props: IProps) {
             </MenuItem>)
         }
         </Select>
-        <Button onClick={props.readFile}>
-            Load from file
+        <Button
+            component="label"
+        >
+            Read from file
+            <input type="file" accept="application/json" style={{display: "none"}} onChange={(e) => {
+                const files = e.target.files
+                const file = files ? files[0] : null
+                if (file) {
+                    const reader = new FileReader()
+                    reader.onload = (e) => {
+                        props.readFile(e.target?.result as string)
+                    }
+                    reader.readAsText(file, "utf-8")
+                }
+
+            }}/>  
         </Button>
+        
         <Button onClick={props.saveFile}>
             Save to file
         </Button>
