@@ -145,7 +145,6 @@ export default function LeftPanel(props: IProps) {
                     }
                     reader.readAsText(file, "utf-8")
                 }
-
             }}/>  
         </Button>
         
