@@ -48,6 +48,7 @@ function App() {
   }
 
   const handleSaveFile = () => {
+    setTime(new Date())
     const game: IGame = {
       name, 
       author, 
