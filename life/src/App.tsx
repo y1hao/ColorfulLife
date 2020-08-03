@@ -5,6 +5,7 @@ import { IGame, ICellStyle, BorderPolicy } from './Common/Interfaces';
 import LeftPanel from './Components/LeftPanel';
 import RightPanel from './Components/RightPanel';
 import Templates from './Common/Templates/Templates';
+import FileSaver from 'file-saver';
 
 function App() {
   const panelWidth = 300;
@@ -46,6 +47,31 @@ function App() {
     setStyles(JSON.parse(JSON.stringify(template.styles)));
   }
 
+  const handleSaveFile = () => {
+    const game: IGame = {
+      name, 
+      author, 
+      time, 
+      description, 
+      refreshFrequency, 
+      width, 
+      height, 
+      seeds, 
+      surviveRangeLower, 
+      surviveRangeUpper, 
+      reproductionRangeLower, 
+      reproductionRangeUpper,
+       borderPolicy, 
+       styles
+    }
+    const blob = new Blob([JSON.stringify(game)], {type: "application/json;charset=utf-8"});
+    FileSaver.saveAs(blob, `${name}.json`);
+  }
+
+  const handleReadFile = () => {
+
+  }
+
   return <div className="App">
     <LeftPanel
       panelWidth={panelWidth}
@@ -59,6 +85,8 @@ function App() {
       isPanelOpen={isPanelOpen}
       template={template}
       setTemplate={handleSetTemplate}
+      saveFile={handleSaveFile}
+      readFile={handleReadFile}
     />
     <CentralPanel
       isPlayMode={isPlayMode}

@@ -16,7 +16,9 @@ interface IProps {
     setDescription: (value: string) => void,
     isPanelOpen: boolean,
     template: IGame,
-    setTemplate: (value: IGame) => void
+    setTemplate: (value: IGame) => void,
+    saveFile: () => void,
+    readFile: () => void
 }
 
 const inputDialog = (
@@ -129,10 +131,10 @@ export default function LeftPanel(props: IProps) {
             </MenuItem>)
         }
         </Select>
-        <Button>
+        <Button onClick={props.readFile}>
             Load from file
         </Button>
-        <Button>
+        <Button onClick={props.saveFile}>
             Save to file
         </Button>
     </Drawer>
