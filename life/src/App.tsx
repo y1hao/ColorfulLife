@@ -66,7 +66,7 @@ function App() {
        styles
     }
     const blob = new Blob([JSON.stringify(game, undefined, 2)], {type: "application/json;charset=utf-8"});
-    FileSaver.saveAs(blob, `${name}.json`);
+    FileSaver.saveAs(blob, `${name.replace(/[^a-zA-Z0-9]/g, "")}.json`);
   }
 
   const handleReadFile = (data: string) => {
