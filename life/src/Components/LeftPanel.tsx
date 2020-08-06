@@ -35,6 +35,7 @@ const inputDialog = (
         id={id}
         autoFocus
         defaultValue={defaultValue} 
+        multiline
     />
     </DialogContent>
     <DialogActions>
