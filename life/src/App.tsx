@@ -62,8 +62,8 @@ function App() {
       surviveRangeUpper, 
       reproductionRangeLower, 
       reproductionRangeUpper,
-       borderPolicy, 
-       styles
+      borderPolicy, 
+      styles
     }
     const blob = new Blob([JSON.stringify(game, undefined, 2)], {type: "application/json;charset=utf-8"});
     FileSaver.saveAs(blob, `${name.replace(/[^a-zA-Z0-9]/g, "")}.json`);

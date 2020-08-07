@@ -54,7 +54,8 @@ const inputDialog = (
 export default function LeftPanel(props: IProps) {
     const classes = makeStyles({
         root: {
-            width: props.panelWidth
+            width: props.panelWidth,
+            padding: "15px 5px"
         },
         drawerPaper: {
             width: props.panelWidth,
