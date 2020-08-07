@@ -35,11 +35,9 @@ interface IProps {
 
 export default function RightPanel(props: IProps) {
     const classes = makeStyles({
-        root: {
-            width: props.panelWidth
-        },
         drawerPaper: {
             width: props.panelWidth,
+            padding: 15,
             border: 'none'
         },
         accordionDetails: {
@@ -205,7 +203,6 @@ export default function RightPanel(props: IProps) {
         variant="persistent" 
         anchor="right" 
         open={props.isPanelOpen} 
-        className={classes.root}
         classes={{paper: classes.drawerPaper}}
         PaperProps={{elevation: 10}}
         >
