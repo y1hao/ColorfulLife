@@ -36,6 +36,7 @@ interface IProps {
 export default function RightPanel(props: IProps) {
     const classes = makeStyles({
         drawerPaper: {
+            borderSizing: "border-box",
             width: props.panelWidth,
             padding: 15,
             border: 'none'

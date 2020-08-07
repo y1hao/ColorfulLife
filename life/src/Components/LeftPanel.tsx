@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider, Select, MenuItem, Input } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Typography, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Divider, Select, MenuItem, Input, List, ListItem } from '@material-ui/core';
 import { CreateSharp } from '@material-ui/icons';
 import InputTitle from './InputTitle';
 import { IGame } from '../Common/Interfaces';
@@ -22,41 +22,54 @@ interface IProps {
 }
 
 const inputDialog = (
-    isOpen: boolean, 
-    heading: string, 
-    id: string, 
+    isOpen: boolean,
+    heading: string,
+    id: string,
     defaultValue: string,
     setIsOpen: (value: boolean) => void,
     setValue: (value: string) => void
-) =>  <Dialog open={isOpen}>
-    <DialogTitle>{heading}</DialogTitle>
-    <DialogContent> 
-    <TextField
-        id={id}
-        autoFocus
-        defaultValue={defaultValue} 
-        multiline
-    />
-    </DialogContent>
-    <DialogActions>
-        <Button onClick={() => {
-            setValue((document.getElementById(id) as any).value);
-            setIsOpen(false);
-        }}>
-            Save
+) => <Dialog open={isOpen}>
+        <DialogTitle>{heading}</DialogTitle>
+        <DialogContent>
+            <TextField
+                id={id}
+                autoFocus
+                defaultValue={defaultValue}
+                multiline
+            />
+        </DialogContent>
+        <DialogActions>
+            <Button onClick={() => {
+                setValue((document.getElementById(id) as any).value);
+                setIsOpen(false);
+            }}>
+                Save
         </Button>
-        <Button onClick={() => setIsOpen(false)}>
-            Cancel
+            <Button onClick={() => setIsOpen(false)}>
+                Cancel
         </Button>
-    </DialogActions>
-</Dialog>
+        </DialogActions>
+    </Dialog>
 
 export default function LeftPanel(props: IProps) {
     const classes = makeStyles({
         drawerPaper: {
+            boxSizing: "border-box",
             width: props.panelWidth,
             padding: 15,
-            border: 'none'
+            height: "100vh",
+            border: 'none',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between"
+        },
+        listItem: {
+            width: "100%"
+        },
+        centered: {
+            display: "block",
+            textAlign: "center",
+            margin: "auto"
         }
     })();
 
@@ -65,89 +78,112 @@ export default function LeftPanel(props: IProps) {
     const [isDescriptionDialogOpen, setIsDescriptionDialogOpen] = useState<boolean>(false);
 
 
-    return <Drawer 
-            variant="persistent" 
-            open={props.isPanelOpen} 
-            classes={{paper: classes.drawerPaper}}
-            PaperProps={{elevation: 10}}
-            >
-        <InputTitle>Game Title</InputTitle>
-        <Typography variant="h4">
-            {props.name}
-            <CreateSharp fontSize="small" onClick={() => setIsNameDialogOpen(true)}/>
-        </Typography>
-        {
-            inputDialog(
-                isNameDialogOpen, 
-                "Game Title",
-                "GameTitleInput",
-                props.name, 
-                setIsNameDialogOpen,
-                props.setName)
-        }
-        <InputTitle>Author</InputTitle>
-        <Typography variant="body1">
-            {props.author}
-            <CreateSharp fontSize="inherit" onClick={() => setIsAuthorDialogOpen(true)}/>
-        </Typography>
-        {
-            inputDialog(
-                isAuthorDialogOpen, 
-                "Author Name",
-                "AuthorNameInput",
-                props.author, 
-                setIsAuthorDialogOpen,
-                props.setAuthor)
-        }
-        <Divider />
-        <InputTitle>Description</InputTitle>
-        <Typography variant="body1">
-            {props.description}
-            <CreateSharp fontSize="inherit" onClick={() => setIsDescriptionDialogOpen(true)}/>
-        </Typography>
-        {
-            inputDialog(
-                isDescriptionDialogOpen, 
-                "Game Description",
-                "DescriptionInput",
-                props.description, 
-                setIsDescriptionDialogOpen,
-                props.setDescription)
-        }
-
-        <InputTitle>Choose Template</InputTitle>
-        <Select 
-            value={props.template.name} 
-            onChange={(e) => {
-                const template = Templates.find(t => t.name === e.target.value as string)
-                props.setTemplate(template as IGame)
-            }}
-        >
-        {
-            Templates.map((v, i) => <MenuItem key={i} value={v.name}>
-                {v.name}
-            </MenuItem>)
-        }
-        </Select>
-        <Button
-            component="label"
-        >
-            Read from file
-            <input type="file" accept="application/json" style={{display: "none"}} onChange={(e) => {
-                const files = e.target.files
-                const file = files ? files[0] : null
-                if (file) {
-                    const reader = new FileReader()
-                    reader.onload = (e) => {
-                        props.readFile(e.target?.result as string)
+    return <Drawer
+        variant="persistent"
+        open={props.isPanelOpen}
+        classes={{ paper: classes.drawerPaper }}
+        PaperProps={{ elevation: 10 }}
+    >
+        <List>
+            <ListItem>
+                <div className={classes.listItem}>
+                    <InputTitle>Game Title</InputTitle>
+                    <Typography variant="h4" className={classes.centered}>
+                        {props.name}
+                        <CreateSharp fontSize="small" onClick={() => setIsNameDialogOpen(true)} />
+                    </Typography>
+                    {
+                        inputDialog(
+                            isNameDialogOpen,
+                            "Game Title",
+                            "GameTitleInput",
+                            props.name,
+                            setIsNameDialogOpen,
+                            props.setName)
                     }
-                    reader.readAsText(file, "utf-8")
-                }
-            }}/>  
-        </Button>
-        
-        <Button onClick={props.saveFile}>
-            Save to file
-        </Button>
+                </div>
+            </ListItem>
+            <ListItem>
+                <div className={classes.listItem}>
+                    <InputTitle>Author</InputTitle>
+                    <Typography variant="body1" className={classes.centered}>
+                        {props.author}
+                        <CreateSharp fontSize="inherit" onClick={() => setIsAuthorDialogOpen(true)} />
+                    </Typography>
+                    {
+                        inputDialog(
+                            isAuthorDialogOpen,
+                            "Author Name",
+                            "AuthorNameInput",
+                            props.author,
+                            setIsAuthorDialogOpen,
+                            props.setAuthor)
+                    }
+                </div>
+            </ListItem>
+            <ListItem>
+                <div className={classes.listItem}>
+                    <InputTitle>Description</InputTitle>
+                    <Typography variant="body1" className={classes.centered}>
+                        {props.description}
+                        <CreateSharp fontSize="inherit" onClick={() => setIsDescriptionDialogOpen(true)} />
+                    </Typography>
+                    {
+                        inputDialog(
+                            isDescriptionDialogOpen,
+                            "Game Description",
+                            "DescriptionInput",
+                            props.description,
+                            setIsDescriptionDialogOpen,
+                            props.setDescription)
+                    }
+                </div>
+            </ListItem>
+        </List>
+        <List>
+            <ListItem>
+                <div className={classes.listItem}>
+                    <InputTitle>Choose Template</InputTitle>
+                    <Select
+                        className={classes.centered}
+                        value={props.template.name}
+                        onChange={(e) => {
+                            const template = Templates.find(t => t.name === e.target.value as string)
+                            props.setTemplate(template as IGame)
+                        }}
+                    >
+                        {
+                            Templates.map((v, i) => <MenuItem key={i} value={v.name}>
+                                {v.name}
+                            </MenuItem>)
+                        }
+                    </Select>
+                </div>
+            </ListItem>
+            <ListItem>
+                <Button
+                    className={classes.centered}
+                    component="label"
+                >
+                    Read from file
+            <input type="file" accept="application/json" style={{ display: "none" }} onChange={(e) => {
+                        const files = e.target.files
+                        const file = files ? files[0] : null
+                        if (file) {
+                            const reader = new FileReader()
+                            reader.onload = (e) => {
+                                props.readFile(e.target?.result as string)
+                            }
+                            reader.readAsText(file, "utf-8")
+                        }
+                    }} />
+                </Button>
+            </ListItem>
+            <ListItem>
+                <Button onClick={props.saveFile} className={classes.centered}>
+                    Save to file
+                </Button>
+            </ListItem>
+        </List>
     </Drawer>
 }
