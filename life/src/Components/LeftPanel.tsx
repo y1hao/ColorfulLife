@@ -89,7 +89,7 @@ export default function LeftPanel(props: IProps) {
                 <div className={classes.listItem}>
                     <InputTitle>Game Title</InputTitle>
                     <Typography variant="h4" className={classes.centered}>
-                        {props.name}
+                        {props.name}&nbsp;
                         <CreateSharp fontSize="small" onClick={() => setIsNameDialogOpen(true)} />
                     </Typography>
                     {
@@ -107,7 +107,7 @@ export default function LeftPanel(props: IProps) {
                 <div className={classes.listItem}>
                     <InputTitle>Author</InputTitle>
                     <Typography variant="body1" className={classes.centered}>
-                        {props.author}
+                        {props.author}&nbsp;
                         <CreateSharp fontSize="inherit" onClick={() => setIsAuthorDialogOpen(true)} />
                     </Typography>
                     {
@@ -125,7 +125,7 @@ export default function LeftPanel(props: IProps) {
                 <div className={classes.listItem}>
                     <InputTitle>Description</InputTitle>
                     <Typography variant="body1" className={classes.centered}>
-                        {props.description}
+                        {props.description}&nbsp;
                         <CreateSharp fontSize="inherit" onClick={() => setIsDescriptionDialogOpen(true)} />
                     </Typography>
                     {
