@@ -39,7 +39,8 @@ const inputDialog = (
             />
         </DialogContent>
         <DialogActions>
-            <Button onClick={() => {
+            <Button
+                onClick={() => {
                 setValue((document.getElementById(id) as any).value);
                 setIsOpen(false);
             }}>
@@ -162,6 +163,7 @@ export default function LeftPanel(props: IProps) {
             </ListItem>
             <ListItem>
                 <Button
+                variant="outlined"
                     className={classes.centered}
                     component="label"
                 >
@@ -180,7 +182,9 @@ export default function LeftPanel(props: IProps) {
                 </Button>
             </ListItem>
             <ListItem>
-                <Button onClick={props.saveFile} className={classes.centered}>
+                <Button 
+                variant="outlined"
+                onClick={props.saveFile} className={classes.centered}>
                     Save to file
                 </Button>
             </ListItem>
