@@ -4,6 +4,7 @@ import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetai
 import InputTitle from './InputTitle';
 import StyleSettingsPanel from './StyleSettingsPanel';
 import Random from '../Common/Random';
+import { ExpandMore } from '@material-ui/icons';
 
 interface IProps {
     panelWidth: number,
@@ -225,7 +226,7 @@ export default function RightPanel(props: IProps) {
     >
         <Typography variant="h5">Settings</Typography>
         <Accordion>
-            <AccordionSummary>
+            <AccordionSummary expandIcon={<ExpandMore />}>
                 Game Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
@@ -233,7 +234,7 @@ export default function RightPanel(props: IProps) {
             </AccordionDetails>
         </Accordion>
         <Accordion>
-            <AccordionSummary>
+            <AccordionSummary expandIcon={<ExpandMore />}>
                 Seed Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
@@ -244,7 +245,8 @@ export default function RightPanel(props: IProps) {
             disabled={!props.isPlayMode}
             expanded={isStyleSettingsPanelExpanded && props.isPlayMode}
         >
-            <AccordionSummary onClick={() => setIsStyleSettingsPanelExpanded(!isStyleSettingsPanelExpanded)}>
+            <AccordionSummary  expandIcon={<ExpandMore />}
+                onClick={() => setIsStyleSettingsPanelExpanded(!isStyleSettingsPanelExpanded)}>
                 Cell Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
