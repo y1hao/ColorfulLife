@@ -14,6 +14,8 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
 
     const cellSampleWrapperStyle: React.CSSProperties = {
         margin: "auto",
+        marginTop: 20,
+        marginBottom: 20,
         width: 50,
         height: 50,
         padding: 15
@@ -129,7 +131,7 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
             </ListItem>
             <ListItem>
             <Button variant="contained" fullWidth onClick={handleApplyToAll}>
-                Apply to all {tabName === "dead" ? "dead" : "living"} cells
+                Apply to all {tabName}
             </Button>
             </ListItem>
             </List>

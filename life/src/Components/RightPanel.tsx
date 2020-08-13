@@ -44,6 +44,10 @@ export default function RightPanel(props: IProps) {
         },
         accordionDetails: {
             flexDirection: 'column'
+        },
+        heading: {
+            marginTop: 15,
+            marginBottom: 15
         }
     })();
 
@@ -224,8 +228,8 @@ export default function RightPanel(props: IProps) {
         classes={{ paper: classes.drawerPaper }}
         PaperProps={{ elevation: 10 }}
     >
-        <Typography variant="h5">Settings</Typography>
-        <Accordion>
+        <Typography variant="h5" className={classes.heading}>Settings</Typography>
+        <Accordion elevation={0}>
             <AccordionSummary expandIcon={<ExpandMore />}>
                 Game Settings
             </AccordionSummary>
@@ -233,7 +237,7 @@ export default function RightPanel(props: IProps) {
                 {GameSettingsPanel}
             </AccordionDetails>
         </Accordion>
-        <Accordion>
+        <Accordion elevation={0}>
             <AccordionSummary expandIcon={<ExpandMore />}>
                 Seed Settings
             </AccordionSummary>
@@ -242,6 +246,7 @@ export default function RightPanel(props: IProps) {
             </AccordionDetails>
         </Accordion>
         <Accordion
+            elevation={0}
             disabled={!props.isPlayMode}
             expanded={isStyleSettingsPanelExpanded && props.isPlayMode}
         >
