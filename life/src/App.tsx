@@ -6,6 +6,19 @@ import LeftPanel from './Components/LeftPanel';
 import RightPanel from './Components/RightPanel';
 import Templates from './Common/Templates/Templates';
 import FileSaver from 'file-saver';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { purple, green } from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: purple[500],
+    },
+    secondary: {
+      main: green[500],
+    },
+  },
+});
 
 function App() {
   const panelWidth = 300;
@@ -73,7 +86,7 @@ function App() {
     handleSetTemplate(JSON.parse(data) as IGame)
   }
 
-  return <div className="App">
+  return <ThemeProvider theme={theme}><div className="App">
     <LeftPanel
       panelWidth={panelWidth}
       name={name}
@@ -133,7 +146,7 @@ function App() {
       setIsPlayMode={setIsPlayMode}
       template={template}
     />
-  </div>
+  </div></ThemeProvider>
 }
 
 export default App;
