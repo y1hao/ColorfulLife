@@ -12,6 +12,8 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         const index = tabName === "dead" ? 0 : 1
         const cellSamplesWrapperStyle: React.CSSProperties = {
             margin: "auto",
+            marginTop: 20,
+            marginBottom: 20,
             display: "grid",
             gridTemplateRows: "1fr 1fr 1fr",
             gridTemplateColumns: "1fr 1fr 1fr",

@@ -9,7 +9,8 @@ import Random from '../Common/Random';
 const useStyles = makeStyles({
     tab: {
         minWidth: 0,
-        width: '50%'
+        width: '50%',
+        marginTop: 20
     }
 })
 
@@ -73,8 +74,14 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
             value={isGroupedByProperties} 
             onChange={(e) => setIsGroupedByProperties((e.target as HTMLInputElement).value === "properties")}
         >
-            <FormControlLabel value={"neighbors"} control={<Radio checked={!isGroupedByProperties}/>} label="Neighbors"/>  
-            <FormControlLabel value={"properties"} control={<Radio checked={isGroupedByProperties}/>} label="Properties"/>   
+            <FormControlLabel 
+                value={"neighbors"} 
+                control={<Radio checked={!isGroupedByProperties}/>} 
+                label="Neighbors"/>  
+            <FormControlLabel 
+                value={"properties"} 
+                control={<Radio checked={isGroupedByProperties}/>} 
+                label="Properties"/>   
         </RadioGroup>
         <Tabs
             value={tab}

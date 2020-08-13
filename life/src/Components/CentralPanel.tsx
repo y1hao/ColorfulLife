@@ -29,6 +29,9 @@ const useStyles = makeStyles({
     },
     paper: {
         overflow: "hidden"
+    },
+    button: {
+        marginTop: 20,
     }
 })
 
@@ -197,7 +200,7 @@ export default function CentralPanel(props: IProps) {
     }
 
     return <div className={classes.root}>
-    <Paper elevation={10} className={classes.paper}>
+    <Paper elevation={10} className={classes.paper} onClick={props.isPlayMode ? handlePlay : handleStop}>
         <Board 
             isPlayMode={props.isPlayMode} 
             map={map} 
@@ -207,8 +210,8 @@ export default function CentralPanel(props: IProps) {
     {   
         props.isPlayMode && (
             props.isPlaying
-            ? <Button onClick={handleStop} disabled={!props.isPlayMode}>Stop</Button>
-            : <Button onClick={handlePlay} disabled={!props.isPlayMode}>Play</Button>
+            ? <Button variant="contained" className={classes.button} color="primary" onClick={handleStop} disabled={!props.isPlayMode}>Stop</Button>
+            : <Button variant="contained" className={classes.button} color="secondary" onClick={handlePlay} disabled={!props.isPlayMode}>Play</Button>
         ) 
     }
     </div>
