@@ -210,8 +210,8 @@ export default function CentralPanel(props: IProps) {
     {   
         props.isPlayMode && (
             props.isPlaying
-            ? <Button variant="contained" className={classes.button} color="primary" onClick={handleStop} disabled={!props.isPlayMode}>Stop</Button>
-            : <Button variant="contained" className={classes.button} color="secondary" onClick={handlePlay} disabled={!props.isPlayMode}>Play</Button>
+            ? <Button variant="contained" className={classes.button} color="secondary" onClick={handleStop} disabled={!props.isPlayMode}>Stop</Button>
+            : <Button variant="contained" className={classes.button} color="primary" onClick={handlePlay} disabled={!props.isPlayMode}>Play</Button>
         ) 
     }
     </div>

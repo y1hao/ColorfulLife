@@ -174,12 +174,12 @@ export default function RightPanel(props: IProps) {
         </RadioGroup>
         <List>
         <ListItem>
-            <Button variant="contained" fullWidth onClick={handleResetGame}>
+            <Button variant="contained" fullWidth color="primary" onClick={handleResetGame}>
                 Reset
         </Button>
         </ListItem>
         <ListItem>
-            <Button variant="contained" fullWidth onClick={handleRandomGame}>
+            <Button variant="contained" fullWidth color="primary" onClick={handleRandomGame}>
                 Random
         </Button>
         </ListItem>
@@ -191,22 +191,22 @@ export default function RightPanel(props: IProps) {
             <ListItem>
         {
             props.isPlayMode
-                ? <Button variant="contained" fullWidth onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
-                : <Button variant="contained" fullWidth onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
+                ? <Button variant="contained" color="primary" fullWidth onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
+                : <Button variant="contained" color="primary" fullWidth onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
         }
         </ListItem>
         <ListItem>
-        <Button variant="contained" fullWidth onClick={handleClearSeeds}>
+        <Button variant="contained" fullWidth color="primary" onClick={handleClearSeeds}>
             Clear All
         </Button>
         </ListItem>
         <ListItem>
-        <Button variant="contained" fullWidth onClick={handleResetSeeds}>
+        <Button variant="contained" fullWidth color="primary" onClick={handleResetSeeds}>
             Reset
         </Button>
         </ListItem>
         <ListItem>
-        <Button variant="contained" fullWidth onClick={handleRandomSeeds}>
+        <Button variant="contained" fullWidth color="primary" onClick={handleRandomSeeds}>
             Random
         </Button>
         </ListItem>

@@ -39,7 +39,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         }
         <List>
             <ListItem>
-        <Button variant="contained" fullWidth onClick={() => {
+        <Button variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].size = props.template.styles[index][i].size;
             }
@@ -49,7 +49,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         </Button>
         </ListItem>
         <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].size = Random.cellSize();
             }
@@ -79,7 +79,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         }
         <List>
             <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].borderRadius = props.template.styles[index][i].borderRadius;
             }
@@ -89,7 +89,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         </Button>
         </ListItem>
         <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].borderRadius = Random.borderRadius();
             }
@@ -119,7 +119,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         }
         <List>
             <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].elevation = props.template.styles[index][i].elevation;
             }
@@ -129,7 +129,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         </Button>
         </ListItem>
         <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].elevation = Random.elevation();
             }
@@ -159,7 +159,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         }
         <List>
             <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].borderWidth = props.template.styles[index][i].borderWidth;
             }
@@ -169,7 +169,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         </Button>
         </ListItem>
         <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].borderWidth = Random.borderWidth();
             }
@@ -196,7 +196,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         }
         <List>
             <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].color = props.template.styles[index][i].color;
             }
@@ -206,7 +206,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         </Button>
         </ListItem>
         <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].color = Random.color();
             }
@@ -233,7 +233,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         }
         <List>
             <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].backgroundColor = props.template.styles[index][i].backgroundColor;
             }
@@ -243,7 +243,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         </Button>
         </ListItem>
         <ListItem>
-        <Button variant="contained" fullWidth  onClick={() => {
+        <Button variant="contained" fullWidth color="primary"  onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].backgroundColor = Random.color();
             }
@@ -270,7 +270,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         }
         <List>
             <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].borderColor = props.template.styles[index][i].borderColor;
             }
@@ -280,7 +280,7 @@ export default function makeSettingsByPropertiesPanel(tabName: "alive" | "dead",
         </Button>
         </ListItem>
         <ListItem>
-        <Button  variant="contained" fullWidth onClick={() => {
+        <Button  variant="contained" fullWidth color="primary" onClick={() => {
             for (let i = 0; i < 9; i++) {
                 props.styles[index][i].borderColor = Random.color();
             }

@@ -120,17 +120,17 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
             />
             <List>
                 <ListItem>
-             <Button variant="contained" fullWidth onClick={handleReset}>
+             <Button variant="contained" fullWidth color="primary" onClick={handleReset}>
                 Reset
             </Button>
             </ListItem>
             <ListItem>
-            <Button variant="contained" fullWidth onClick={handleRandom}>
+            <Button variant="contained" fullWidth color="primary" onClick={handleRandom}>
                 Random
             </Button>
             </ListItem>
             <ListItem>
-            <Button variant="contained" fullWidth onClick={handleApplyToAll}>
+            <Button variant="contained" fullWidth color="primary" onClick={handleApplyToAll}>
                 Apply to all {tabName}
             </Button>
             </ListItem>

@@ -7,15 +7,15 @@ import RightPanel from './Components/RightPanel';
 import Templates from './Common/Templates/Templates';
 import FileSaver from 'file-saver';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-import { purple, green, blue } from '@material-ui/core/colors';
+import { purple, green, blue, yellow, orange } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: blue[500],
+      main: green[600],
     },
     secondary: {
-      main: green[500],
+      main: orange[500],
     }
   },
 });
