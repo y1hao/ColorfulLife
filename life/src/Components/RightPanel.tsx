@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { ICellStyle, BorderPolicy, IGame } from '../Common/Interfaces';
-import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio, Paper, Tabs, Tab, ListItem, List } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio, Paper, Tabs, Tab, ListItem, List, Divider } from '@material-ui/core';
 import InputTitle from './InputTitle';
 import StyleSettingsPanel from './StyleSettingsPanel';
 import Random from '../Common/Random';
@@ -48,6 +48,9 @@ export default function RightPanel(props: IProps) {
         heading: {
             marginTop: 15,
             marginBottom: 15
+        },
+        accordionSummary: {
+            fontSize: "110%"
         }
     })();
 
@@ -184,6 +187,7 @@ export default function RightPanel(props: IProps) {
         </Button>
         </ListItem>
     </List>
+    <Divider />
     </div>
 
     const SeedsSettingsPanal = <div>
@@ -219,6 +223,7 @@ export default function RightPanel(props: IProps) {
             max={9}
             onChange={(e, v) => setRandomSeedsDensity(v as number)}
         />
+        <Divider />
     </div>
 
     return <Drawer
@@ -230,7 +235,7 @@ export default function RightPanel(props: IProps) {
     >
         <Typography variant="h5" className={classes.heading}>Settings</Typography>
         <Accordion elevation={0}>
-            <AccordionSummary expandIcon={<ExpandMore />}>
+            <AccordionSummary expandIcon={<ExpandMore />} className={classes.accordionSummary}>
                 Game Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
@@ -238,7 +243,7 @@ export default function RightPanel(props: IProps) {
             </AccordionDetails>
         </Accordion>
         <Accordion elevation={0}>
-            <AccordionSummary expandIcon={<ExpandMore />}>
+            <AccordionSummary expandIcon={<ExpandMore />} className={classes.accordionSummary}>
                 Seed Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
@@ -250,7 +255,8 @@ export default function RightPanel(props: IProps) {
             disabled={!props.isPlayMode}
             expanded={isStyleSettingsPanelExpanded && props.isPlayMode}
         >
-            <AccordionSummary  expandIcon={<ExpandMore />}
+            <AccordionSummary expandIcon={<ExpandMore />}
+                className={classes.accordionSummary}
                 onClick={() => setIsStyleSettingsPanelExpanded(!isStyleSettingsPanelExpanded)}>
                 Cell Settings
             </AccordionSummary>
@@ -260,6 +266,7 @@ export default function RightPanel(props: IProps) {
                     styles={props.styles}
                     setStyles={props.setStyles}
                 />
+                <Divider />
             </AccordionDetails>
         </Accordion>
     </Drawer>
