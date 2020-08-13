@@ -76,11 +76,11 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
         >
             <FormControlLabel 
                 value={"neighbors"} 
-                control={<Radio checked={!isGroupedByProperties}/>} 
+                control={<Radio color="primary" checked={!isGroupedByProperties}/>} 
                 label="Neighbors"/>  
             <FormControlLabel 
                 value={"properties"} 
-                control={<Radio checked={isGroupedByProperties}/>} 
+                control={<Radio color="primary" checked={isGroupedByProperties}/>} 
                 label="Properties"/>   
         </RadioGroup>
         <Tabs

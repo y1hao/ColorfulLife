@@ -168,9 +168,9 @@ export default function RightPanel(props: IProps) {
             Boarder Setting
         </InputTitle>
         <RadioGroup value={props.borderPolicy} onChange={(e, v) => props.setBorderPolicy(v as "alive" | "dead" | "roll")}>
-            <FormControlLabel value="alive" control={<Radio />} label="Alive" />
-            <FormControlLabel value="dead" control={<Radio />} label="Dead" />
-            <FormControlLabel value="roll" control={<Radio />} label="Roll over" />
+            <FormControlLabel value="alive" control={<Radio color="primary" />} label="Alive" />
+            <FormControlLabel value="dead" control={<Radio color="primary" />} label="Dead" />
+            <FormControlLabel value="roll" control={<Radio color="primary" />} label="Roll over" />
         </RadioGroup>
         <List>
         <ListItem>
