@@ -163,7 +163,8 @@ export default function LeftPanel(props: IProps) {
             </ListItem>
             <ListItem>
                 <Button
-                variant="outlined"
+                variant="contained"
+                fullWidth
                     className={classes.centered}
                     component="label"
                 >
@@ -183,7 +184,8 @@ export default function LeftPanel(props: IProps) {
             </ListItem>
             <ListItem>
                 <Button 
-                variant="outlined"
+                variant="contained"
+                fullWidth
                 onClick={props.saveFile} className={classes.centered}>
                     Save to file
                 </Button>

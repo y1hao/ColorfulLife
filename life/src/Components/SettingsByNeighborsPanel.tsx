@@ -1,7 +1,7 @@
 import React from 'react';
 import { IStyleSettingsPanelProps } from '../Common/Interfaces';
 import InputTitle from './InputTitle';
-import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles, Button, StylesProvider, Paper } from '@material-ui/core';
+import { Slider, Accordion, AccordionSummary, AccordionDetails, makeStyles, Button, StylesProvider, Paper, List, ListItem } from '@material-ui/core';
 import { ChromePicker } from 'react-color';
 import classes from '*.module.css';
 import ColorPicker from './ColorPicker';
@@ -116,15 +116,23 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
                     props.setStyles([...props.styles])
                 }}
             />
-             <Button onClick={handleReset}>
+            <List>
+                <ListItem>
+             <Button variant="contained" fullWidth onClick={handleReset}>
                 Reset
             </Button>
-            <Button onClick={handleRandom}>
+            </ListItem>
+            <ListItem>
+            <Button variant="contained" fullWidth onClick={handleRandom}>
                 Random
             </Button>
-            <Button onClick={handleApplyToAll}>
+            </ListItem>
+            <ListItem>
+            <Button variant="contained" fullWidth onClick={handleApplyToAll}>
                 Apply to all {tabName === "dead" ? "dead" : "living"} cells
             </Button>
+            </ListItem>
+            </List>
         </div>
     }
 }

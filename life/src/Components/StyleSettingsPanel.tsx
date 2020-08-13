@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ICellStyle, IPropertyName, IStyleSettingsPanelProps } from '../Common/Interfaces';
-import { Tabs, makeStyles, Tab, Button, Slider, Popover, Modal, Switch, FormControlLabel, Select, MenuItem, RadioGroup, Radio } from '@material-ui/core';
+import { Tabs, makeStyles, Tab, Button, Slider, Popover, Modal, Switch, FormControlLabel, Select, MenuItem, RadioGroup, Radio, List, ListItem } from '@material-ui/core';
 import InputTitle from './InputTitle';
 import makeSettingsByPropertiesPanel from './SettingsByPropertiesPanel';
 import makeSettingsByNeighborsPanel from './SettingsByNeighborsPanel';
@@ -68,12 +68,6 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     </div>
 
     return <div>
-        <Button onClick={handleReset}>
-            Reset
-        </Button>
-        <Button onClick={handleRandom}>
-            Random
-        </Button>
         <InputTitle>Group by:</InputTitle>
         <RadioGroup 
             value={isGroupedByProperties} 
@@ -113,5 +107,17 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
             : makeSettingsByNeighborsPanel("dead", neighbors)(props)
         }
         </div>
+        <List>
+            <ListItem>
+        <Button variant="contained" fullWidth onClick={handleReset}>
+            Reset All
+        </Button>
+        </ListItem>
+        <ListItem>
+        <Button variant="contained" fullWidth onClick={handleRandom}>
+            Randomise All
+        </Button>
+        </ListItem>
+        </List>
     </div>
 }

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { ICellStyle, BorderPolicy, IGame } from '../Common/Interfaces';
-import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio, Paper, Tabs, Tab } from '@material-ui/core';
+import { Drawer, Button, makeStyles, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, RadioGroup, FormControlLabel, Radio, Paper, Tabs, Tab, ListItem, List } from '@material-ui/core';
 import InputTitle from './InputTitle';
 import StyleSettingsPanel from './StyleSettingsPanel';
 import Random from '../Common/Random';
@@ -42,7 +42,7 @@ export default function RightPanel(props: IProps) {
             border: 'none'
         },
         accordionDetails: {
-            flexDirection: 'column' 
+            flexDirection: 'column'
         }
     })();
 
@@ -64,7 +64,7 @@ export default function RightPanel(props: IProps) {
     }
 
     const handleResetGame = () => {
-        props.setBorderPolicy(props.template.borderPolicy); 
+        props.setBorderPolicy(props.template.borderPolicy);
         setSize(props.template.height);
         props.setRefreshFrequency(props.template.refreshFrequency);
         props.setReproductionRangeLower(props.template.reproductionRangeLower);
@@ -167,31 +167,47 @@ export default function RightPanel(props: IProps) {
             <FormControlLabel value="dead" control={<Radio />} label="Dead" />
             <FormControlLabel value="roll" control={<Radio />} label="Roll over" />
         </RadioGroup>
-        <Button onClick={handleResetGame}>
-            Reset
+        <List>
+        <ListItem>
+            <Button variant="contained" fullWidth onClick={handleResetGame}>
+                Reset
         </Button>
-        <Button onClick={handleRandomGame}>
-            Random
+        </ListItem>
+        <ListItem>
+            <Button variant="contained" fullWidth onClick={handleRandomGame}>
+                Random
         </Button>
+        </ListItem>
+    </List>
     </div>
 
     const SeedsSettingsPanal = <div>
-    {
-        props.isPlayMode
-        ? <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
-        : <Button onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
-    } 
-        <Button onClick={handleClearSeeds}>
+        <List>
+            <ListItem>
+        {
+            props.isPlayMode
+                ? <Button variant="contained" fullWidth onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Set Seeds</Button>
+                : <Button variant="contained" fullWidth onClick={() => props.setIsPlayMode(!props.isPlayMode)}>Done</Button>
+        }
+        </ListItem>
+        <ListItem>
+        <Button variant="contained" fullWidth onClick={handleClearSeeds}>
             Clear All
         </Button>
-        <Button onClick={handleResetSeeds}>
+        </ListItem>
+        <ListItem>
+        <Button variant="contained" fullWidth onClick={handleResetSeeds}>
             Reset
         </Button>
-        <Button onClick={handleRandomSeeds}>
+        </ListItem>
+        <ListItem>
+        <Button variant="contained" fullWidth onClick={handleRandomSeeds}>
             Random
         </Button>
+        </ListItem>
+        </List>
         <InputTitle>Random Seeds Density</InputTitle>
-        <Slider 
+        <Slider
             value={randomSeedsDensity}
             valueLabelDisplay="auto"
             min={1}
@@ -200,20 +216,20 @@ export default function RightPanel(props: IProps) {
         />
     </div>
 
-    return <Drawer 
-        variant="persistent" 
-        anchor="right" 
-        open={props.isPanelOpen} 
-        classes={{paper: classes.drawerPaper}}
-        PaperProps={{elevation: 10}}
-        >
+    return <Drawer
+        variant="persistent"
+        anchor="right"
+        open={props.isPanelOpen}
+        classes={{ paper: classes.drawerPaper }}
+        PaperProps={{ elevation: 10 }}
+    >
         <Typography variant="h5">Settings</Typography>
         <Accordion>
             <AccordionSummary>
                 Game Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
-                { GameSettingsPanel }
+                {GameSettingsPanel}
             </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -221,18 +237,18 @@ export default function RightPanel(props: IProps) {
                 Seed Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
-                { SeedsSettingsPanal }
+                {SeedsSettingsPanal}
             </AccordionDetails>
         </Accordion>
-        <Accordion 
-            disabled={!props.isPlayMode} 
+        <Accordion
+            disabled={!props.isPlayMode}
             expanded={isStyleSettingsPanelExpanded && props.isPlayMode}
         >
             <AccordionSummary onClick={() => setIsStyleSettingsPanelExpanded(!isStyleSettingsPanelExpanded)}>
                 Cell Settings
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
-                <StyleSettingsPanel 
+                <StyleSettingsPanel
                     template={props.template}
                     styles={props.styles}
                     setStyles={props.setStyles}
