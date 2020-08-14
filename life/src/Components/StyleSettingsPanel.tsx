@@ -11,6 +11,9 @@ const useStyles = makeStyles({
         minWidth: 0,
         width: '50%',
         marginTop: 20
+    },
+    selector: {
+        marginTop: 20
     }
 })
 
@@ -37,6 +40,7 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
 
     const NeighborsSelector = <div>
         <FormControlLabel
+            className={classes.selector}
             labelPlacement="start"
             label="Neighbors: "
             control={
@@ -52,6 +56,7 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
 
     const PropertyNameSelector = <div>
         <FormControlLabel 
+            className={classes.selector}
             labelPlacement="start"
             label="Property: "
             control={
