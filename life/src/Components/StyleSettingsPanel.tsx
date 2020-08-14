@@ -14,6 +14,14 @@ const useStyles = makeStyles({
   },
   selector: {
     marginTop: 20
+  },
+  labelWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  label: {
+    fontSize: 14
   }
 });
 
@@ -79,14 +87,20 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
       value={isGroupedByProperties}
       onChange={(e) => setIsGroupedByProperties((e.target as HTMLInputElement).value === "properties")}
     >
-      <FormControlLabel
-        value={"neighbors"}
-        control={<Radio color="primary" checked={!isGroupedByProperties} />}
-        label="Neighbors" />
-      <FormControlLabel
-        value={"properties"}
-        control={<Radio color="primary" checked={isGroupedByProperties} />}
-        label="Properties" />
+      <div className={classes.labelWrapper}>
+        <FormControlLabel
+          labelPlacement="start"
+          classes={{label: classes.label}}
+          value={"neighbors"}
+          control={<Radio color="primary" checked={!isGroupedByProperties} />}
+          label="Neighbors" />
+        <FormControlLabel
+          labelPlacement="start"
+          classes={{label: classes.label}}
+          value={"properties"}
+          control={<Radio color="primary" checked={isGroupedByProperties} />}
+          label="Properties" />
+      </div>
     </RadioGroup>
     <Tabs
       value={tab}

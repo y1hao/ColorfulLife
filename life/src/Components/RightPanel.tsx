@@ -51,6 +51,9 @@ export default function RightPanel(props: IProps) {
     },
     accordionSummary: {
       fontSize: '110%'
+    },
+    label: {
+      fontSize: 14
     }
   })();
 
@@ -171,9 +174,9 @@ export default function RightPanel(props: IProps) {
       Boarder Setting
     </InputTitle>
     <RadioGroup value={props.borderPolicy} onChange={(e, v) => props.setBorderPolicy(v as "alive" | "dead" | "roll")}>
-      <FormControlLabel value="alive" control={<Radio color="primary" />} label="Alive" />
-      <FormControlLabel value="dead" control={<Radio color="primary" />} label="Dead" />
-      <FormControlLabel value="roll" control={<Radio color="primary" />} label="Roll over" />
+      <FormControlLabel value="alive" classes={{label: classes.label}} control={<Radio color="primary" />} label="Alive" />
+      <FormControlLabel value="dead" classes={{label: classes.label}} control={<Radio color="primary" />} label="Dead" />
+      <FormControlLabel value="roll" classes={{label: classes.label}} control={<Radio color="primary" />} label="Roll over" />
     </RadioGroup>
     <List>
       <ListItem>
