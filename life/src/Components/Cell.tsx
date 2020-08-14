@@ -9,10 +9,16 @@ interface IProps {
 
 export default function Cell(props: IProps) {
   const classes = makeStyles({
-    container: {
+    playContainer: {
       width: props.config.defaultSize,
       height: props.config.defaultSize,
       backgroundColor: props.config.backgroundColor,
+      display: 'grid'
+    },
+    setContainer: {
+      width: props.config.defaultSize,
+      height: props.config.defaultSize,
+      backgroundColor: 'white',
       display: 'grid'
     },
     cell: {
@@ -53,7 +59,7 @@ export default function Cell(props: IProps) {
   })();
 
   return (
-    <div className={classes.container} onClick={() => {
+    <div className={props.isPlayMode ? classes.playContainer : classes.setContainer} onClick={() => {
       if (!props.isPlayMode) {
         props.config.setIsAlive(!props.config.isAlive)
       }
