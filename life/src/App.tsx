@@ -7,7 +7,7 @@ import RightPanel from './Components/RightPanel';
 import Templates from './Common/Templates/Templates';
 import FileSaver from 'file-saver';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-import { purple, green, blue, yellow, orange } from '@material-ui/core/colors';
+import { green, orange } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
   palette: {
@@ -17,7 +17,7 @@ const theme = createMuiTheme({
     secondary: {
       main: orange[500],
     }
-  },
+  }
 });
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
     , [styles, setStyles] = useState<ICellStyle[][]>(JSON.parse(JSON.stringify(template.styles)))
     , [isPlayMode, setIsPlayMode] = useState<boolean>(true)
     , [isPlaying, setIsPlaying] = useState<boolean>(false)
-    , [isPanelOpen, setIsPanelOpen] = useState<boolean>(true)
+    , [isPanelOpen, setIsPanelOpen] = useState<boolean>(true);
 
   const handleSetTemplate = (template: IGame) => {
     setTemplate(template);
@@ -58,7 +58,7 @@ function App() {
     setReproductionRangeUpper(template.reproductionRangeUpper);
     setBorderPolicy(template.borderPolicy);
     setStyles(JSON.parse(JSON.stringify(template.styles)));
-  }
+  };
 
   const handleSaveFile = () => {
     setTime(new Date())
@@ -77,14 +77,14 @@ function App() {
       reproductionRangeUpper,
       borderPolicy,
       styles
-    }
+    };
     const blob = new Blob([JSON.stringify(game, undefined, 2)], { type: "application/json;charset=utf-8" });
     FileSaver.saveAs(blob, `${name.replace(/[^a-zA-Z0-9]/g, "")}.json`);
   }
 
   const handleReadFile = (data: string) => {
     handleSetTemplate(JSON.parse(data) as IGame)
-  }
+  };
 
   return <ThemeProvider theme={theme}>
     <div className="App">
