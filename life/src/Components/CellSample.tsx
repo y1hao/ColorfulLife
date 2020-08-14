@@ -18,7 +18,7 @@ export default function CellSample(props: ICellStyle) {
     width: `${props.size}%`,
     height: `${props.size}%`,
     backgroundColor: props.color,
-    border: `solid ${props.borderColor} ${props.borderWidth / 2}px`,
+    border: `solid ${props.borderColor} ${props.borderWidth}`,
     boxShadow: `black 0 0 ${props.elevation}px`,
     borderRadius: `${props.borderRadius}%`
   };
