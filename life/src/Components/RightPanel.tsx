@@ -50,7 +50,7 @@ export default function RightPanel(props: IProps) {
       marginBottom: 15
     },
     accordionSummary: {
-      fontSize: '110%'
+      fontSize: '112%'
     },
     label: {
       fontSize: 14

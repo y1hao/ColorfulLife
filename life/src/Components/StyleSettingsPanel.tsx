@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IPropertyName, IStyleSettingsPanelProps } from '../Common/Interfaces';
-import { Tabs, makeStyles, Tab, Button, FormControlLabel, Select, MenuItem, RadioGroup, Radio, List, ListItem, Divider } from '@material-ui/core';
+import { Tabs, makeStyles, Tab, Button, FormControlLabel, Select, MenuItem, RadioGroup, Radio, List, ListItem, Divider, Paper } from '@material-ui/core';
 import InputTitle from './InputTitle';
 import makeSettingsByPropertiesPanel from './SettingsByPropertiesPanel';
 import makeSettingsByNeighborsPanel from './SettingsByNeighborsPanel';
@@ -12,8 +12,11 @@ const useStyles = makeStyles({
     width: '50%',
     marginTop: 20
   },
-  selector: {
-    marginTop: 20
+  selectorWrapper: {
+    marginTop: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   labelWrapper: {
     display: 'flex',
@@ -46,39 +49,27 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
     props.setStyles(JSON.parse(JSON.stringify(props.template.styles)))
   };
 
-  const NeighborsSelector = <div>
-    <FormControlLabel
-      className={classes.selector}
-      labelPlacement="start"
-      label="Neighbors: "
-      control={
-        <Select value={neighbors} onChange={(e) => setNeighbors(e.target.value as number)}>
-          {
-            new Array(9).fill(0)
-              .map((v, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)
-          }
-        </Select>
-      }
-    />
+  const NeighborsSelector = <div className={classes.selectorWrapper}>
+    <InputTitle>Neighbors</InputTitle>
+      <Select value={neighbors} onChange={(e) => setNeighbors(e.target.value as number)}>
+        {
+          new Array(9).fill(0)
+            .map((v, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)
+        }
+      </Select>
   </div>
 
-  const PropertyNameSelector = <div>
-    <FormControlLabel
-      className={classes.selector}
-      labelPlacement="start"
-      label="Property: "
-      control={
-        <Select value={propertyName} onChange={(e) => setPropertyName(e.target.value as IPropertyName)}>
-          <MenuItem value="size">Size</MenuItem>
-          <MenuItem value="shape">Shape</MenuItem>
-          <MenuItem value="elevation">Elevation</MenuItem>
-          <MenuItem value="borderWidth">Border Width</MenuItem>
-          <MenuItem value="color">Color</MenuItem>
-          <MenuItem value="background">Background Color</MenuItem>
-          <MenuItem value="borderColor">Border Color</MenuItem>
-        </Select>
-      }
-    />
+  const PropertyNameSelector = <div className={classes.selectorWrapper}>
+    <InputTitle>Property</InputTitle>
+      <Select value={propertyName} onChange={(e) => setPropertyName(e.target.value as IPropertyName)}>
+        <MenuItem value="size">Size</MenuItem>
+        <MenuItem value="shape">Shape</MenuItem>
+        <MenuItem value="elevation">Elevation</MenuItem>
+        <MenuItem value="borderWidth">Border Width</MenuItem>
+        <MenuItem value="color">Color</MenuItem>
+        <MenuItem value="background">Background Color</MenuItem>
+        <MenuItem value="borderColor">Border Color</MenuItem>
+      </Select>
   </div>
 
   return <div>
@@ -106,7 +97,7 @@ export default function StyleSettingsPanel(props: IStyleSettingsPanelProps) {
       value={tab}
       onChange={(e, v) => setTab(v)}
     >
-      <Tab label="Alive" className={classes.tab} />
+      <Tab label="Alive" className={classes.tab}/>
       <Tab label="Dead" className={classes.tab} />
     </Tabs>
     <div hidden={tab !== 0}>

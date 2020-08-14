@@ -202,7 +202,7 @@ export default function CentralPanel(props: IProps) {
   }
 
   return <div className={classes.root}>
-    <Paper elevation={10} className={classes.paper} onClick={props.isPlayMode ? handlePlay : handleStop}>
+    <Paper elevation={10} className={classes.paper}>
       <Board
         isPlayMode={props.isPlayMode}
         map={map}
