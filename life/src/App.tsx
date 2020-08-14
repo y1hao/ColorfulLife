@@ -43,21 +43,23 @@ function App() {
     , [isPanelOpen, setIsPanelOpen] = useState<boolean>(true);
 
   const handleSetTemplate = (template: IGame) => {
-    setTemplate(template);
-    setName(template.name);
-    setAuthor(template.author);
-    setTime(template.time);
-    setDescription(template.description);
-    setRefreshFrequency(template.refreshFrequency);
-    setWidth(template.width);
-    setHeight(template.height);
-    setSeeds(JSON.parse(JSON.stringify(template.seeds)));
-    setSurviveRangeLower(template.surviveRangeLower);
-    setSurviveRangeUpper(template.surviveRangeUpper);
-    setReproductionRangeLower(template.reproductionRangeLower);
-    setReproductionRangeUpper(template.reproductionRangeUpper);
-    setBorderPolicy(template.borderPolicy);
-    setStyles(JSON.parse(JSON.stringify(template.styles)));
+    setTemplate(() => {
+      setName(template.name);
+      setAuthor(template.author);
+      setTime(template.time);
+      setDescription(template.description);
+      setRefreshFrequency(template.refreshFrequency);
+      setWidth(template.width);
+      setHeight(template.height);
+      setSeeds(JSON.parse(JSON.stringify(template.seeds)));
+      setSurviveRangeLower(template.surviveRangeLower);
+      setSurviveRangeUpper(template.surviveRangeUpper);
+      setReproductionRangeLower(template.reproductionRangeLower);
+      setReproductionRangeUpper(template.reproductionRangeUpper);
+      setBorderPolicy(template.borderPolicy);
+      setStyles(JSON.parse(JSON.stringify(template.styles)));
+      return template;
+    });
   };
 
   const handleSaveFile = () => {
