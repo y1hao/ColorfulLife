@@ -1,11 +1,13 @@
-{
+import { IGame } from "../Interfaces";
+
+const kandinsky: IGame = {
   "name": "Kandinsky",
   "author": "Yihao",
-  "time": "2020-08-31T12:00:00.000Z",
+  "time": new Date("2020-08-31T12:00:00.000Z"),
   "description": "This is an empty template",
   "refreshFrequency": 3,
-  "width": 15,
-  "height": 15,
+  "width": 9,
+  "height": 9,
   "seeds": [
     [
       true,
@@ -16,12 +18,6 @@
       true,
       true,
       true,
-      true,
-      false,
-      false,
-      false,
-      true,
-      true,
       true
     ],
     [
@@ -33,13 +29,7 @@
       false,
       true,
       false,
-      true,
-      true,
-      false,
-      false,
-      false,
-      false,
-      false
+      true
     ],
     [
       false,
@@ -50,13 +40,7 @@
       true,
       false,
       true,
-      true,
-      false,
-      true,
-      true,
-      false,
-      true,
-      false
+      true
     ],
     [
       true,
@@ -66,12 +50,6 @@
       false,
       false,
       true,
-      false,
-      true,
-      true,
-      true,
-      false,
-      false,
       false,
       true
     ],
@@ -84,63 +62,39 @@
       true,
       false,
       true,
-      true,
-      false,
-      false,
-      true,
-      false,
-      true,
-      false
-    ],
-    [
-      false,
-      true,
-      true,
-      true,
-      true,
-      false,
-      true,
-      true,
-      false,
-      true,
-      false,
-      false,
-      false,
-      true,
-      false
-    ],
-    [
-      false,
-      false,
-      true,
-      false,
-      false,
-      true,
-      true,
-      true,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
       true
     ],
     [
       false,
       true,
       true,
-      false,
-      true,
-      false,
       true,
       true,
       false,
       true,
       true,
+      false
+    ],
+    [
+      false,
       false,
       true,
       false,
+      false,
+      true,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      true,
+      false,
+      true,
+      true,
       false
     ],
     [
@@ -152,114 +106,6 @@
       false,
       true,
       false,
-      true,
-      true,
-      true,
-      false,
-      true,
-      false,
-      true
-    ],
-    [
-      false,
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      true,
-      true,
-      true,
-      false,
-      false,
-      true,
-      false,
-      true
-    ],
-    [
-      true,
-      true,
-      true,
-      false,
-      false,
-      false,
-      false,
-      true,
-      true,
-      false,
-      false,
-      true,
-      false,
-      true,
-      false
-    ],
-    [
-      false,
-      true,
-      false,
-      false,
-      true,
-      false,
-      true,
-      false,
-      false,
-      true,
-      false,
-      false,
-      true,
-      false,
-      false
-    ],
-    [
-      true,
-      true,
-      true,
-      false,
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      true,
-      false,
-      true,
-      true,
-      true
-    ],
-    [
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      true,
-      true,
-      true,
-      false,
-      false,
-      true,
-      true,
-      false,
-      false
-    ],
-    [
-      true,
-      true,
-      false,
-      true,
-      true,
-      true,
-      false,
-      true,
-      false,
-      false,
-      false,
-      true,
-      false,
-      true,
       true
     ]
   ],
@@ -436,4 +282,6 @@
       }
     ]
   ]
-}
+};
+
+export default kandinsky;

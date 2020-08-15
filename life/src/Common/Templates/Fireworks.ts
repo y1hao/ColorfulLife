@@ -1,7 +1,9 @@
-{
+import { IGame } from "../Interfaces";
+
+const fireworks: IGame = {
   "name": "Fireworks",
   "author": "Yihao",
-  "time": "2020-08-31T12:00:00.000Z",
+  "time": new Date("2020-08-31T12:00:00.000Z"),
   "description": "This is an empty template",
   "refreshFrequency": 4,
   "width": 19,
@@ -580,4 +582,6 @@
       }
     ]
   ]
-}
+};
+
+export default fireworks;
