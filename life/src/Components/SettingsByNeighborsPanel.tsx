@@ -33,7 +33,7 @@ export default function MakeSettingsByNeighborsPanel(tabName: "alive" | "dead", 
     }
 
     const handleReset = () => {
-      props.styles[index][neighbors] = props.template.styles[index][neighbors]
+      props.styles[index][neighbors] = { ...props.template.styles[index][neighbors] }
       props.setStyles([...props.styles])
     }
 
