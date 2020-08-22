@@ -4,7 +4,7 @@ const origami: IGame = {
   "name": "Origami",
   "author": "Yihao",
   "time": new Date("2020-08-14T04:49:44.076Z"),
-  "description": "This game only uses the elevation property to differentiate cells. By this it achieves the style of orimami art.",
+  "description": "This game only uses the elevation property to differentiate cells. By this it displays the style of orimami art.",
   "refreshFrequency": 5,
   "width": 20,
   "height": 20,

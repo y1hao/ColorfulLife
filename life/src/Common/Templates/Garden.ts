@@ -4,7 +4,7 @@ const garden: IGame = {
   "name": "Garden",
   "author": "Yihao",
   "time": new Date("2020-08-14T05:42:27.321Z"),
-  "description": "",
+  "description": "This game resembles the life and death of plants in a garden. Surviving cells are green or pink, representing leaves and flowers. Starving cells are yellow, and over-populated cells are purple, representing dead leaves and fruits. Dead cells are brown, representing soil.",
   "refreshFrequency": 3,
   "width": 15,
   "height": 15,

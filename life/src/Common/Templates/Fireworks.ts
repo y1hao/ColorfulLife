@@ -4,7 +4,7 @@ const fireworks: IGame = {
   "name": "Fireworks",
   "author": "Yihao",
   "time": new Date("2020-08-31T12:00:00.000Z"),
-  "description": "This is an empty template",
+  "description": "This game resembles a firework show.",
   "refreshFrequency": 4,
   "width": 19,
   "height": 19,

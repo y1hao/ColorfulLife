@@ -4,7 +4,7 @@ const ripple: IGame = {
   "name": "Ripple",
   "author": "Yihao",
   "time": new Date("2020-08-31T12:00:00.000Z"),
-  "description": "This is an empty template",
+  "description": "This game resembles the ripple on the surface of water. This game is an example of using only the size property to style the cells.",
   "refreshFrequency": 10,
   "width": 19,
   "height": 19,

@@ -4,7 +4,7 @@ const kaleidoscope: IGame = {
   "name": "Kaleidoscope",
   "author": "Yihao",
   "time": new Date("2020-08-31T12:00:00.000Z"),
-  "description": "This is an empty template",
+  "description": "This game mimics what one can see through a Kaleidoscope.",
   "refreshFrequency": 4,
   "width": 19,
   "height": 19,

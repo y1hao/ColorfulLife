@@ -4,7 +4,7 @@ const heart: IGame = {
   "name": "Heart",
   "author": "Yihao",
   "time": new Date("2020-08-15T01:47:20.702Z"),
-  "description": "This is an empty template",
+  "description": "This game resembles a beating heart.",
   "refreshFrequency": 2,
   "width": 15,
   "height": 15,

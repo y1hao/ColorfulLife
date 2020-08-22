@@ -4,7 +4,7 @@ const clouds: IGame = {
   "name": "Clouds",
   "author": "Yihao",
   "time": new Date("2020-08-31T12:00:00.000Z"),
-  "description": "This is an empty template",
+  "description": "This game resembles the gliding clouds on the sky. It is derived from the 'spaceship' pattern from the original Game of Life.",
   "refreshFrequency": 4,
   "width": 19,
   "height": 19,

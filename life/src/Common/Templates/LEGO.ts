@@ -4,7 +4,7 @@ const lego: IGame = {
   "name": "LEGO",
   "author": "Yihao",
   "time": new Date("2020-08-31T12:00:00.000Z"),
-  "description": "This is an empty template",
+  "description": "This game resembles the LEGO toy.",
   "refreshFrequency": 3,
   "width": 12,
   "height": 12,

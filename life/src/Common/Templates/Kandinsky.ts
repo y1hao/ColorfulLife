@@ -4,7 +4,7 @@ const kandinsky: IGame = {
   "name": "Kandinsky",
   "author": "Yihao",
   "time": new Date("2020-08-31T12:00:00.000Z"),
-  "description": "This is an empty template",
+  "description": "This game tries to imitate Wassily Kandinsky's art work. It is made by using the 'randomize all' functionality and then fine-tuning the result.",
   "refreshFrequency": 3,
   "width": 9,
   "height": 9,

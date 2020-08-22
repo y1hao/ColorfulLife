@@ -4,7 +4,7 @@ const go: IGame = {
   "name": "Go",
   "author": "Yihao",
   "time": new Date("2020-08-14T06:24:55.954Z"),
-  "description": "This is an empty template",
+  "description": "This game resembles the board of a Go game.",
   "refreshFrequency": 5,
   "width": 19,
   "height": 19,
