@@ -12,18 +12,21 @@ const useStyles = makeStyles({
     textAlign: 'start',
     color: '#666666',
     fontSize: '15px',
-    marginTop: 3
+    marginTop: 3,
+  },
+  info: {
+    fontSize: '15px'
   }
 });
 
 export default function InputTitle(props: IProps) {
   const classes = useStyles();
   return <Typography className={classes.root}>
-    {props.children}
+    {props.children} &nbsp;
     {
       props.info !== undefined &&
-      <Tooltip title={props.info}>
-        <InfoSharp fontSize="inherit" />
+      <Tooltip title={<span style={{fontSize: 15}}>{props.info}</span>}>
+        <InfoSharp fontSize="inherit"/>
       </Tooltip>
     }
   </Typography>

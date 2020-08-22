@@ -144,7 +144,7 @@ export default function RightPanel(props: IProps) {
       max={10}
       onChange={(e, v) => props.setRefreshFrequency(v as number)}
     />
-    <InputTitle>
+    <InputTitle info="The living cells with a number of living neighbors within this range will live to the next round. Otherwise the cell becomes dead. The setting in the original Game of Life is 2-3.">
       Survival Range
     </InputTitle>
     <Slider
@@ -157,7 +157,7 @@ export default function RightPanel(props: IProps) {
         props.setSurviveRangeUpper((v as number[])[1]);
       }}
     />
-    <InputTitle>
+    <InputTitle info="The dead cells with a number of living neighbors within this range will become alive in the next round. The setting in the original Game of Life is 3 only.">
       Reproduction Range
     </InputTitle>
     <Slider
@@ -170,7 +170,7 @@ export default function RightPanel(props: IProps) {
         props.setReproductionRangeUpper((v as number[])[1]);
       }}
     />
-    <InputTitle>
+    <InputTitle info="Setting this to 'alive' will treat the border of the game as living cells; whereas setting it to 'dead' will treat the border as dead cells. Setting it to 'roll over' will treat the left border and right border as connected, so as top and bottom borders. The setting in the original Game of Life is 'dead'.">
       Boarder Setting
     </InputTitle>
     <RadioGroup value={props.borderPolicy} onChange={(e, v) => props.setBorderPolicy(v as "alive" | "dead" | "roll")}>
