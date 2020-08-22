@@ -1,11 +1,13 @@
+// represent a game, contains all the information needed in a game,
+// used to save and load game from a file
 export interface IGame {
     name: string,
     author: string,
     time: Date,
     description: string,
-    refreshFrequency: number,
-    width: number,
-    height: number,
+    refreshFrequency: number, // 1 - 10, number of refreshes per second
+    width: number, // 2 - 20, width of board
+    height: number, // 2 - 20, height of board
     seeds: boolean[][],
     surviveRangeLower: number,
     surviveRangeUpper: number,
@@ -17,16 +19,20 @@ export interface IGame {
 
 export type BorderPolicy = "alive" | "dead" | "roll";
 
+// represent the style of a cell on board
 export interface ICellStyle {
-    size: number,
+    size: number, // 0 - 100, percentage
     color: string,
-    borderRadius: number,
-    borderWidth: number,
+    borderRadius: number, // 0 - 50, percentage
+    borderWidth: number, // 0 - 50, percentage
     borderColor: string,
     backgroundColor: string,
-    elevation: number
+    elevation: number // 0 - 10
 }
 
+// represent the processed style information for a cell on board
+// all the configurations have been converted to string and can be
+// directly used in CSS
 export interface ICellConfig {
     defaultSize: string,
     size: string,

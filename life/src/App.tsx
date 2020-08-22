@@ -23,24 +23,24 @@ const theme = createMuiTheme({
 function App() {
   const panelWidth = 300;
 
-  const [template, setTemplate] = useState<IGame>(Templates[0])
-    , [name, setName] = useState<string>(template.name)
-    , [author, setAuthor] = useState<string>(template.author)
-    , [description, setDescription] = useState<string>(template.description)
-    , [time, setTime] = useState<Date>(template.time)
-    , [refreshFrequency, setRefreshFrequency] = useState<number>(template.refreshFrequency)
-    , [width, setWidth] = useState<number>(template.width)
-    , [height, setHeight] = useState<number>(template.height)
-    , [seeds, setSeeds] = useState<boolean[][]>(JSON.parse(JSON.stringify(template.seeds)))
-    , [surviveRangeLower, setSurviveRangeLower] = useState<number>(template.surviveRangeLower)
-    , [surviveRangeUpper, setSurviveRangeUpper] = useState<number>(template.surviveRangeUpper)
+  const [template,             setTemplate]               = useState<IGame>(Templates[0])
+    , [name,                   setName]                   = useState<string>(template.name)
+    , [author,                 setAuthor]                 = useState<string>(template.author)
+    , [description,            setDescription]            = useState<string>(template.description)
+    , [time,                   setTime]                   = useState<Date>(template.time)
+    , [refreshFrequency,       setRefreshFrequency]       = useState<number>(template.refreshFrequency)
+    , [width,                  setWidth]                  = useState<number>(template.width)
+    , [height,                 setHeight]                 = useState<number>(template.height)
+    , [seeds,                  setSeeds]                  = useState<boolean[][]>(JSON.parse(JSON.stringify(template.seeds)))
+    , [surviveRangeLower,      setSurviveRangeLower]      = useState<number>(template.surviveRangeLower)
+    , [surviveRangeUpper,      setSurviveRangeUpper]      = useState<number>(template.surviveRangeUpper)
     , [reproductionRangeLower, setReproductionRangeLower] = useState<number>(template.reproductionRangeLower)
     , [reproductionRangeUpper, setReproductionRangeUpper] = useState<number>(template.reproductionRangeUpper)
-    , [borderPolicy, setBorderPolicy] = useState<BorderPolicy>(template.borderPolicy)
-    , [styles, setStyles] = useState<ICellStyle[][]>(JSON.parse(JSON.stringify(template.styles)))
-    , [isPlayMode, setIsPlayMode] = useState<boolean>(true)
-    , [isPlaying, setIsPlaying] = useState<boolean>(false)
-    , [isPanelOpen, setIsPanelOpen] = useState<boolean>(true);
+    , [borderPolicy,           setBorderPolicy]           = useState<BorderPolicy>(template.borderPolicy)
+    , [styles,                 setStyles]                 = useState<ICellStyle[][]>(JSON.parse(JSON.stringify(template.styles)))
+    , [isPlayMode,             setIsPlayMode]             = useState<boolean>(true)
+    , [isPlaying,              setIsPlaying]              = useState<boolean>(false)
+    , [isPanelOpen,            setIsPanelOpen]            = useState<boolean>(true);
 
   const handleSetTemplate = (template: IGame) => {
     setTemplate(() => {

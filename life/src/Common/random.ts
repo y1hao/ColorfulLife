@@ -15,6 +15,7 @@ interface IRandom {
     style: () => ICellStyle
 }
 
+// generate random values for properties
 const Random: IRandom = {
 
     seeds(height: number, width: number, density: number) {
